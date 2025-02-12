@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://c81sj5o1b71pc"]
+
+[ext_resource type="PackedScene" uid="uid://b48ry0wxgcf6j" path="res://Scenes/SpringCharacter/spring.tscn" id="1_boyb8"]
+[ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Art/Textures/floortile.tga" id="1_ysn0p"]
+[ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
+sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
+sky_horizon_color = Color(0.760784, 0.713726, 0.756863, 1)
+ground_bottom_color = Color(0.271208, 0.600924, 0.878637, 1)
+ground_horizon_color = Color(0.52549, 0.560784, 0.819608, 1)
+
+[sub_resource type="Sky" id="Sky_ubqhr"]
+sky_material = SubResource("ProceduralSkyMaterial_xhx3e")
+
+[sub_resource type="Environment" id="Environment_rvfmk"]
+background_mode = 2
+sky = SubResource("Sky_ubqhr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1m2s"]
+albedo_texture = ExtResource("1_ysn0p")
+uv1_scale = Vector3(50, 40, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6feu6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_km05j"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_amomj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e2hr"]
+size = Vector3(5, 5, 5)
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_rvfmk")
+
+[node name="WorldLight" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.5871, 0)
+
+[node name="WorldGeometry" type="Node" parent="World"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="GroundMesh" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p1m2s")
+mesh = SubResource("BoxMesh_6feu6")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D"]
+shape = SubResource("BoxShape3D_km05j")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D2"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D2"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="SpringStuff" type="Node" parent="."]
+
+[node name="Spring" parent="SpringStuff" instance=ExtResource("1_boyb8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
+[node name="Misc" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Misc"]
+stream = ExtResource("2_44v0c")
+volume_db = -30.0
+autoplay = true
