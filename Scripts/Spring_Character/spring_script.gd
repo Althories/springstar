@@ -1,8 +1,9 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_IMPULSE = 4.5
 
+var can_ground_bounce = true
 var _camera_input_dir := Vector2.ZERO
 
 #For controlling camera in the editor. This property will appear at the top of
@@ -33,16 +34,25 @@ func _process(_delta: float) -> void:
 	move_camera()	#constantly runs camera control
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	'''For anything to do with physics in the world'''
+	
+	if is_on_floor():
+		if Input.is_action_just_released("jump"):		#charge jump release
+			velocity.y = JUMP_IMPULSE + 10 				#temporary until charge is handled
+		elif not Input.is_action_pressed("jump"):
+			can_ground_bounce = true					#not starting a jump, ground bounce
+			velocity.y = JUMP_IMPULSE					#regular bounce impulse
+		elif Input.is_action_pressed("jump"):
+			can_ground_bounce = false					#stops ground movement upon charge start
+			velocity = Vector3.ZERO						#stop all movement, freeze in spot
+			#charge()									#call charge function
+		
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		
-	ground_move_spring()
-	print(velocity.x)
+		can_ground_bounce = false						#keeps spring from using ground controls in the air
+	
+	if can_ground_bounce:
+		ground_move_spring()
 
 	move_and_slide()
 	
