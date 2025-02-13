@@ -5,6 +5,7 @@ const JUMP_IMPULSE = 4.5
 
 var can_ground_bounce = true
 var _camera_input_dir := Vector2.ZERO
+var charge_velocity = 0
 
 #For controlling camera in the editor. This property will appear at the top of
 #the properties in a node in the Inspector, and will be assigned the name "Camera".
@@ -38,17 +39,19 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		if Input.is_action_just_released("jump"):		#charge jump release
-			velocity.y = JUMP_IMPULSE + 10 				#temporary until charge is handled
+			velocity.y = JUMP_IMPULSE/3 + charge_velocity 				#temporary until charge is handled
+			charge_velocity = 0							#reset charge velocity upon jump
 		elif not Input.is_action_pressed("jump"):
 			can_ground_bounce = true					#not starting a jump, ground bounce
 			velocity.y = JUMP_IMPULSE					#regular bounce impulse
 		elif Input.is_action_pressed("jump"):
 			can_ground_bounce = false					#stops ground movement upon charge start
 			velocity = Vector3.ZERO						#stop all movement, freeze in spot
-			#charge()									#call charge function
+			if charge_velocity <= 18:					#caps charge velocity
+				charge()								#call charge function
 		
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta				#gravity. Can be changed in settings			
 		can_ground_bounce = false						#keeps spring from using ground controls in the air
 	
 	if can_ground_bounce:
@@ -56,7 +59,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-# function list --------------------------
+#Function list --------------------------
+func charge() -> void:
+	'''Charge function for spring jump.'''
+	charge_velocity += .40
+	
 func ground_move_spring() -> void:
 	'''Get the input direction and handle the movement/deceleration.'''
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
