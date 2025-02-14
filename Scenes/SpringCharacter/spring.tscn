@@ -1,32 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://b48ry0wxgcf6j"]
+[gd_scene load_steps=6 format=3 uid="uid://cusuavcx76vmy"]
 
-[ext_resource type="Script" path="res://Scripts/Spring_Character/spring_script.gd" id="1_vo6qc"]
+[ext_resource type="Script" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_en6m1"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r75c0"]
-albedo_color = Color(1, 0.352941, 0.588235, 1)
+[sub_resource type="CylinderMesh" id="CylinderMesh_0grl8"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_7uywl"]
+[sub_resource type="BoxMesh" id="BoxMesh_2i1iv"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_yp33q"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pdf6f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w0tec"]
+radius = 0.07
 
 [node name="Spring" type="CharacterBody3D"]
-script = ExtResource("1_vo6qc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_en6m1")
 
 [node name="SpringMesh" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_r75c0")
-mesh = SubResource("CylinderMesh_7uywl")
+mesh = SubResource("CylinderMesh_0grl8")
 
-[node name="SpringCol" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_yp33q")
+[node name="Indicator" type="MeshInstance3D" parent="SpringMesh"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1, -0.5)
+mesh = SubResource("BoxMesh_2i1iv")
+skeleton = NodePath("../..")
 
-[node name="SpringCameraPivot" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+[node name="SpringCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_pdf6f")
 
-[node name="SpringArm" type="SpringArm3D" parent="SpringCameraPivot"]
-unique_name_in_owner = true
-spring_length = 9.0
+[node name="CamPivot" type="Node3D" parent="."]
 
-[node name="SpringCamera" type="Camera3D" parent="SpringCameraPivot/SpringArm"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+[node name="SpringArm3D" type="SpringArm3D" parent="CamPivot"]
+shape = SubResource("SphereShape3D_w0tec")
+spring_length = 5.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)

@@ -4,7 +4,7 @@ const SPEED = 5.0
 const JUMP_IMPULSE = 4.5
 
 @onready var cam_pivot: Node3D = $CamPivot
-@export var sens = 0.5
+@export var sens = 0.15
 
 var can_ground_bounce = true
 var charge_velocity = 0
@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
-	print(velocity.x)
 	
 	if is_on_floor():
 		if Input.is_action_just_released("jump"):		#charge jump release
