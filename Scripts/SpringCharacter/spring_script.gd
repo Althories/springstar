@@ -2,11 +2,14 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_IMPULSE = 4.5
+const CAMERA_VERTICAL_OFFSET = 2.0
 
 @onready var cam_pivot: Node3D = $CamPivot
 @export var sens = 0.15
 
 var can_ground_bounce = true
+var in_charge_jump = false
+var ground_y_current = 0.0
 var charge_velocity = 0
 
 func _ready():
@@ -19,8 +22,12 @@ func _input(event):
 		cam_pivot.rotation.x = clamp(cam_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 	if event.is_action_pressed("ui_cancel"):	#bound to esc by default
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	#mouse made visible, can go outside game window
+	if event.is_action_pressed("reset"):
+		reset()
 		
 func _process(_delta: float) -> void:
+	if not in_charge_jump:
+		cam_pivot.global_position.y = ground_y_current + CAMERA_VERTICAL_OFFSET
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	#locks mouse to window
 
@@ -28,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
 	
 	if is_on_floor():
+		ground_y_current = self.position.y
 		if Input.is_action_just_released("jump"):		#charge jump release
 			velocity.y = JUMP_IMPULSE/3 + charge_velocity 				#temporary until charge is handled
 			charge_velocity = 0							#reset charge velocity upon jump
@@ -46,12 +54,14 @@ func _physics_process(delta: float) -> void:
 	
 	if can_ground_bounce:
 		ground_move_spring()
+		in_charge_jump = false
 		
 	move_and_slide()									#NECESSARY for this stuff to actually all work
 	
 #functions block ----------
 func charge() -> void:
 	'''Charge function for spring jump.'''
+	in_charge_jump = true
 	charge_velocity += .40
 	
 func ground_move_spring():

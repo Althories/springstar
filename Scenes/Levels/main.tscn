@@ -65,6 +65,16 @@ mesh = SubResource("BoxMesh_amomj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D2"]
 shape = SubResource("BoxShape3D_3e2hr")
 
+[node name="platform1" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 0.7418, 0.670621, 0, -0.670621, 0.7418, -8.49069, -0.519052, 12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform1"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform1"]
+shape = SubResource("BoxShape3D_3e2hr")
+
 [node name="SpringStuff" type="Node" parent="."]
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
