@@ -4,6 +4,7 @@ const SPEED = 5.0
 const JUMP_IMPULSE = 4.5
 
 @onready var cam_pivot: Node3D = $CamPivot
+@onready var animationPlayer: AnimationPlayer = $SpringAnimation
 @export var sens = 0.15
 
 var can_ground_bounce = true
@@ -31,12 +32,16 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("jump"):		#charge jump release
 			velocity.y = JUMP_IMPULSE/3 + charge_velocity 				#temporary until charge is handled
 			charge_velocity = 0							#reset charge velocity upon jump
+			animationPlayer.play_backwards("SpringSquish")				#Un charge spring movement		
 		elif not Input.is_action_pressed("jump"):
 			can_ground_bounce = true					#not starting a jump, ground bounce
 			velocity.y = JUMP_IMPULSE					#regular bounce impulse
+			animationPlayer.play_backwards("SpringSquish")			#Unsquish spring
 		elif Input.is_action_pressed("jump"):
 			can_ground_bounce = false					#stops ground movement upon charge start
 			velocity = Vector3.ZERO						#stop all movement, freeze in spot
+			###TODO: Get animation frame and do not play animation again if first done
+			animationPlayer.play("SpringSquish",-1, 0.7)						#Squish spring			
 			if charge_velocity <= 18:					#caps charge velocity
 				charge()								#call charge function
 		
