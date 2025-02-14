@@ -1,10 +1,13 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_IMPULSE = 4.5
 
 @onready var cam_pivot: Node3D = $CamPivot
 @export var sens = 0.5
+
+var can_ground_bounce = true
+var charge_velocity = 0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -14,16 +17,45 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		cam_pivot.rotate_x(deg_to_rad(-event.relative.y * sens))
 		cam_pivot.rotation.x = clamp(cam_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+	if event.is_action_pressed("ui_cancel"):	#bound to esc by default
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	#mouse made visible, can go outside game window
+		
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("left_click"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	#locks mouse to window
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	'''For anything to do with physics in the world'''
+	print(velocity.x)
+	
+	if is_on_floor():
+		if Input.is_action_just_released("jump"):		#charge jump release
+			velocity.y = JUMP_IMPULSE/3 + charge_velocity 				#temporary until charge is handled
+			charge_velocity = 0							#reset charge velocity upon jump
+		elif not Input.is_action_pressed("jump"):
+			can_ground_bounce = true					#not starting a jump, ground bounce
+			velocity.y = JUMP_IMPULSE					#regular bounce impulse
+		elif Input.is_action_pressed("jump"):
+			can_ground_bounce = false					#stops ground movement upon charge start
+			velocity = Vector3.ZERO						#stop all movement, freeze in spot
+			if charge_velocity <= 18:					#caps charge velocity
+				charge()								#call charge function
+		
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
+		velocity += get_gravity() * delta				#gravity. Can be changed in settings			
+		can_ground_bounce = false						#keeps spring from using ground controls in the air
+	
+	if can_ground_bounce:
+		ground_move_spring()
+		
+	move_and_slide()									#NECESSARY for this stuff to actually all work
+	
+#functions block ----------
+func charge() -> void:
+	'''Charge function for spring jump.'''
+	charge_velocity += .40
+	
+func ground_move_spring():
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -34,5 +66,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-	move_and_slide()
+		
+func reset() -> void:
+	'''Reset player to state on startup'''
+	position = Vector3(0, 2, 0) #Reset position to center +2 y height to not clip into ground
+	velocity = Vector3(0, 0, 0)	#Reset velocity
