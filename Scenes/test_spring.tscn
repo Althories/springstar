@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cusuavcx76vmy"]
+
+[ext_resource type="Script" path="res://Scenes/test_spring.gd" id="1_en6m1"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0grl8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pdf6f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lw565"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vxkih"]
+size = Vector3(50, 1, 50)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="TestSpring" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_en6m1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestSpring"]
+mesh = SubResource("CylinderMesh_0grl8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestSpring"]
+shape = SubResource("CylinderShape3D_pdf6f")
+
+[node name="CamPivot" type="Node3D" parent="TestSpring"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="TestSpring/CamPivot"]
+spring_length = 5.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="TestSpring/CamPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("BoxMesh_lw565")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_vxkih")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7, 0)
