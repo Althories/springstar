@@ -20,7 +20,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):	#bound to esc by default
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	#mouse made visible, can go outside game window
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	#locks mouse to window
 
