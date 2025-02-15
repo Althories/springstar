@@ -10,9 +10,9 @@ const CAMERA_INTERPOLATION_WEIGHT = 0.1
 
 var can_ground_bounce = true
 var charge_velocity = 0
-var camera_anchor = self.global_position
+var camera_anchor = Vector3(0, 2, 0)
 var slerp_y = 2.0
-var most_recent_groundpoint = self.global_position
+var most_recent_groundpoint = Vector3(0, 0, 0)
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
