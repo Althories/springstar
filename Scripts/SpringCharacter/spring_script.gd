@@ -76,10 +76,10 @@ func ground_move_spring():
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 func move_camera():
-	# Use slerp to move the camera. The camera will only fall if the spring falls more than 1.2 units from
-	# the peak of its height. This number is just large enough to keep the camera steady during idle bounce.
-	# !! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
-	# I suspect slerp is behind this.
+	'''Uses slerp to move the camera. The camera will only fall if the spring falls more than 1.2 units from
+	the peak of its height. This number is just large enough to keep the camera steady during idle bounce.
+	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
+	I suspect slerp is behind this.'''
 	if self.global_position.y >= slerp_y:
 		slerp_y = self.global_position.y
 	elif slerp_y - self.global_position.y > 1.2:
