@@ -21,7 +21,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		cam_pivot.rotate_x(deg_to_rad(-event.relative.y * sens))
-		cam_pivot.rotation.x = clamp(cam_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+		cam_pivot.rotation.x = clamp(cam_pivot.rotation.x, deg_to_rad(-60), deg_to_rad(45))
 	if event.is_action_pressed("ui_cancel"):	#bound to esc by default
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	#mouse made visible, can go outside game window
 	if event.is_action_pressed("reset"):
@@ -87,7 +87,7 @@ func move_camera():
 	camera_anchor = camera_anchor.slerp(
 		Vector3(self.global_position.x, slerp_y + CAMERA_VERTICAL_OFFSET, self.global_position.z), 
 		CAMERA_INTERPOLATION_WEIGHT)
-	cam_pivot.global_position = camera_anchor
+	$CamPivot/SpringArm3D.global_position = camera_anchor
 	
 func reset() -> void:
 	'''Reset player to state on startup'''
