@@ -118,6 +118,7 @@ shape = SubResource("BoxShape3D_3e2hr")
 [node name="SpringStuff" type="Node" parent="."]
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
+idle_bounce_wait_frames = 5
 
 [node name="Misc" type="Node" parent="."]
 

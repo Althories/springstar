@@ -6,11 +6,11 @@ const CAMERA_VERTICAL_OFFSET = 1.0
 const CAMERA_INTERPOLATION_WEIGHT = 0.1
 const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
 const IDLE_ANIM_SPEED = 0.6
-const IDLE_BOUNCE_WAIT_FRAMES = 20
 
 @onready var camPivot: Node3D = $CamPivot
 @onready var animationPlayer: AnimationPlayer = $SpringAnimation
 @export var sens = 0.15
+@export var idle_bounce_wait_frames = 20
 
 var can_ground_bounce = true
 var bounce_timer = 0
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 			bounce_timer += 1
 			if animationPlayer.current_animation_position == 0.0:
 				animationPlayer.play("SpringSquish",-1, IDLE_ANIM_SPEED) # begin idle bounce animation
-			if bounce_timer >= IDLE_BOUNCE_WAIT_FRAMES:
+			if bounce_timer >= idle_bounce_wait_frames:
 				can_ground_bounce = true					#not starting a jump, ground bounce
 				velocity.y = JUMP_IMPULSE					#regular bounce impulse
 		elif Input.is_action_pressed("jump"):
