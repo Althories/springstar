@@ -4,6 +4,7 @@ const SPEED = 5.0
 const JUMP_IMPULSE = 4.5
 const CAMERA_VERTICAL_OFFSET = 1.0
 const CAMERA_INTERPOLATION_WEIGHT = 0.1
+const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
 
 @onready var cam_pivot: Node3D = $CamPivot
 @onready var animationPlayer: AnimationPlayer = $SpringAnimation
@@ -89,8 +90,8 @@ func move_camera():
 	I suspect slerp is behind this.'''
 	if self.global_position.y >= slerp_y:
 		slerp_y = self.global_position.y
-	elif slerp_y - self.global_position.y > 1.2:
-		slerp_y = self.global_position.y + 1.2
+	elif slerp_y - self.global_position.y > CAMERA_VERTICAL_MOVEMENT_DEADZONE:
+		slerp_y = self.global_position.y + CAMERA_VERTICAL_MOVEMENT_DEADZONE
 	camera_anchor = camera_anchor.slerp(
 		Vector3(self.global_position.x, slerp_y + CAMERA_VERTICAL_OFFSET, self.global_position.z), 
 		CAMERA_INTERPOLATION_WEIGHT)
