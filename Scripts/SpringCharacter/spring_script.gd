@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
 	
 	if is_on_floor():
-		velocity = Vector3.ZERO # Kills grdound velocity. May have to change for ragdoll or physics interactions.
+		velocity = Vector3.ZERO # Kills ground velocity. May have to change for ragdoll or physics interactions.
 		most_recent_groundpoint = position
 		if Input.is_action_just_released("jump"):		#charge jump release
 			charge_jump()
