@@ -21,7 +21,7 @@ const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
 var can_ground_bounce = true
 var bounce_timer = 0
 var charge_velocity = 0
-var camera_anchor = Vector3(0, 2, 0)
+var camera_target = Vector3(0, 2, 0)
 var lerp_y = 0
 var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
@@ -56,13 +56,13 @@ func _physics_process(delta: float) -> void:
 			charge_jump()
 		elif not Input.is_action_pressed("jump"):
 			# Will fix jumping once this condition is revised
-			bounce_timer += 1
 			if animationPlayer.current_animation_position == 0.0:
 				animationPlayer.play("SpringSquish",-1, idle_anim_speed) # begin idle bounce animation
+			# bounce with delay
+			bounce_timer += 1
 			if bounce_timer >= idle_bounce_wait_time:
 				ground_move_spring()
 		elif Input.is_action_pressed("jump"):
-			#can_ground_bounce = false					#stops ground movement upon charge start
 			velocity = Vector3.ZERO						#stop all movement, freeze in spot
 			if animationPlayer.current_animation_position == 0.0:
 				animationPlayer.play("SpringSquish",-1, 0.3)		#Squish spring
@@ -70,11 +70,10 @@ func _physics_process(delta: float) -> void:
 				charge()								#call charge function
 		
 	if not is_on_floor():
-		bounce_timer = 0
+		bounce_timer = 0 # reset idle bounce timer
 		if animationPlayer.current_animation_position != 0.0:
 			animationPlayer.play_backwards("SpringSquish")				#Un charge spring movement		
-		velocity += get_gravity() * delta				#gravity. Can be changed in settings			
-		# can_ground_bounce = false						#keeps spring from using ground controls in the air
+		velocity += get_gravity() * delta				#gravity. Can be changed in settings
 	
 	move_and_slide()									#NECESSARY for this stuff to actually all work
 	
@@ -85,6 +84,11 @@ func charge() -> void:
 
 func charge_jump() -> void:
 	'''Execute a charge jump in the direction the camera is facing.'''
+	# Takes a vector pointing in the negative z direction
+	# with a vertical component dependant on camera rotation
+	# and rotates it around a vector pointing straight up
+	# by the rotation of the player model.
+	# TODO: stop using model rotation
 	aim_vector = Vector3(
 		0, 
 		max((AIM_VERTICAL_OFFSET + camPivot.rotation.x), AIM_VERTICAL_MINIMUM) * JUMP_CHARGE_IMPULSE,
@@ -95,7 +99,7 @@ func charge_jump() -> void:
 	# $aimIndicator.position = position + aim_vector
 	# print(aim_vector)
 	# ================
-	velocity = aim_vector * charge_velocity
+	velocity = aim_vector * charge_velocity # aim_vector has length 1, multiply by charge strength
 	charge_velocity = 0 # reset charge velocity upon jump
 	
 func ground_move_spring() -> void:
@@ -116,14 +120,20 @@ func move_camera() -> void:
 	the peak of its height. This number is just large enough to keep the camera steady during idle bounce.
 	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
 	I suspect slerp is behind this.'''
+	# raise camera target if player rises higher than it was
 	if self.global_position.y >= lerp_y:
 		lerp_y = self.global_position.y
+	# lower camera target if player falls lower than it was, with some margin
 	elif lerp_y - self.global_position.y > CAMERA_VERTICAL_MOVEMENT_DEADZONE:
 		lerp_y = self.global_position.y + CAMERA_VERTICAL_MOVEMENT_DEADZONE
-	camera_anchor = camera_anchor.lerp(
+	# smoothly move the camera target point is looking at
+	camera_target = camera_target.lerp(
 		Vector3(self.global_position.x, lerp_y + CAMERA_VERTICAL_OFFSET, self.global_position.z), 
 		CAMERA_INTERPOLATION_WEIGHT)
-	$CamPivot/SpringArm3D.global_position = camera_anchor
+	# cant move camPivot, messes with rotation.
+	# cant move Camera3D, messes with springArm.
+	# moving SpringArm doesn't seem to have any glaring issues
+	$CamPivot/SpringArm3D.global_position = camera_target
 	
 func reset() -> void:
 	'''Reset player to state on startup'''
