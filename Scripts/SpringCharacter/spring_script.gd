@@ -8,7 +8,7 @@ const AIM_VERTICAL_MINIMUM = 0.2					# For charge jump vector
 const CHARGE_JUMP_RATE = 0.4						# Rate at which velocity accumulates in charge
 const CHARGE_JUMP_POWER_MAX = 18.0					# Accumulated velocity cap for charge
 const CAMERA_VERTICAL_OFFSET = 1.0				
-const CAMERA_INTERPOLATION_WEIGHT = 0.1
+const CAMERA_INTERPOLATION_WEIGHT = 0.1				# AMONG 1
 const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
 
 @onready var camPivot: Node3D = $CamPivot
