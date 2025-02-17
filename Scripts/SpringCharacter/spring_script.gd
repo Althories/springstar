@@ -22,7 +22,7 @@ var can_ground_bounce = true
 var bounce_timer = 0
 var charge_velocity = 0
 var camera_anchor = Vector3(0, 2, 0)
-var slerp_y = 0
+var lerp_y = 0
 var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
 var bonk_timer = 0
@@ -112,16 +112,16 @@ func ground_move_spring() -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 func move_camera() -> void:
-	'''Uses slerp to move the camera. The camera will only fall if the spring falls more than 1.2 units from
+	'''Uses lerp to move the camera. The camera will only fall if the spring falls more than 1.2 units from
 	the peak of its height. This number is just large enough to keep the camera steady during idle bounce.
 	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
 	I suspect slerp is behind this.'''
-	if self.global_position.y >= slerp_y:
-		slerp_y = self.global_position.y
-	elif slerp_y - self.global_position.y > CAMERA_VERTICAL_MOVEMENT_DEADZONE:
-		slerp_y = self.global_position.y + CAMERA_VERTICAL_MOVEMENT_DEADZONE
-	camera_anchor = camera_anchor.slerp(
-		Vector3(self.global_position.x, slerp_y + CAMERA_VERTICAL_OFFSET, self.global_position.z), 
+	if self.global_position.y >= lerp_y:
+		lerp_y = self.global_position.y
+	elif lerp_y - self.global_position.y > CAMERA_VERTICAL_MOVEMENT_DEADZONE:
+		lerp_y = self.global_position.y + CAMERA_VERTICAL_MOVEMENT_DEADZONE
+	camera_anchor = camera_anchor.lerp(
+		Vector3(self.global_position.x, lerp_y + CAMERA_VERTICAL_OFFSET, self.global_position.z), 
 		CAMERA_INTERPOLATION_WEIGHT)
 	$CamPivot/SpringArm3D.global_position = camera_anchor
 	
