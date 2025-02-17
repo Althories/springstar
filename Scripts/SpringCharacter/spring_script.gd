@@ -9,7 +9,7 @@ const CHARGE_JUMP_RATE = 0.4						# Rate at which velocity accumulates in charge
 const CHARGE_JUMP_POWER_MAX = 18.0					# Accumulated velocity cap for charge
 const CAMERA_VERTICAL_OFFSET = 1.0				
 const CAMERA_INTERPOLATION_WEIGHT = 0.1
-const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
+const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4		# AMONG2
 
 @onready var camPivot: Node3D = $CamPivot
 @onready var animationPlayer: AnimationPlayer = $SpringAnimation
