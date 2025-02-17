@@ -2,7 +2,9 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_IDLE_IMPULSE = 4.5
-const JUMP_CHARGE_IMPULSE = 0.5
+const JUMP_CHARGE_IMPULSE = 2.0
+const AIM_VERTICAL_OFFSET = 0.2
+const AIM_VERTICAL_MINIMUM = 0.2
 const JUMP_CHARGE_RATE = 0.4
 const JUMP_CHARGE_POWER_MAX = 18.0
 const CAMERA_VERTICAL_OFFSET = 1.0
@@ -32,7 +34,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		camPivot.rotate_x(deg_to_rad(-event.relative.y * sens))
-		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(60))
+		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
 	if event.is_action_pressed("ui_cancel"):	#bound to esc by default
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	#mouse made visible, can go outside game window
 	if event.is_action_pressed("reset"):
@@ -87,7 +89,9 @@ func charge() -> void:
 func charge_jump() -> void:
 	'''Execute a charge jump in the direction the camera is facing.'''
 	aim_vector = Vector3(
-		0, max(0, camPivot.rotation.x) + JUMP_CHARGE_IMPULSE, -1).rotated(Vector3(0, 1, 0), 
+		0, 
+		max((AIM_VERTICAL_OFFSET + camPivot.rotation.x), AIM_VERTICAL_MINIMUM) * JUMP_CHARGE_IMPULSE,
+		-1).rotated(Vector3(0, 1, 0), 
 		rotation.y).normalized()
 	# debug lines ====
 	$aimIndicator.top_level = true
