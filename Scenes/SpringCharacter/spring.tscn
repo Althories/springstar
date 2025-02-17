@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cusuavcx76vmy"]
+[gd_scene load_steps=11 format=4 uid="uid://cusuavcx76vmy"]
 
 [ext_resource type="Script" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_en6m1"]
 
@@ -1182,6 +1182,8 @@ _data = {
 "SpringSquish": SubResource("Animation_rdvur")
 }
 
+[sub_resource type="SphereMesh" id="SphereMesh_t2par"]
+
 [node name="Spring" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
@@ -2016,3 +2018,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 libraries = {
 "": SubResource("AnimationLibrary_riocg")
 }
+
+[node name="aimIndicator" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_t2par")

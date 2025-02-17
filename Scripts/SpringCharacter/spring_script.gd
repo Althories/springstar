@@ -1,14 +1,18 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_IMPULSE = 4.5
+const JUMP_IDLE_IMPULSE = 4.5
+const JUMP_CHARGE_IMPULSE = 0.5
+const JUMP_CHARGE_RATE = 0.4
+const JUMP_CHARGE_POWER_MAX = 18.0
 const CAMERA_VERTICAL_OFFSET = 1.0
 const CAMERA_INTERPOLATION_WEIGHT = 0.1
 const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
-const IDLE_ANIM_SPEED = 0.6
+const IDLE_ANIM_SPEED = 1.5
 
 @onready var camPivot: Node3D = $CamPivot
 @onready var animationPlayer: AnimationPlayer = $SpringAnimation
+@onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
 @export var sens = 0.15
 @export var idle_bounce_wait_frames = 20
 
@@ -17,7 +21,8 @@ var bounce_timer = 0
 var charge_velocity = 0
 var camera_anchor = Vector3(0, 2, 0)
 var slerp_y = 0
-var most_recent_groundpoint = Vector3(0, 0, 0)
+var most_recent_groundpoint = Vector3()
+var aim_vector = Vector3()
 
 func _ready():
 	animationPlayer.play_backwards("SpringSquish") # prevents error spam from having no animation while in the air
@@ -27,7 +32,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		camPivot.rotate_x(deg_to_rad(-event.relative.y * sens))
-		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-60), deg_to_rad(45))
+		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(60))
 	if event.is_action_pressed("ui_cancel"):	#bound to esc by default
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE	#mouse made visible, can go outside game window
 	if event.is_action_pressed("reset"):
@@ -42,11 +47,10 @@ func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
 	
 	if is_on_floor():
-		velocity = Vector3() # Kills ground velocity. May have to change for ragdoll or physics interactions.
+		velocity = Vector3.ZERO # Kills ground velocity. May have to change for ragdoll or physics interactions.
 		most_recent_groundpoint = self.position
 		if Input.is_action_just_released("jump"):		#charge jump release
-			velocity.y = JUMP_IMPULSE/3 + charge_velocity 				#temporary until charge is handled
-			charge_velocity = 0							#reset charge velocity upon jump
+			charge_jump()
 		elif not Input.is_action_pressed("jump"):
 			#Will fix jumping once this condition is revised
 			bounce_timer += 1
@@ -54,13 +58,13 @@ func _physics_process(delta: float) -> void:
 				animationPlayer.play("SpringSquish",-1, IDLE_ANIM_SPEED) # begin idle bounce animation
 			if bounce_timer >= idle_bounce_wait_frames:
 				can_ground_bounce = true					#not starting a jump, ground bounce
-				velocity.y = JUMP_IMPULSE					#regular bounce impulse
+				velocity.y = JUMP_IDLE_IMPULSE					#regular bounce impulse
 		elif Input.is_action_pressed("jump"):
 			can_ground_bounce = false					#stops ground movement upon charge start
 			velocity = Vector3.ZERO						#stop all movement, freeze in spot
 			if animationPlayer.current_animation_position == 0.0:
 				animationPlayer.play("SpringSquish",-1, 0.3)		#Squish spring
-			if charge_velocity <= 18:					#caps charge velocity
+			if charge_velocity <= JUMP_CHARGE_POWER_MAX:			#caps charge velocity
 				charge()								#call charge function
 		
 	if not is_on_floor():
@@ -78,9 +82,22 @@ func _physics_process(delta: float) -> void:
 #functions block ----------
 func charge() -> void:
 	'''Charge function for spring jump.'''
-	charge_velocity += .40
+	charge_velocity += JUMP_CHARGE_RATE
+
+func charge_jump() -> void:
+	'''Execute a charge jump in the direction the camera is facing.'''
+	aim_vector = Vector3(
+		0, max(0, camPivot.rotation.x) + JUMP_CHARGE_IMPULSE, -1).rotated(Vector3(0, 1, 0), 
+		rotation.y).normalized()
+	# debug lines ====
+	$aimIndicator.top_level = true
+	$aimIndicator.position = position + aim_vector
+	print(aim_vector)
+	# ================
+	velocity = aim_vector * charge_velocity
+	charge_velocity = 0 # reset charge velocity upon jump
 	
-func ground_move_spring():
+func ground_move_spring() -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -92,7 +109,7 @@ func ground_move_spring():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-func move_camera():
+func move_camera() -> void:
 	'''Uses slerp to move the camera. The camera will only fall if the spring falls more than 1.2 units from
 	the peak of its height. This number is just large enough to keep the camera steady during idle bounce.
 	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
