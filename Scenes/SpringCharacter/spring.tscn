@@ -2020,4 +2020,5 @@ libraries = {
 }
 
 [node name="aimIndicator" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("SphereMesh_t2par")
