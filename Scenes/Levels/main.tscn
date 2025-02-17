@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c81sj5o1b71pc"]
+[gd_scene load_steps=14 format=3 uid="uid://c81sj5o1b71pc"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_ysn0p"]
 [ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
@@ -30,6 +30,12 @@ size = Vector3(50, 1, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3e2hr"]
 size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xq0u6"]
+size = Vector3(1, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_043wf"]
+size = Vector3(5, 5, 50)
 
 [node name="Main" type="Node"]
 
@@ -114,6 +120,56 @@ mesh = SubResource("BoxMesh_amomj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform1"]
 shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform2" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(0.528631, 0.407366, -0.744716, 0, 0.877322, 0.479902, 0.848852, -0.253691, 0.463779, -12.3803, -0.519052, 2.80235)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform2"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform2"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform3" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(-0.516504, 0.410933, -0.751238, -3.10555e-09, 0.877322, 0.479902, 0.856285, 0.247871, -0.45314, -12.3803, -0.519052, -1.62867)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform3"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform3"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform5" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(-0.516504, 0.410933, -0.751238, -3.10555e-09, 0.877322, 0.479902, 0.856285, 0.247871, -0.45314, 5.06594, -0.519052, -1.62867)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform5"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform5"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform6" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(0.515457, -0.411236, 0.751791, 1.22875e-08, 0.877322, 0.479902, -0.856915, -0.247369, 0.452222, 10.8683, -0.519052, 1.9119)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform6"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform6"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform4" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(0.164765, -0.616376, 0.770021, -0.00929716, 0.779686, 0.626102, -0.986289, -0.110319, 0.122735, 7.3763, 12.3796, -9.49268)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform4"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_xq0u6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform4"]
+shape = SubResource("BoxShape3D_043wf")
 
 [node name="SpringStuff" type="Node" parent="."]
 

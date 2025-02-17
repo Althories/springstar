@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
-const GROUND_SPEED = 5.0							#Speed of spring in ground bounce
-const GROUND_BOUNCE_IMPULSE = 4.5					#Velocity impulse for bounce in ground bounce
+const GROUND_SPEED = 6.0							# Speed of spring in ground bounce
+const GROUND_BOUNCE_IMPULSE = 4.5					# y velocity impulse for bounce in ground bounce
 const CHARGE_JUMP_IMPULSE = 2.0
-const AIM_VERTICAL_OFFSET = 0.2						#For charge jump vector
-const AIM_VERTICAL_MINIMUM = 0.2					#for charge jump vector
-const CHARGE_JUMP_RATE = 0.4						#rate at which velocity accumulates in charge
-const CHARGE_JUMP_POWER_MAX = 18.0					#accumulated velocity cap for charge
+const AIM_VERTICAL_OFFSET = 0.2						# For charge jump vector
+const AIM_VERTICAL_MINIMUM = 0.2					# For charge jump vector
+const CHARGE_JUMP_RATE = 0.4						# Rate at which velocity accumulates in charge
+const CHARGE_JUMP_POWER_MAX = 18.0					# Accumulated velocity cap for charge
 const CAMERA_VERTICAL_OFFSET = 1.0				
 const CAMERA_INTERPOLATION_WEIGHT = 0.1
 const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
@@ -14,65 +14,65 @@ const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
 @onready var camPivot: Node3D = $CamPivot
 @onready var animationPlayer: AnimationPlayer = $SpringAnimation
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
-@export var mouse_sens = 0.15						#adjustable mouse sensitivity for camera
-@export var ground_bounce_wait_time = 20			#time spring holds on ground in ground bounce
-@export var ground_anim_speed = 0.5					#spring ground stretch/squash anim speed in ground state
+@export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
+@export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
+@export var ground_anim_speed = 0.5					# Spring ground stretch/squash anim speed in ground state
 
-var bounce_timer = 0								#enables spring ground movement after wait time expires
-var charge_velocity = 0								#var to accumulate velocity in charge jump
+var bounce_timer = 0								# Enables spring ground movement after wait time expires
+var charge_velocity = 0								# Var to accumulate velocity in charge jump
 var camera_target = Vector3(0, 2, 0)
 var lerp_y = 0
 var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
-var bonk_timer = 0									#bonq
+var bonk_timer = 0									# bonq :3
 
 func _ready():
-	animationPlayer.play_backwards("SpringSquish")  #prevents error spam from having no animation while in the air
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	#locks mouse to window and hides
+	animationPlayer.play_backwards("SpringSquish")  # Prevents error spam from having no animation while in the air
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	# Locks mouse to window and hides
 	
 func _input(event):
-	if event is InputEventMouseMotion:				#camera control from mouse motion
+	if event is InputEventMouseMotion:				# Camera control from mouse motion
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		camPivot.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
 	if event.is_action_pressed("escape"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			#mouse made visible, can move outside game window
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			# Mouse made visible, can move outside game window
 	if event.is_action_pressed("reset"):
 		reset()
 		
 func _process(_delta: float) -> void:
 	move_camera()
 	if Input.is_action_pressed("left_click"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		#locks mouse to window
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		# Locks mouse to window
 
 func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
 	if is_on_floor():
-		velocity = Vector3.ZERO 	#Kills ground velocity. May have to change for ragdoll or physics interactions.
+		velocity = Vector3.ZERO 	# Kills ground velocity. May have to change for ragdoll or physics interactions.
 		most_recent_groundpoint = position
-		if Input.is_action_just_released("jump"):			#charge jump release, going airborne
+		if Input.is_action_just_released("jump"):			# Charge jump release, going airborne
 			charge_jump()
 		elif not Input.is_action_pressed("jump"):
 			# Will fix jumping once this condition is revised
 			if animationPlayer.current_animation_position == 0.0:
-				animationPlayer.play("SpringSquish",-1, ground_anim_speed) 		#begin idle bounce animation
+				animationPlayer.play("SpringSquish",-1, ground_anim_speed) 		# Begin idle bounce animation
 			bounce_timer += 1
-			if bounce_timer >= ground_bounce_wait_time:							#bounce after hold period expires
+			if bounce_timer >= ground_bounce_wait_time:							# Bounce after hold period expires
 				ground_move_spring()
 		elif Input.is_action_pressed("jump"):
-			velocity = Vector3.ZERO							#stop all movement, freeze in spot
+			velocity = Vector3.ZERO							# Stop all movement, freeze in spot
 			if animationPlayer.current_animation_position == 0.0:
-				animationPlayer.play("SpringSquish",-1, 0.3)					#Squish spring
-			if charge_velocity <= CHARGE_JUMP_POWER_MAX:	#caps charge velocity
+				animationPlayer.play("SpringSquish",-1, 0.3)					# Squish spring
+			if charge_velocity <= CHARGE_JUMP_POWER_MAX:	# Caps charge velocity
 				charge()
 		
 	if not is_on_floor():
-		bounce_timer = 0 			#reset idle bounce timer
+		bounce_timer = 0 			# Reset idle bounce timer
 		if animationPlayer.current_animation_position != 0.0:
-			animationPlayer.play_backwards("SpringSquish")	#Uncharge spring movement		
-		velocity += get_gravity() * delta					#applies gravity while not on floor
+			animationPlayer.play_backwards("SpringSquish")	# Uncharge spring movement		
+		velocity += get_gravity() * delta					# Applies gravity while not on floor
 	
-	move_and_slide()										#NECESSARY for this stuff to actually all work
+	move_and_slide()										# NECESSARY for this stuff to actually all work
 	
 #functions block ----------
 func charge() -> void:
@@ -94,20 +94,24 @@ func charge_jump() -> void:
 	# $aimIndicator.position = position + aim_vector
 	# print(aim_vector)
 	# ================
-	velocity = aim_vector * charge_velocity 	#aim_vector has length 1, multiply by charge strength
-	charge_velocity = 0 						#reset charge velocity upon jump
+	velocity = aim_vector * charge_velocity 	# aim_vector has length 1, multiply by charge strength
+	charge_velocity = 0 						# Reset charge velocity upon jump
 	
 func ground_move_spring() -> void:
 	'''Uses built-in methodology for recording and applying horizontal movement during ground bounce'''
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	velocity.y = GROUND_BOUNCE_IMPULSE					#applies impulse to height velocity
-	if direction:										#this block should only run one time
-		velocity.x = direction.x * GROUND_SPEED
-		velocity.z = direction.z * GROUND_SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, GROUND_SPEED)
-		velocity.z = move_toward(velocity.z, 0, GROUND_SPEED)
+	# Use negative of floor normal to tilt direction with the floor
+	var dir_floor_influenced = (-get_floor_normal()).direction_to(direction)
+	# debug lines ====
+	# $aimIndicator.top_level = true
+	# $aimIndicator.position = position + dir_floor_influenced
+	# print(get_floor_normal().direction_to(direction))
+	# ================
+	# Update velocity using direction and defined ground speeds
+	velocity.x = dir_floor_influenced.x * GROUND_SPEED
+	velocity.z = dir_floor_influenced.z * GROUND_SPEED
+	velocity.y = dir_floor_influenced.y + GROUND_BOUNCE_IMPULSE
 		
 func move_camera() -> void:
 	'''Uses lerp to move the camera. The camera will only fall if the spring falls more than 1.2 units from
