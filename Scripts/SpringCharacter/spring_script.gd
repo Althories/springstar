@@ -19,6 +19,8 @@ var camera_anchor = Vector3(0, 2, 0)
 var slerp_y = 0
 var most_recent_groundpoint = Vector3(0, 0, 0)
 
+signal charging
+
 func _ready():
 	animationPlayer.play_backwards("SpringSquish") # prevents error spam from having no animation while in the air
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -62,6 +64,7 @@ func _physics_process(delta: float) -> void:
 				animationPlayer.play("SpringSquish",-1, 0.3)		#Squish spring
 			if charge_velocity <= 18:					#caps charge velocity
 				charge()								#call charge function
+			charging.emit()  #ui signal
 		
 	if not is_on_floor():
 		bounce_timer = 0
@@ -79,6 +82,7 @@ func _physics_process(delta: float) -> void:
 func charge() -> void:
 	'''Charge function for spring jump.'''
 	charge_velocity += .40
+	charging.emit() #ui signal
 	
 func ground_move_spring():
 	# Get the input direction and handle the movement/deceleration.
