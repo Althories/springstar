@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 const GROUND_SPEED = 6.0							# Speed of spring in ground bounce
-const GROUND_BOUNCE_IMPULSE = 4.5					# y velocity impulse for bounce in ground bounce
+const GROUND_BOUNCE_IMPULSE = 4.0					# y velocity impulse for bounce in ground bounce
 const CHARGE_JUMP_IMPULSE = 2.0
 const AIM_VERTICAL_OFFSET = 0.2						# For charge jump vector
 const AIM_VERTICAL_MINIMUM = 0.2					# For charge jump vector
@@ -9,7 +9,7 @@ const CHARGE_JUMP_RATE = 0.4						# Rate at which velocity accumulates in charge
 const CHARGE_JUMP_POWER_MAX = 18.0					# Accumulated velocity cap for charge
 const CAMERA_VERTICAL_OFFSET = 1.0				
 const CAMERA_INTERPOLATION_WEIGHT = 0.1
-const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
+const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
 
 @onready var camPivot: Node3D = $CamPivot
 @onready var animationPlayer: AnimationPlayer = $SpringAnimation
@@ -114,8 +114,8 @@ func ground_move_spring() -> void:
 	velocity.y = dir_floor_influenced.y + GROUND_BOUNCE_IMPULSE
 		
 func move_camera() -> void:
-	'''Uses lerp to move the camera. The camera will only fall if the spring falls more than 1.2 units from
-	the peak of its height. This number is just large enough to keep the camera steady during idle bounce.
+	'''Uses lerp to move the camera. The camera will only fall if the spring falls more than a certain 
+	distance from the peak of its height.
 	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
 	I suspect slerp is behind this.'''
 	# raise camera target if player rises higher than it was
