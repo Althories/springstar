@@ -16,7 +16,7 @@ const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.2
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
 @export var sens = 0.15
 @export var idle_bounce_wait_time = 20
-@export var idle_anim_speed = 1.5
+@export var idle_anim_speed = 0.5
 
 var can_ground_bounce = true
 var bounce_timer = 0
