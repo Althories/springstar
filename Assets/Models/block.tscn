@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bquak3lcbqlyl"]
+
+[ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_bmh66"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yu3x3"]
+
+[sub_resource type="Skin" id="Skin_l7rrq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7c01g"]
+albedo_texture = ExtResource("1_bmh66")
+uv1_scale = Vector3(6, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7kp5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j20ao"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_43bs3"]
+
+[node name="Blocks" type="Node3D"]
+
+[node name="block" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0262889, -0.0364824, -2.38419e-07)
+mesh = SubResource("BoxMesh_yu3x3")
+skin = SubResource("Skin_l7rrq")
+skeleton = NodePath("block")
+surface_material_override/0 = SubResource("StandardMaterial3D_7c01g")
+metadata/_edit_group_ = true
+
+[node name="block" type="StaticBody3D" parent="block"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00876295, 0.0121608, 7.94729e-08)
+
+[node name="collision" type="CollisionShape3D" parent="block/block"]
+shape = SubResource("BoxShape3D_p7kp5")
+
+[node name="slope" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.12132, -2.12132, 0, 2.12132, 2.12132, 0, 0, 0, 3, 4.79543, -0.657675, -2.38419e-07)
+mesh = SubResource("BoxMesh_j20ao")
+skin = SubResource("Skin_l7rrq")
+skeleton = NodePath("slope")
+surface_material_override/0 = SubResource("StandardMaterial3D_7c01g")
+metadata/_edit_group_ = true
+
+[node name="slope" type="StaticBody3D" parent="slope"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00876295, 0.0121608, 7.94729e-08)
+
+[node name="collision" type="CollisionShape3D" parent="slope/slope"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -0.00796795, -0.00796795, 0)
+shape = SubResource("BoxShape3D_43bs3")
