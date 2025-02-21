@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 const GROUND_SPEED = 6.0							# Speed of spring in ground bounce
+const AIR_SPEED = 0.05								# Influence on speed that alters spring velocity in air
 const GROUND_BOUNCE_IMPULSE = 4.0					# y velocity impulse for bounce in ground bounce
 const CHARGE_JUMP_IMPULSE = 2.0
 const AIM_VERTICAL_OFFSET = 0.2						# For charge jump vector
@@ -71,10 +72,20 @@ func _physics_process(delta: float) -> void:
 		if animationPlayer.current_animation_position != 0.0:
 			animationPlayer.play_backwards("SpringSquish")	# Uncharge spring movement		
 		velocity += get_gravity() * delta					# Applies gravity while not on floor
+		air_move_spring()
+		
 	
 	move_and_slide()										# NECESSARY for this stuff to actually all work
 	
 #functions block ----------
+func air_move_spring() -> void:
+	'''Uses built-in methodology to apply horizontal influence to the spring. Because it is creating
+	this velocity from nowhere, it is additive to midair spring velocity.'''
+	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	velocity.x += direction.x * AIR_SPEED
+	velocity.z += direction.z * AIR_SPEED
+	
 func charge() -> void:
 	'''Charge function for spring jump. Accumulates charge velocity based on charge rate'''
 	charge_velocity += CHARGE_JUMP_RATE
