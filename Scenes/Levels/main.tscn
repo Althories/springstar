@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c81sj5o1b71pc"]
+[gd_scene load_steps=15 format=3 uid="uid://c81sj5o1b71pc"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_ysn0p"]
 [ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
