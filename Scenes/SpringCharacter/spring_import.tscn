@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3ovafgl2moaw"]
+[gd_scene load_steps=15 format=3 uid="uid://b3ovafgl2moaw"]
 
 [ext_resource type="PackedScene" uid="uid://biqjviors744f" path="res://Assets/Models/springEdit.blend" id="1_gosni"]
 [ext_resource type="Animation" uid="uid://d1sm5hlk3xvi0" path="res://Assets/Animations/Coil.res" id="2_vd1nl"]
 [ext_resource type="Animation" uid="uid://csrwn111sa6ui" path="res://Assets/Animations/RingsRotation.res" id="3_timuh"]
+[ext_resource type="Animation" uid="uid://dnh0myauswa0c" path="res://Assets/Animations/RingsStart.res" id="4_cjtkd"]
 
 [sub_resource type="Animation" id="Animation_4k66h"]
 length = 0.001
@@ -797,20 +798,402 @@ tracks/112/path = NodePath("Spring/Skeleton3D:Bone.112")
 tracks/112/interp = 1
 tracks/112/loop_wrap = true
 tracks/112/keys = PackedFloat32Array(0, 1, -0.126505, 0.0953987, 0.15029, 0.975863)
+tracks/113/type = "value"
+tracks/113/imported = false
+tracks/113/enabled = true
+tracks/113/path = NodePath("Capsule/InnerRing:rotation")
+tracks/113/interp = 1
+tracks/113/loop_wrap = true
+tracks/113/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/114/type = "value"
+tracks/114/imported = false
+tracks/114/enabled = true
+tracks/114/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/114/interp = 1
+tracks/114/loop_wrap = true
+tracks/114/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/115/type = "value"
+tracks/115/imported = false
+tracks/115/enabled = true
+tracks/115/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/115/interp = 1
+tracks/115/loop_wrap = true
+tracks/115/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xafov"]
+resource_name = "RingsRotation_2"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1.5, 15, 1.5, 1.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8cogu"]
+resource_name = "RingsRotation_5"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0), Vector3(17.5249, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qud8d"]
+resource_name = "RingsRotation1_OG"
+length = 2.0
+loop_mode = 1
+step = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0), Vector3(17.5249, 0, 0), Vector3(20.6664, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rfkyp"]
+resource_name = "RingsRotation2_IM Equal"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0), Vector3(10.3254, 0, 0), Vector3(13.467, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.832522), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0), Vector3(17.5249, 0, 0), Vector3(20.6664, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i7i4h"]
+resource_name = "RingsRotation4_MO EqualEasing"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1.5, 15, 1.5, 1.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1koes"]
+resource_name = "RingsRotation3_MO Equal"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cnp3x"]
+resource_name = "RingsRotation5_All Equal"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0), Vector3(10.3254, 0, 0), Vector3(13.467, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.832522), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7smic"]
+resource_name = "RingsRotation6_All Equal MO Easing"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0), Vector3(10.3254, 0, 0), Vector3(13.467, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1.5, 1.5, 1.5, 1.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0.832522), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uitsq"]
 _data = {
 "Coil": ExtResource("2_vd1nl"),
 "RESET": SubResource("Animation_4k66h"),
-"RingsRotation": ExtResource("3_timuh")
+"RingsRotation": ExtResource("3_timuh"),
+"RingsRotation1_OG": SubResource("Animation_qud8d"),
+"RingsRotation2_IM Equal": SubResource("Animation_rfkyp"),
+"RingsRotation3_MO Equal": SubResource("Animation_1koes"),
+"RingsRotation4_MO EqualEasing": SubResource("Animation_i7i4h"),
+"RingsRotation5_All Equal": SubResource("Animation_cnp3x"),
+"RingsRotation6_All Equal MO Easing": SubResource("Animation_7smic"),
+"RingsRotation_2": SubResource("Animation_xafov"),
+"RingsRotation_5": SubResource("Animation_8cogu"),
+"RingsStart": ExtResource("4_cjtkd")
 }
 
 [node name="springEdit" instance=ExtResource("1_gosni")]
 
+[node name="Spring" parent="." index="0"]
+visible = false
+
 [node name="Skeleton3D" parent="Spring" index="0"]
 bones/0/rotation = Quaternion(-0.404282, 0.544646, 0.544645, 0.493233)
 bones/1/rotation = Quaternion(0.0184382, 0.017931, 0.193592, 0.980745)
-bones/2/rotation = Quaternion(0.0271482, -0.0310183, 0.192563, 0.980418)
+bones/2/rotation = Quaternion(0.0271482, -0.0310183, 0.192563, 0.980419)
 bones/3/rotation = Quaternion(0.0419892, -0.013916, 0.189881, 0.98081)
 bones/4/rotation = Quaternion(0.0416721, 0.0466879, 0.18995, 0.979797)
 bones/5/rotation = Quaternion(0.00971005, 0.146735, 0.194225, 0.969872)
@@ -829,11 +1212,11 @@ bones/17/rotation = Quaternion(0.0184381, 0.0179312, 0.193592, 0.980745)
 bones/18/rotation = Quaternion(0.0271482, -0.0310183, 0.192563, 0.980418)
 bones/19/rotation = Quaternion(0.0419892, -0.013916, 0.189881, 0.98081)
 bones/20/rotation = Quaternion(0.0416721, 0.0466879, 0.18995, 0.979797)
-bones/21/rotation = Quaternion(0.00971006, 0.146735, 0.194225, 0.969872)
+bones/21/rotation = Quaternion(0.00971005, 0.146735, 0.194225, 0.969872)
 bones/22/rotation = Quaternion(-0.0775215, 0.328583, 0.178348, 0.924238)
 bones/23/rotation = Quaternion(-0.135052, 0.0469021, 0.139924, 0.979787)
-bones/24/rotation = Quaternion(-0.141286, 0.0289262, 0.133626, 0.980483)
-bones/25/rotation = Quaternion(-0.143766, 0.0206093, 0.130954, 0.980692)
+bones/24/rotation = Quaternion(-0.141286, 0.0289262, 0.133626, 0.980482)
+bones/25/rotation = Quaternion(-0.143766, 0.0206093, 0.130954, 0.980693)
 bones/26/rotation = Quaternion(-0.142993, 0.004771, 0.131798, 0.980897)
 bones/27/rotation = Quaternion(-0.143491, 0.0300883, 0.131255, 0.980447)
 bones/28/rotation = Quaternion(-0.145216, 0.0140426, 0.129345, 0.980808)
@@ -842,15 +1225,15 @@ bones/30/rotation = Quaternion(-0.124184, -0.0680397, 0.149653, 0.978546)
 bones/31/rotation = Quaternion(-0.100902, -0.0450672, 0.166242, 0.979873)
 bones/32/rotation = Quaternion(-0.0373304, -0.266023, 0.190851, 0.944147)
 bones/33/rotation = Quaternion(0.018438, 0.0179312, 0.193592, 0.980745)
-bones/34/rotation = Quaternion(0.0271482, -0.0310183, 0.192563, 0.980418)
+bones/34/rotation = Quaternion(0.0271482, -0.0310183, 0.192563, 0.980419)
 bones/35/rotation = Quaternion(0.0419892, -0.0139161, 0.189881, 0.98081)
 bones/36/rotation = Quaternion(0.0416721, 0.0466879, 0.18995, 0.979797)
-bones/37/rotation = Quaternion(0.00971005, 0.146735, 0.194225, 0.969872)
+bones/37/rotation = Quaternion(0.00971004, 0.146735, 0.194225, 0.969872)
 bones/38/rotation = Quaternion(-0.0775214, 0.328584, 0.178348, 0.924238)
 bones/39/rotation = Quaternion(-0.135053, 0.0469015, 0.139924, 0.979787)
-bones/40/rotation = Quaternion(-0.141285, 0.0289266, 0.133626, 0.980482)
+bones/40/rotation = Quaternion(-0.141285, 0.0289266, 0.133626, 0.980483)
 bones/41/rotation = Quaternion(-0.143766, 0.0206091, 0.130954, 0.980692)
-bones/42/rotation = Quaternion(-0.142993, 0.00477103, 0.131798, 0.980897)
+bones/42/rotation = Quaternion(-0.142993, 0.00477102, 0.131798, 0.980897)
 bones/43/rotation = Quaternion(-0.143491, 0.0300884, 0.131255, 0.980447)
 bones/44/rotation = Quaternion(-0.145216, 0.0140426, 0.129345, 0.980808)
 bones/45/rotation = Quaternion(-0.140819, -0.0156272, 0.134118, 0.980784)
@@ -858,23 +1241,23 @@ bones/46/rotation = Quaternion(-0.124184, -0.0680397, 0.149653, 0.978546)
 bones/47/rotation = Quaternion(-0.100902, -0.0450673, 0.166242, 0.979873)
 bones/48/rotation = Quaternion(-0.0373306, -0.266023, 0.190851, 0.944147)
 bones/49/rotation = Quaternion(0.0184381, 0.017931, 0.193592, 0.980745)
-bones/50/rotation = Quaternion(0.0271482, -0.0310183, 0.192563, 0.980418)
+bones/50/rotation = Quaternion(0.0271481, -0.0310183, 0.192563, 0.980419)
 bones/51/rotation = Quaternion(0.0419892, -0.0139161, 0.18988, 0.98081)
 bones/52/rotation = Quaternion(0.0416721, 0.0466878, 0.18995, 0.979797)
 bones/53/rotation = Quaternion(0.00971009, 0.146735, 0.194225, 0.969872)
 bones/54/rotation = Quaternion(-0.0775213, 0.328584, 0.178348, 0.924238)
 bones/55/rotation = Quaternion(-0.135053, 0.0469015, 0.139924, 0.979787)
-bones/56/rotation = Quaternion(-0.141285, 0.0289266, 0.133626, 0.980482)
+bones/56/rotation = Quaternion(-0.141285, 0.0289266, 0.133626, 0.980483)
 bones/57/rotation = Quaternion(-0.143766, 0.0206092, 0.130954, 0.980692)
-bones/58/rotation = Quaternion(-0.142993, 0.0047711, 0.131798, 0.980897)
-bones/59/rotation = Quaternion(-0.143491, 0.0300883, 0.131255, 0.980447)
-bones/60/rotation = Quaternion(-0.145216, 0.0140426, 0.129345, 0.980808)
-bones/61/rotation = Quaternion(-0.140819, -0.0156272, 0.134118, 0.980784)
+bones/58/rotation = Quaternion(-0.142993, 0.00477111, 0.131798, 0.980897)
+bones/59/rotation = Quaternion(-0.143491, 0.0300883, 0.131255, 0.980448)
+bones/60/rotation = Quaternion(-0.145216, 0.0140426, 0.129344, 0.980808)
+bones/61/rotation = Quaternion(-0.140819, -0.0156272, 0.134118, 0.980785)
 bones/62/rotation = Quaternion(-0.124184, -0.0680396, 0.149653, 0.978546)
 bones/63/rotation = Quaternion(-0.100902, -0.0450674, 0.166242, 0.979873)
 bones/64/rotation = Quaternion(-0.0373307, -0.266023, 0.190851, 0.944147)
 bones/65/rotation = Quaternion(0.0184381, 0.017931, 0.193592, 0.980745)
-bones/66/rotation = Quaternion(0.0271481, -0.0310184, 0.192563, 0.980418)
+bones/66/rotation = Quaternion(0.0271481, -0.0310184, 0.192563, 0.980419)
 bones/67/rotation = Quaternion(0.0419892, -0.0139162, 0.18988, 0.98081)
 bones/68/rotation = Quaternion(0.0416721, 0.0466878, 0.18995, 0.979797)
 bones/69/rotation = Quaternion(0.00971016, 0.146735, 0.194225, 0.969872)
@@ -883,43 +1266,53 @@ bones/71/rotation = Quaternion(-0.135052, 0.046902, 0.139924, 0.979787)
 bones/72/rotation = Quaternion(-0.141286, 0.0289264, 0.133626, 0.980482)
 bones/73/rotation = Quaternion(-0.143766, 0.020609, 0.130954, 0.980692)
 bones/74/rotation = Quaternion(-0.142993, 0.00477107, 0.131798, 0.980897)
-bones/75/rotation = Quaternion(-0.143491, 0.0300884, 0.131255, 0.980448)
+bones/75/rotation = Quaternion(-0.143491, 0.0300883, 0.131255, 0.980448)
 bones/76/rotation = Quaternion(-0.145216, 0.0140427, 0.129344, 0.980808)
 bones/77/rotation = Quaternion(-0.140819, -0.0156272, 0.134118, 0.980784)
 bones/78/rotation = Quaternion(-0.124184, -0.0680397, 0.149653, 0.978546)
 bones/79/rotation = Quaternion(-0.100902, -0.0450669, 0.166242, 0.979873)
 bones/80/rotation = Quaternion(-0.0373304, -0.266023, 0.190851, 0.944147)
 bones/81/rotation = Quaternion(0.0184381, 0.0179311, 0.193592, 0.980745)
-bones/82/rotation = Quaternion(0.0271481, -0.0310183, 0.192563, 0.980418)
+bones/82/rotation = Quaternion(0.0271481, -0.0310183, 0.192563, 0.980419)
 bones/83/rotation = Quaternion(0.0419892, -0.0139161, 0.18988, 0.98081)
 bones/84/rotation = Quaternion(0.0416721, 0.0466878, 0.18995, 0.979797)
 bones/85/rotation = Quaternion(0.00971011, 0.146735, 0.194225, 0.969872)
 bones/86/rotation = Quaternion(-0.0775213, 0.328584, 0.178348, 0.924238)
 bones/87/rotation = Quaternion(-0.135052, 0.0469018, 0.139924, 0.979787)
-bones/88/rotation = Quaternion(-0.141285, 0.0289265, 0.133626, 0.980482)
+bones/88/rotation = Quaternion(-0.141285, 0.0289265, 0.133626, 0.980483)
 bones/89/rotation = Quaternion(-0.143766, 0.0206089, 0.130954, 0.980692)
 bones/90/rotation = Quaternion(-0.142993, 0.00477112, 0.131798, 0.980897)
+bones/91/rotation = Quaternion(-0.143491, 0.0300883, 0.131255, 0.980447)
 bones/92/rotation = Quaternion(-0.145216, 0.0140426, 0.129345, 0.980808)
 bones/93/rotation = Quaternion(-0.140819, -0.0156272, 0.134118, 0.980784)
 bones/94/rotation = Quaternion(-0.124184, -0.0680398, 0.149653, 0.978546)
 bones/95/rotation = Quaternion(-0.100902, -0.0450669, 0.166242, 0.979873)
 bones/96/rotation = Quaternion(-0.0373304, -0.266023, 0.190851, 0.944147)
 bones/97/rotation = Quaternion(0.0184381, 0.0179312, 0.193592, 0.980745)
-bones/98/rotation = Quaternion(0.0271481, -0.0310184, 0.192563, 0.980418)
+bones/98/rotation = Quaternion(0.0271481, -0.0310184, 0.192563, 0.980419)
 bones/99/rotation = Quaternion(0.0419891, -0.0139161, 0.18988, 0.98081)
 bones/100/rotation = Quaternion(0.0416721, 0.0466878, 0.18995, 0.979797)
-bones/101/rotation = Quaternion(0.00971011, 0.146735, 0.194225, 0.969872)
+bones/101/rotation = Quaternion(0.0097101, 0.146735, 0.194225, 0.969872)
 bones/102/rotation = Quaternion(-0.0775214, 0.328584, 0.178348, 0.924238)
 bones/103/rotation = Quaternion(-0.135052, 0.0469018, 0.139924, 0.979787)
 bones/104/rotation = Quaternion(-0.141286, 0.0289263, 0.133626, 0.980482)
-bones/105/rotation = Quaternion(-0.143766, 0.020609, 0.130954, 0.980692)
+bones/105/rotation = Quaternion(-0.143766, 0.020609, 0.130954, 0.980693)
 bones/106/rotation = Quaternion(-0.142993, 0.0047711, 0.131798, 0.980897)
 bones/107/rotation = Quaternion(-0.143491, 0.0300883, 0.131255, 0.980447)
 bones/108/rotation = Quaternion(-0.145216, 0.0140427, 0.129345, 0.980808)
 bones/109/rotation = Quaternion(-0.140819, -0.0156272, 0.134118, 0.980784)
-bones/110/rotation = Quaternion(-0.124184, -0.0680398, 0.149653, 0.978546)
+bones/110/rotation = Quaternion(-0.124184, -0.0680397, 0.149653, 0.978546)
 bones/111/rotation = Quaternion(-0.100902, -0.0450668, 0.166242, 0.979873)
 bones/112/rotation = Quaternion(-0.126505, 0.0953987, 0.15029, 0.975863)
+
+[node name="InnerRing" parent="Capsule" index="0"]
+transform = Transform3D(1.04957, 0, 0, 0, 1.04957, 0, 0, 0, 1.04957, 0, 0, 0)
+
+[node name="MiddleRing" parent="Capsule/InnerRing" index="0"]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 0, 0, 0)
+
+[node name="OuterRing" parent="Capsule/InnerRing/MiddleRing" index="0"]
+transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 0, 0, 0)
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
