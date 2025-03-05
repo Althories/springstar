@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3ovafgl2moaw"]
+[gd_scene load_steps=18 format=3 uid="uid://b3ovafgl2moaw"]
 
 [ext_resource type="PackedScene" uid="uid://biqjviors744f" path="res://Assets/Models/springEdit.blend" id="1_gosni"]
+[ext_resource type="Script" path="res://Scenes/SpringCharacter/spring_import.gd" id="2_nvpk7"]
 [ext_resource type="Animation" uid="uid://d1sm5hlk3xvi0" path="res://Assets/Animations/Coil.res" id="2_vd1nl"]
 [ext_resource type="Animation" uid="uid://csrwn111sa6ui" path="res://Assets/Animations/RingsRotation.res" id="3_timuh"]
 [ext_resource type="Animation" uid="uid://dnh0myauswa0c" path="res://Assets/Animations/RingsStart.res" id="4_cjtkd"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bymodplaxysk" path="res://Assets/Animations/RingRotationGood.res" id="5_ughrb"]
 
 [sub_resource type="Animation" id="Animation_4k66h"]
 length = 0.001
@@ -835,10 +837,8 @@ tracks/115/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_xafov"]
-resource_name = "RingsRotation_2"
-loop_mode = 1
-step = 0.25
+[sub_resource type="Animation" id="Animation_hv6hf"]
+resource_name = "RingsEnd"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -846,10 +846,10 @@ tracks/0/path = NodePath("Capsule/InnerRing:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+"values": [Vector3(0.901218, 0, 0), Vector3(6.28319, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -858,10 +858,10 @@ tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1.5, 15, 1.5, 1.5, 1.5),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+"values": [Vector3(0, 0, 0.832522), Vector3(0, 0, 6.28319)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -870,51 +870,10 @@ tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_8cogu"]
-resource_name = "RingsRotation_5"
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Capsule/InnerRing:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0), Vector3(17.5249, 0, 0)]
+"values": [Vector3(1.81766, 0, 0), Vector3(6.28319, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qud8d"]
@@ -1001,48 +960,6 @@ tracks/2/keys = {
 "values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0), Vector3(17.5249, 0, 0), Vector3(20.6664, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_i7i4h"]
-resource_name = "RingsRotation4_MO EqualEasing"
-length = 2.0
-loop_mode = 1
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Capsule/InnerRing:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1.5, 15, 1.5, 1.5, 1.5),
-"update": 0,
-"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
-"update": 0,
-"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_1koes"]
 resource_name = "RingsRotation3_MO Equal"
 length = 2.0
@@ -1081,6 +998,48 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i7i4h"]
+resource_name = "RingsRotation4_MO EqualEasing"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1.5, 15, 1.5, 1.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
 "update": 0,
 "values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
 }
@@ -1169,10 +1128,93 @@ tracks/2/keys = {
 "values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_xafov"]
+resource_name = "RingsRotation_2"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1.5, 15, 1.5, 1.5, 1.5),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8cogu"]
+resource_name = "RingsRotation_5"
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Capsule/InnerRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.901218, 0, 0), Vector3(4.04218, 0, 0), Vector3(7.18378, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Capsule/InnerRing/MiddleRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.833325), Vector3(0, 0, 3.97411), Vector3(0, 0, 7.11571), Vector3(0, 0, 10.2573), Vector3(0, 0, 13.3989)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Capsule/InnerRing/MiddleRing/OuterRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.81766, 0, 0), Vector3(4.95848, 0, 0), Vector3(8.10007, 0, 0), Vector3(11.2417, 0, 0), Vector3(14.3833, 0, 0), Vector3(17.5249, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uitsq"]
 _data = {
 "Coil": ExtResource("2_vd1nl"),
 "RESET": SubResource("Animation_4k66h"),
+"RingsEnd": SubResource("Animation_hv6hf"),
 "RingsRotation": ExtResource("3_timuh"),
 "RingsRotation1_OG": SubResource("Animation_qud8d"),
 "RingsRotation2_IM Equal": SubResource("Animation_rfkyp"),
@@ -1186,9 +1228,7 @@ _data = {
 }
 
 [node name="springEdit" instance=ExtResource("1_gosni")]
-
-[node name="Spring" parent="." index="0"]
-visible = false
+script = ExtResource("2_nvpk7")
 
 [node name="Skeleton3D" parent="Spring" index="0"]
 bones/0/rotation = Quaternion(-0.404282, 0.544646, 0.544645, 0.493233)
@@ -1318,3 +1358,21 @@ transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_uitsq")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = ExtResource("5_ughrb")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/charging = false
+parameters/conditions/jump = false
+parameters/Charge/Add2/add_amount = 1.0
+parameters/Charge/CoilSpeed/scale = 1.0
+parameters/Charge/RotateSpeed/scale = 1.0
+parameters/Charge/StateMachine/conditions/rotateFinish = true
+"parameters/Charge/StateMachine 2/conditions/Uncharge" = true
+"parameters/Jump/Coil Speed/scale" = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="." index="4"]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 0, -4.37114e-08, -1, 1.59017, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="5"]
+transform = Transform3D(0.0702266, 0, -0.997531, 0, 1, 0, 0.997531, 0, 0.0702266, -2.16542, 1.38459, 0.398873)
