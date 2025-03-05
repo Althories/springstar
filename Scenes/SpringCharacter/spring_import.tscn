@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b3ovafgl2moaw"]
+[gd_scene load_steps=40 format=3 uid="uid://b3ovafgl2moaw"]
 
 [ext_resource type="PackedScene" uid="uid://biqjviors744f" path="res://Assets/Models/springEdit.blend" id="1_gosni"]
 [ext_resource type="Script" path="res://Scenes/SpringCharacter/spring_import.gd" id="2_nvpk7"]
@@ -1245,30 +1245,37 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8aiwa"]
 animation = &"Coil"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f74hp"]
+animation = &"RESET"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2nf3q"]
 animation = &"Coil"
 play_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7me5u"]
-advance_mode = 2
-advance_condition = &"coil"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b66gg"]
 switch_mode = 2
 advance_mode = 2
 advance_condition = &"uncoil"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ldy4r"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_icrw0"]
 switch_mode = 2
 advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ymp6p"]
+advance_mode = 2
 advance_condition = &"coil"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kl6ar"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f31hd"]
 states/Coil/node = SubResource("AnimationNodeAnimation_8aiwa")
 states/Coil/position = Vector2(327, 100)
+states/RESET/node = SubResource("AnimationNodeAnimation_f74hp")
+states/RESET/position = Vector2(408, 171)
 states/UnCoil/node = SubResource("AnimationNodeAnimation_2nf3q")
 states/UnCoil/position = Vector2(492, 100)
-transitions = ["Start", "Coil", SubResource("AnimationNodeStateMachineTransition_7me5u"), "Coil", "UnCoil", SubResource("AnimationNodeStateMachineTransition_b66gg"), "UnCoil", "Coil", SubResource("AnimationNodeStateMachineTransition_ldy4r")]
+transitions = ["Coil", "UnCoil", SubResource("AnimationNodeStateMachineTransition_b66gg"), "UnCoil", "RESET", SubResource("AnimationNodeStateMachineTransition_icrw0"), "RESET", "Coil", SubResource("AnimationNodeStateMachineTransition_ymp6p"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_kl6ar")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3qi7l"]
 animation = &"RESET"
@@ -1286,10 +1293,6 @@ timeline_length = 0.3
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7272x"]
-advance_mode = 2
-advance_condition = &"charging"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_odrbt"]
 switch_mode = 2
@@ -1314,6 +1317,9 @@ advance_mode = 2
 advance_mode = 2
 advance_condition = &"charging"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fuf3l"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_d5o5h"]
 states/RESET/node = SubResource("AnimationNodeAnimation_3qi7l")
 states/RESET/position = Vector2(533, 171)
@@ -1322,13 +1328,13 @@ states/RingsEnd/position = Vector2(723, 116)
 states/RingsRotation1_OG/node = SubResource("AnimationNodeAnimation_msbhf")
 states/RingsRotation1_OG/position = Vector2(533, 53)
 states/RingsStart/node = SubResource("AnimationNodeAnimation_b8niy")
-states/RingsStart/position = Vector2(334, 100)
-transitions = ["Start", "RingsStart", SubResource("AnimationNodeStateMachineTransition_7272x"), "RingsStart", "RingsRotation1_OG", SubResource("AnimationNodeStateMachineTransition_odrbt"), "RingsRotation1_OG", "RingsEnd", SubResource("AnimationNodeStateMachineTransition_xv4s7"), "RingsEnd", "RingsStart", SubResource("AnimationNodeStateMachineTransition_4mrah"), "RingsEnd", "RESET", SubResource("AnimationNodeStateMachineTransition_xccw3"), "RESET", "RingsStart", SubResource("AnimationNodeStateMachineTransition_qo74n")]
+states/RingsStart/position = Vector2(350, 78)
+transitions = ["RingsStart", "RingsRotation1_OG", SubResource("AnimationNodeStateMachineTransition_odrbt"), "RingsRotation1_OG", "RingsEnd", SubResource("AnimationNodeStateMachineTransition_xv4s7"), "RingsEnd", "RingsStart", SubResource("AnimationNodeStateMachineTransition_4mrah"), "RingsEnd", "RESET", SubResource("AnimationNodeStateMachineTransition_xccw3"), "RESET", "RingsStart", SubResource("AnimationNodeStateMachineTransition_qo74n"), "Start", "RESET", SubResource("AnimationNodeStateMachineTransition_fuf3l")]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_w7cuo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_48je2"]
-graph_offset = Vector2(-244.767, 163.364)
+graph_offset = Vector2(-244.767, 87.659)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_jqt1a")
 nodes/Add2/position = Vector2(620, 40)
 nodes/CoilSpeed/node = SubResource("AnimationNodeTimeScale_uvs3v")

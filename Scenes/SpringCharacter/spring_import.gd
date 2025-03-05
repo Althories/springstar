@@ -20,11 +20,6 @@ func _process(delta: float) -> void:
 		spring.rotate_x(2*delta)
 	if(Input.is_action_pressed("jump")):
 		spring.rotate_z(-2*delta)
-		
-	#innerRing.rotate_x(1*delta)
-	#Rotate rings with spring
-	#outer/inner = x
-	#innerRing.rota = Vector3(spring.rotation.x,innerRing.rotation.y, innerRing.rotation.z)
 	
 	animate()
 
@@ -39,8 +34,7 @@ func animate() -> void:
 		
 	elif(Input.is_action_pressed("move_back")): #Charge start
 		#Lower intial ring rotation
-		if(masterTree["parameters/Rings Rotation/playback"].get_current_node() == "RESET" or
-		   masterTree["parameters/Rings Rotation/playback"].get_current_node() == "Start"):
+		if(masterTree["parameters/Rings Rotation/playback"].get_current_node() == "RESET"):
 			rotationSpeed = 0.05
 			masterTree["parameters/RingsSpeed/scale"] = rotationSpeed
 		
