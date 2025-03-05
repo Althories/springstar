@@ -1,0 +1,43 @@
+extends Node3D
+
+@onready var aniTree: AnimationTree = $AnimationTree
+
+var coilSpeed: float = 1.8
+var rotationSpeed: float = 1
+
+func _ready() -> void:
+	aniTree.active = true
+	aniTree["parameters/Charge/CoilSpeed/scale"] = coilSpeed #Charging coils
+	aniTree["parameters/Jump/Coil Speed/scale"] = coilSpeed-0.6 #Bouncing coils
+	
+
+func _process(_delta: float) -> void:
+	if(Input.is_action_just_pressed("move_forward")):
+		aniTree["parameters/conditions/jump"] = true #Jump
+		aniTree["parameters/conditions/charging"] = false #Stop charge
+	elif(Input.is_action_pressed("move_back")):
+		if(not aniTree["parameters/conditions/charging"]):
+			rotationSpeed = 0.05
+			aniTree["parameters/Charge/RotateSpeed/scale"] = rotationSpeed
+		aniTree["parameters/conditions/jump"] = false #Stop jump
+		#Set Blend stuff
+		aniTree["parameters/Charge/StateMachine/conditions/rotateFinish"] = false #Don't stop rotating
+		aniTree["parameters/Charge/StateMachine 2/conditions/Uncharge"] = false #Don't uncoil
+		aniTree["parameters/conditions/charging"] = true #Start charge
+	elif(Input.is_action_just_released("move_back")):
+		aniTree["parameters/conditions/jump"] = false #Stop jump
+		aniTree["parameters/conditions/charging"] = false #Stop charge
+		aniTree["parameters/Charge/StateMachine/conditions/rotateFinish"] = true #Finish rotation
+		aniTree["parameters/Charge/StateMachine 2/conditions/Uncharge"] = true #uncoil
+	else:
+		aniTree["parameters/conditions/jump"] = false #Stop jump
+		aniTree["parameters/conditions/charging"] = false #Stop charge
+		
+	if(aniTree["parameters/conditions/charging"]):
+		if(rotationSpeed < 2):
+			rotationSpeed += 0.01
+			aniTree["parameters/Charge/RotateSpeed/scale"] = rotationSpeed
+	else:
+		if(rotationSpeed > 1):
+			rotationSpeed -= 0.05
+			aniTree["parameters/Charge/RotateSpeed/scale"] = rotationSpeed
