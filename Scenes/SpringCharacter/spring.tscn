@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://cusuavcx76vmy"]
 
-[ext_resource type="Script" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_en6m1"]
+[ext_resource type="Script" uid="uid://cg427ow8qy6he" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_en6m1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jevse"]
 resource_name = "Spirng.001"
@@ -1179,7 +1179,7 @@ tracks/112/keys = PackedFloat32Array(0, 1, -0.126505, 0.0953987, 0.15029, 0.9758
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_riocg"]
 _data = {
-"SpringSquish": SubResource("Animation_rdvur")
+&"SpringSquish": SubResource("Animation_rdvur")
 }
 
 [sub_resource type="SphereMesh" id="SphereMesh_t2par"]

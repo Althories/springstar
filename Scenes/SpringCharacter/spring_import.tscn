@@ -1,10 +1,25 @@
-[gd_scene load_steps=40 format=3 uid="uid://b3ovafgl2moaw"]
+[gd_scene load_steps=41 format=3 uid="uid://b3ovafgl2moaw"]
 
 [ext_resource type="PackedScene" uid="uid://biqjviors744f" path="res://Assets/Models/springEdit.blend" id="1_gosni"]
-[ext_resource type="Script" path="res://Scenes/SpringCharacter/spring_import.gd" id="2_nvpk7"]
+[ext_resource type="Script" uid="uid://27rwqxsn1hcw" path="res://Scenes/SpringCharacter/spring_import.gd" id="2_nvpk7"]
 [ext_resource type="Animation" uid="uid://d1sm5hlk3xvi0" path="res://Assets/Animations/Coil.res" id="2_vd1nl"]
 [ext_resource type="Animation" uid="uid://csrwn111sa6ui" path="res://Assets/Animations/RingsRotation.res" id="3_timuh"]
 [ext_resource type="Animation" uid="uid://dnh0myauswa0c" path="res://Assets/Animations/RingsStart.res" id="4_cjtkd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovkhj"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.29713, 0.418002, 0.469296, 1)
+metallic = 0.6
+roughness = 0.6
+rim = 0.3
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat = 0.01
+clearcoat_roughness = 1.0
+ao_light_affect = 1.0
+subsurf_scatter_strength = 0.86
+grow_amount = 2.192
 
 [sub_resource type="Animation" id="Animation_4k66h"]
 length = 0.001
@@ -1223,19 +1238,19 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uitsq"]
 _data = {
-"Coil": ExtResource("2_vd1nl"),
-"RESET": SubResource("Animation_4k66h"),
-"RingsEnd": SubResource("Animation_hv6hf"),
-"RingsRotation": ExtResource("3_timuh"),
-"RingsRotation1_OG": SubResource("Animation_qud8d"),
-"RingsRotation2_IM Equal": SubResource("Animation_rfkyp"),
-"RingsRotation3_MO Equal": SubResource("Animation_1koes"),
-"RingsRotation4_MO EqualEasing": SubResource("Animation_i7i4h"),
-"RingsRotation5_All Equal": SubResource("Animation_cnp3x"),
-"RingsRotation6_All Equal MO Easing": SubResource("Animation_7smic"),
-"RingsRotation_2": SubResource("Animation_xafov"),
-"RingsRotation_5": SubResource("Animation_8cogu"),
-"RingsStart": ExtResource("4_cjtkd")
+&"Coil": ExtResource("2_vd1nl"),
+&"RESET": SubResource("Animation_4k66h"),
+&"RingsEnd": SubResource("Animation_hv6hf"),
+&"RingsRotation": ExtResource("3_timuh"),
+&"RingsRotation1_OG": SubResource("Animation_qud8d"),
+&"RingsRotation2_IM Equal": SubResource("Animation_rfkyp"),
+&"RingsRotation3_MO Equal": SubResource("Animation_1koes"),
+&"RingsRotation4_MO EqualEasing": SubResource("Animation_i7i4h"),
+&"RingsRotation5_All Equal": SubResource("Animation_cnp3x"),
+&"RingsRotation6_All Equal MO Easing": SubResource("Animation_7smic"),
+&"RingsRotation_2": SubResource("Animation_xafov"),
+&"RingsRotation_5": SubResource("Animation_8cogu"),
+&"RingsStart": ExtResource("4_cjtkd")
 }
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jqt1a"]
@@ -1334,6 +1349,7 @@ transitions = ["RingsStart", "RingsRotation1_OG", SubResource("AnimationNodeStat
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_w7cuo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_48je2"]
+graph_offset = Vector2(-9.17474, 234.872)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_jqt1a")
 nodes/Add2/position = Vector2(620, 40)
 nodes/CoilSpeed/node = SubResource("AnimationNodeTimeScale_uvs3v")
@@ -1436,7 +1452,7 @@ bones/81/rotation = Quaternion(0.0184381, 0.0179311, 0.193592, 0.980745)
 bones/82/rotation = Quaternion(0.0271481, -0.0310183, 0.192563, 0.980419)
 bones/83/rotation = Quaternion(0.0419892, -0.0139161, 0.18988, 0.98081)
 bones/84/rotation = Quaternion(0.0416721, 0.0466878, 0.18995, 0.979797)
-bones/85/rotation = Quaternion(0.00971011, 0.146735, 0.194225, 0.969872)
+bones/85/rotation = Quaternion(0.0097101, 0.146735, 0.194225, 0.969872)
 bones/86/rotation = Quaternion(-0.0775213, 0.328584, 0.178348, 0.924238)
 bones/87/rotation = Quaternion(-0.135052, 0.0469018, 0.139924, 0.979787)
 bones/88/rotation = Quaternion(-0.141285, 0.0289265, 0.133626, 0.980483)
@@ -1465,6 +1481,9 @@ bones/110/rotation = Quaternion(-0.124184, -0.0680397, 0.149653, 0.978546)
 bones/111/rotation = Quaternion(-0.100902, -0.0450668, 0.166242, 0.979873)
 bones/112/rotation = Quaternion(-0.126505, 0.0953987, 0.15029, 0.975863)
 
+[node name="Spring Mesh" parent="Spring/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ovkhj")
+
 [node name="InnerRing" parent="Capsule" index="0"]
 transform = Transform3D(1.04957, 0, 0, 0, 1.04957, 0, 0, 0, 1.04957, 0, 0, 0)
 
@@ -1476,7 +1495,7 @@ transform = Transform3D(1.08, 0, 0, 0, 1.08, 0, 0, 0, 1.08, 0, 0, 0)
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_uitsq")
+&"": SubResource("AnimationLibrary_uitsq")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="3"]
