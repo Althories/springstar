@@ -1334,7 +1334,6 @@ transitions = ["RingsStart", "RingsRotation1_OG", SubResource("AnimationNodeStat
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_w7cuo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_48je2"]
-graph_offset = Vector2(-244.767, 87.659)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_jqt1a")
 nodes/Add2/position = Vector2(620, 40)
 nodes/CoilSpeed/node = SubResource("AnimationNodeTimeScale_uvs3v")
@@ -1492,7 +1491,13 @@ parameters/Coils/conditions/uncoil = false
 parameters/RingsSpeed/scale = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="." index="4"]
-transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 1.95399e-14, -4.37114e-08, -1.40453, 1.9762, 0)
+transform = Transform3D(-0.992546, 0.0699014, -0.0998296, 0, 0.819152, 0.573576, 0.121869, 0.569301, -0.813046, -0.215, 2.086, -1.26)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." index="5"]
-transform = Transform3D(0.0702266, 0, -0.997531, 0, 1, 0, 0.997531, 0, 0.0702266, -2.16542, 1.38459, 0.398873)
+transform = Transform3D(-0.694433, 0.438235, -0.570713, -0.099328, 0.727169, 0.679234, 0.712669, 0.52837, -0.461441, -0.94294, 2.23884, -0.805341)
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="." index="6"]
+transform = Transform3D(0.919822, 0, 0.392337, 0.164685, 0.907638, -0.386098, -0.3561, 0.419753, 0.834865, 1.00987, 0.0806053, 2.47667)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." index="7"]
+transform = Transform3D(-0.671721, 0, 0.740805, 0, 1, 0, -0.740805, 0, -0.671721, 1.70657, 1.21211, -1.84396)
