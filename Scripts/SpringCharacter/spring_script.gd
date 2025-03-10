@@ -18,6 +18,7 @@ const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
 @export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
 @export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
 @export var ground_anim_speed = 0.5					# Spring ground stretch/squash anim speed in ground state
+@export var spring_reset_height = 2
 
 var bounce_timer = 0								# Enables spring ground movement after wait time expires
 var charge_velocity = 0								# Var to accumulate velocity in charge jump
@@ -149,5 +150,5 @@ func move_camera() -> void:
 	
 func reset() -> void:
 	'''Reset player to state on startup'''
-	position = Vector3(0, 2, 0) 		#Reset position to center +2 y height to not clip into ground
+	position = Vector3(0, spring_reset_height, 0) 		#Reset position to center +2 y height to not clip into ground
 	velocity = Vector3(0, 0, 0)			#Reset velocity

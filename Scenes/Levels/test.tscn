@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="3_c6oro"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_3kgal"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_uo1xj"]
-[ext_resource type="Script" path="res://Scripts/UIScripts/chargemeter.gd" id="6_vw0mi"]
+[ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_vw0mi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rrst7"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
