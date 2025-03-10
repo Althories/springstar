@@ -11,10 +11,10 @@ config_version=5
 [application]
 
 config/name="SpringStar"
-run/main_scene="res://Scenes/Levels/main.tscn"
+run/main_scene="res://Scenes/Levels/tutorial.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
-config/icon="res://Assets/Textures/sillyguy.png"
+config/icon="res://Assets/sillyguy.png"
 
 [file_customization]
 
@@ -22,6 +22,7 @@ folder_colors={
 "res://Assets/": "red",
 "res://Assets/Models/": "purple",
 "res://Assets/Textures/": "pink",
+"res://Assets/UI/": "orange",
 "res://Music/": "blue",
 "res://Scenes/": "teal",
 "res://Scripts/": "yellow"

@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_ysn0p"]
 [ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
-[ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/Textures/gaugeunder.png" id="4_bekv8"]
-[ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/Textures/gaugeover.png" id="5_68uyl"]
-[ext_resource type="Script" path="res://Scenes/Levels/chargemeter.gd" id="6_o6t2q"]
+[ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
+[ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
+[ext_resource type="Script" path="res://Scripts/UIScripts/chargemeter.gd" id="6_o6t2q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)

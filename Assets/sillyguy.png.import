@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4j3h3bw63tre"
-path="res://.godot/imported/gaugeunder.png-e50c669d5dfe07d1cf67ffc3bc1ab0f4.ctex"
+uid="uid://ce35eslfxwa5w"
+path="res://.godot/imported/sillyguy.png-74917d5b7188ad3cd1ed50067ad9936a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/gaugeunder.png"
-dest_files=["res://.godot/imported/gaugeunder.png-e50c669d5dfe07d1cf67ffc3bc1ab0f4.ctex"]
+source_file="res://Assets/sillyguy.png"
+dest_files=["res://.godot/imported/sillyguy.png-74917d5b7188ad3cd1ed50067ad9936a.ctex"]
 
 [params]
 
