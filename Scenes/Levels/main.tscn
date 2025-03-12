@@ -40,7 +40,7 @@ size = Vector3(1, 1, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_043wf"]
 size = Vector3(5, 5, 50)
 
-[node name="Main" type="Node"]
+[node name="Main2" type="Node"]
 
 [node name="World" type="Node" parent="."]
 
@@ -177,7 +177,6 @@ shape = SubResource("BoxShape3D_043wf")
 [node name="SpringStuff" type="Node" parent="."]
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
-spring_reset_height = 5
 
 [node name="Misc" type="Node" parent="."]
 
