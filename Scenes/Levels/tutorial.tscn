@@ -237,7 +237,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_keyqn")
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56763, 0)
-reset_height = 5
 
 [node name="Misc" type="Node" parent="."]
 
