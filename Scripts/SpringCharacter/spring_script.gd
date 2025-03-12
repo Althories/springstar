@@ -50,7 +50,6 @@ func _process(_delta: float) -> void:
 	move_camera()
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		# Locks mouse to window
-		
 
 func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
