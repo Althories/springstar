@@ -71,6 +71,8 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector3.ZERO							# Stop all movement, freeze in spot
 			if charge_velocity <= CHARGE_JUMP_POWER_MAX:	# Caps charge velocity
 				charge()
+			charging.emit()  #ui signal
+			input = "charge start"
 		
 	if not is_on_floor():
 		bounce_timer = 0 			# Reset idle bounce timer	
