@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
-[ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_o6t2q"]
+[ext_resource type="Script" uid="uid://beakghc48wf70" path="res://Scripts/UIScripts/chargemeter.gd" id="6_o6t2q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -193,6 +193,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="chargemeter" type="TextureProgressBar" parent="UI" node_paths=PackedStringArray("spring")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 9.85

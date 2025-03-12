@@ -7,7 +7,7 @@
 [ext_resource type="MeshLibrary" uid="uid://y2v3vjmpqgil" path="res://Assets/Models/white-blocks-final.tres" id="3_t4m3g"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
-[ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
+[ext_resource type="Script" uid="uid://beakghc48wf70" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
