@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c81sj5o1b71pc"]
+[gd_scene load_steps=15 format=3 uid="uid://c81sj5o1b71pc"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_ysn0p"]
 [ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
 [ext_resource type="Script" path="res://Scripts/UIScripts/chargemeter.gd" id="6_o6t2q"]
+[ext_resource type="PackedScene" uid="uid://b3ovafgl2moaw" path="res://Scenes/SpringCharacter/spring_import.tscn" id="4_raemc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -207,4 +208,8 @@ texture_under = ExtResource("4_bekv8")
 texture_progress = ExtResource("5_68uyl")
 script = ExtResource("6_o6t2q")
 spring = NodePath("../../SpringStuff/TestSpring")
+visible = false
+
+[node name="springEdit" parent="Misc" instance=ExtResource("4_raemc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.44349)
 visible = false

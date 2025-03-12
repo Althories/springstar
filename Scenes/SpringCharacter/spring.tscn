@@ -1914,6 +1914,7 @@ transitions = ["RingsStart", "RingsRotation1_OG", SubResource("AnimationNodeStat
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_w7cuo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_48je2"]
+graph_offset = Vector2(-9.17474, 17.963)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_jqt1a")
 nodes/Add2/position = Vector2(620, 40)
 nodes/CoilSpeed/node = SubResource("AnimationNodeTimeScale_uvs3v")
