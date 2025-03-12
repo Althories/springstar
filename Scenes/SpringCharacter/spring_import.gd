@@ -1,10 +1,6 @@
 extends Node3D
 
 @onready var masterTree: AnimationTree = $AnimationTree
-@onready var spring: Node3D = $Spring
-@onready var innerRing: MeshInstance3D = $Capsule/InnerRing
-@onready var middleRing: MeshInstance3D = $Capsule/InnerRing/MiddleRing
-@onready var outerRing: MeshInstance3D = $Capsule/InnerRing/MiddleRing/OuterRing
 
 var coilSpeed: float = 2
 var rotationSpeed: float = 1
@@ -13,14 +9,6 @@ func _ready() -> void:
 	masterTree.active = true
 	
 func _process(delta: float) -> void:
-	#Basic spring rotation
-	if(Input.is_action_pressed("move_left")):
-		spring.rotate_x(-2*delta)
-	if(Input.is_action_pressed("move_right")):
-		spring.rotate_x(2*delta)
-	if(Input.is_action_pressed("jump")):
-		spring.rotate_z(-2*delta)
-	
 	animate()
 
 func animate() -> void:

@@ -207,3 +207,4 @@ texture_under = ExtResource("4_bekv8")
 texture_progress = ExtResource("5_68uyl")
 script = ExtResource("6_o6t2q")
 spring = NodePath("../../SpringStuff/TestSpring")
+visible = false

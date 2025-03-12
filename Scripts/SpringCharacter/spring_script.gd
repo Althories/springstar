@@ -11,10 +11,12 @@ const CHARGE_JUMP_POWER_MAX = 18.0					# Accumulated velocity cap for charge
 const CAMERA_VERTICAL_OFFSET = 1.0				
 const CAMERA_INTERPOLATION_WEIGHT = 0.1				# AMONG 1
 const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
+const COIL_SPEED: float = 4							# Speed of coil animation
+
 
 @onready var camPivot: Node3D = $CamPivot
-@onready var animationPlayer: AnimationPlayer = $SpringAnimation
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
+@onready var animationTree: AnimationTree = $"Spring Model"/AnimationTree
 @export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
 @export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
 @export var ground_anim_speed = 0.5					# Spring ground stretch/squash anim speed in ground state
@@ -28,10 +30,11 @@ var aim_vector = Vector3()
 var bonk_timer = 0									# bonq :3
 
 signal charging
+var rotationSpeed: float = 1						# Speed the rings rotate
 
 func _ready():
-	animationPlayer.play_backwards("SpringSquish")  # Prevents error spam from having no animation while in the air
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	# Locks mouse to window and hides
+	animationTree.active = true
 	
 func _input(event):
 	if event is InputEventMouseMotion:				# Camera control from mouse motion
@@ -47,37 +50,34 @@ func _process(_delta: float) -> void:
 	move_camera()
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		# Locks mouse to window
+		
 
 func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
+	var input = ""
 	if is_on_floor():
 		velocity = Vector3.ZERO 	# Kills ground velocity. May have to change for ragdoll or physics interactions.
 		most_recent_groundpoint = position
 		if Input.is_action_just_released("jump"):			# Charge jump release, going airborne
 			charge_jump()
+			input = "charge end"
 		elif not Input.is_action_pressed("jump"):
 			# Will fix jumping once this condition is revised
-			if animationPlayer.current_animation_position == 0.0:
-				animationPlayer.play("SpringSquish",-1, ground_anim_speed) 		# Begin idle bounce animation
 			bounce_timer += 1
 			if bounce_timer >= ground_bounce_wait_time:							# Bounce after hold period expires
 				ground_move_spring()
+			input = "bounce"
 		elif Input.is_action_pressed("jump"):
 			velocity = Vector3.ZERO							# Stop all movement, freeze in spot
-			if animationPlayer.current_animation_position == 0.0:
-				animationPlayer.play("SpringSquish",-1, 0.3)					# Squish spring
 			if charge_velocity <= CHARGE_JUMP_POWER_MAX:	# Caps charge velocity
 				charge()
-			charging.emit()  #ui signal
 		
 	if not is_on_floor():
-		bounce_timer = 0 			# Reset idle bounce timer
-		if animationPlayer.current_animation_position != 0.0:
-			animationPlayer.play_backwards("SpringSquish")	# Uncharge spring movement		
+		bounce_timer = 0 			# Reset idle bounce timer	
 		velocity += get_gravity() * delta					# Applies gravity while not on floor
 		air_move_spring()
 		
-	
+	animate(input)
 	move_and_slide()										# NECESSARY for this stuff to actually all work
 	
 #functions block ----------
@@ -151,3 +151,53 @@ func reset() -> void:
 	'''Reset player to state on startup'''
 	position = Vector3(0, 2, 0) 		#Reset position to center +2 y height to not clip into ground
 	velocity = Vector3(0, 0, 0)			#Reset velocity
+	
+func animate(input: String) -> void:
+	if(input == "bounce"): #Bounce
+		animationTree["parameters/CoilSpeed/scale"] = COIL_SPEED
+		animationTree["parameters/Coils/conditions/coil"] = true
+		animationTree["parameters/Coils/conditions/uncoil"] = true
+		
+		animationTree["parameters/Rings Rotation/conditions/charging"] = false
+		animationTree["parameters/Rings Rotation/conditions/rotateFinish"] = true
+		
+	elif(input == "charge start"): #Charge start
+		#Lower intial ring rotation
+		if(animationTree["parameters/Rings Rotation/playback"].get_current_node() == "RESET"):
+			rotationSpeed = 0.05
+			animationTree["parameters/RingsSpeed/scale"] = rotationSpeed
+		
+		animationTree["parameters/CoilSpeed/scale"] = COIL_SPEED - 3
+		animationTree["parameters/Coils/conditions/coil"] = true
+		animationTree["parameters/Coils/conditions/uncoil"] = false
+		
+		animationTree["parameters/Rings Rotation/conditions/charging"] = true
+		animationTree["parameters/Rings Rotation/conditions/rotateFinish"] = false
+		
+	elif(input == "charge end"): #Charge release
+		if(rotationSpeed < 0.5):
+			rotationSpeed = 0.5
+			animationTree["parameters/RingsSpeed/scale"] = rotationSpeed
+		animationTree["parameters/Coils/conditions/coil"] = false
+		animationTree["parameters/Coils/conditions/uncoil"] = true
+		
+		animationTree["parameters/CoilSpeed/scale"] = COIL_SPEED
+		animationTree["parameters/Rings Rotation/conditions/charging"] = false
+		animationTree["parameters/Rings Rotation/conditions/rotateFinish"] = true
+
+	else:											#Nothing
+		animationTree["parameters/Coils/conditions/coil"] = false
+		animationTree["parameters/Coils/conditions/uncoil"] = true
+		
+		animationTree["parameters/Rings Rotation/conditions/charging"] = false
+		animationTree["parameters/Rings Rotation/conditions/rotateFinish"] = true
+	
+	#Slow/speed up rotation speed
+	if(animationTree["parameters/Rings Rotation/conditions/charging"]):
+		if(rotationSpeed < 2.5):
+			rotationSpeed += 0.01
+			animationTree["parameters/RingsSpeed/scale"] = rotationSpeed
+	else:
+		if(rotationSpeed > 1):
+			rotationSpeed -= 0.05
+			animationTree["parameters/RingsSpeed/scale"] = rotationSpeed
