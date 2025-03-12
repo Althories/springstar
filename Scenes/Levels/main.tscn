@@ -185,3 +185,4 @@ autoplay = true
 
 [node name="springEdit" parent="Misc" instance=ExtResource("4_raemc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.44349)
+visible = false

@@ -1,25 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://b3ovafgl2moaw"]
+[gd_scene load_steps=40 format=3 uid="uid://b3ovafgl2moaw"]
 
 [ext_resource type="PackedScene" uid="uid://biqjviors744f" path="res://Assets/Models/springEdit.blend" id="1_gosni"]
 [ext_resource type="Script" uid="uid://27rwqxsn1hcw" path="res://Scenes/SpringCharacter/spring_import.gd" id="2_nvpk7"]
 [ext_resource type="Animation" uid="uid://d1sm5hlk3xvi0" path="res://Assets/Animations/Coil.res" id="2_vd1nl"]
 [ext_resource type="Animation" uid="uid://csrwn111sa6ui" path="res://Assets/Animations/RingsRotation.res" id="3_timuh"]
 [ext_resource type="Animation" uid="uid://dnh0myauswa0c" path="res://Assets/Animations/RingsStart.res" id="4_cjtkd"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovkhj"]
-diffuse_mode = 3
-specular_mode = 1
-albedo_color = Color(0.29713, 0.418002, 0.469296, 1)
-metallic = 0.6
-roughness = 0.6
-rim = 0.3
-rim_tint = 0.0
-clearcoat_enabled = true
-clearcoat = 0.01
-clearcoat_roughness = 1.0
-ao_light_affect = 1.0
-subsurf_scatter_strength = 0.86
-grow_amount = 2.192
 
 [sub_resource type="Animation" id="Animation_4k66h"]
 length = 0.001
@@ -1349,7 +1334,7 @@ transitions = ["RingsStart", "RingsRotation1_OG", SubResource("AnimationNodeStat
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_w7cuo"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_48je2"]
-graph_offset = Vector2(-9.17474, 234.872)
+graph_offset = Vector2(-9.17474, 17.963)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_jqt1a")
 nodes/Add2/position = Vector2(620, 40)
 nodes/CoilSpeed/node = SubResource("AnimationNodeTimeScale_uvs3v")
@@ -1363,7 +1348,7 @@ nodes/RingsSpeed/position = Vector2(320, 260)
 nodes/output/position = Vector2(840, 100)
 node_connections = [&"Add2", 0, &"CoilSpeed", &"Add2", 1, &"RingsSpeed", &"CoilSpeed", 0, &"Coils", &"RingsSpeed", 0, &"Rings Rotation", &"output", 0, &"Add2"]
 
-[node name="springEdit" instance=ExtResource("1_gosni")]
+[node name="Spring Model" instance=ExtResource("1_gosni")]
 script = ExtResource("2_nvpk7")
 
 [node name="Skeleton3D" parent="Spring" index="0"]
@@ -1481,8 +1466,8 @@ bones/110/rotation = Quaternion(-0.124184, -0.0680397, 0.149653, 0.978546)
 bones/111/rotation = Quaternion(-0.100902, -0.0450668, 0.166242, 0.979873)
 bones/112/rotation = Quaternion(-0.126505, 0.0953987, 0.15029, 0.975863)
 
-[node name="Spring Mesh" parent="Spring/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_ovkhj")
+[node name="Capsule" parent="." index="1"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, 1, 0)
 
 [node name="InnerRing" parent="Capsule" index="0"]
 transform = Transform3D(1.04957, 0, 0, 0, 1.04957, 0, 0, 0, 1.04957, 0, 0, 0)
@@ -1508,15 +1493,3 @@ parameters/Coils/conditions/uncoil = false
 "parameters/Rings Rotation/conditions/charging" = false
 "parameters/Rings Rotation/conditions/rotateFinish" = false
 parameters/RingsSpeed/scale = 1.0
-
-[node name="Camera3D" type="Camera3D" parent="." index="4"]
-transform = Transform3D(-0.992546, 0.0699014, -0.0998296, 0, 0.819152, 0.573576, 0.121869, 0.569301, -0.813046, -0.215, 2.086, -1.26)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="." index="5"]
-transform = Transform3D(-0.694433, 0.438235, -0.570713, -0.099328, 0.727169, 0.679234, 0.712669, 0.52837, -0.461441, -0.94294, 2.23884, -0.805341)
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="." index="6"]
-transform = Transform3D(0.919822, 0, 0.392337, 0.164685, 0.907638, -0.386098, -0.3561, 0.419753, 0.834865, 1.00987, 0.0806053, 2.47667)
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="." index="7"]
-transform = Transform3D(-0.671721, 0, 0.740805, 0, 1, 0, -0.740805, 0, -0.671721, 1.70657, 1.21211, -1.84396)
