@@ -1936,7 +1936,6 @@ radius = 0.07
 [sub_resource type="SphereMesh" id="SphereMesh_t2par"]
 
 [node name="Spring" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 2
 script = ExtResource("1_en6m1")
 
