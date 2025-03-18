@@ -30,6 +30,12 @@ var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
 var bonk_timer = 0									# bonq :3
 
+var spring_pos = Vector2()
+var part_pos = Vector2(19, 8)
+var compass_vector = Vector2()
+#https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d-method-look-at
+#look_at(Vector3(target_position.x, position.y, target_position.z), Vector3.UP)
+
 signal charging
 var rotationSpeed: float = 1						# Speed the rings rotate
 
@@ -47,10 +53,14 @@ func _input(event):
 	if event.is_action_pressed("reset"):
 		reset()
 		
-func _process(_delta: float) -> void:
+func _process(_delta) -> void:
 	move_camera()
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		# Locks mouse to window
+		
+	spring_pos = Vector2(global_position.x, global_position.z)
+	compass_vector = spring_pos.direction_to(part_pos)
+	print(compass_vector)
 
 func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''

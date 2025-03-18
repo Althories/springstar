@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc1y2o2r7sv50"]
+[gd_scene load_steps=13 format=3 uid="uid://bc1y2o2r7sv50"]
 
 [ext_resource type="MeshLibrary" uid="uid://cdaqtp8xpotid" path="res://Assets/Models/white-blocks-v1.tres" id="2_6tmnu"]
 [ext_resource type="MeshLibrary" uid="uid://citycddum1t8f" path="res://Assets/Models/test-blocks-v5.tres" id="2_166el"]
@@ -21,6 +21,8 @@ sky_material = SubResource("ProceduralSkyMaterial_rrst7")
 [sub_resource type="Environment" id="Environment_w2nig"]
 background_mode = 2
 sky = SubResource("Sky_ubqhr")
+
+[sub_resource type="SphereMesh" id="SphereMesh_g018d"]
 
 [node name="Test" type="Node3D"]
 
@@ -127,3 +129,7 @@ texture_under = ExtResource("4_3kgal")
 texture_progress = ExtResource("5_uo1xj")
 script = ExtResource("6_vw0mi")
 spring = NodePath("../../SpringStuff/TestSpring")
+
+[node name="Part1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3155, 1.96251, 8.3297)
+mesh = SubResource("SphereMesh_g018d")
