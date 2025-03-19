@@ -196,9 +196,6 @@ stream = ExtResource("2_44v0c")
 volume_db = -30.0
 autoplay = true
 
-[node name="target" parent="Misc" instance=ExtResource("6_5sf7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.4632)
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -223,6 +220,10 @@ texture_progress = ExtResource("5_68uyl")
 script = ExtResource("6_o6t2q")
 spring = NodePath("../../SpringStuff/TestSpring")
 
+[node name="ship_part" parent="." instance=ExtResource("6_5sf7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5908, 0, 5.34515)
+
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
+[connection signal="target_pos" from="ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
 
 [editable path="SpringStuff/Compass"]

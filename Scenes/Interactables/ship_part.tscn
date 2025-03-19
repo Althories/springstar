@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dcyn5cm8j2dgf"]
 
-[ext_resource type="Script" uid="uid://b7m383xg0unvk" path="res://Scenes/Levels/target.gd" id="1_exoe3"]
+[ext_resource type="Script" path="res://Scenes/Levels/target.gd" id="1_exoe3"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_5sf7f"]
 

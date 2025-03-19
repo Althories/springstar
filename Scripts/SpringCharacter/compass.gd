@@ -1,6 +1,5 @@
 extends Node3D
 
-#This code could be better it works for now though
 @onready var compass: MeshInstance3D = $Cube
 var target = Vector3()
 
@@ -20,8 +19,7 @@ func _process(_delta: float) -> void:
 	
 	compass.rotation_degrees.y = rad_to_deg(angle_y) - 90
 	
-func _on_target_target_pos(target_position: Variant) -> void:
-	#receives compass target location from signal in script attached to target
+func _on_ship_part_target_pos(target_position: Variant) -> void:
 	target = target_position
 
 func _on_test_spring_spring_pos(spring_pos_x: Variant, spring_pos_y: Variant, spring_pos_z: Variant) -> void:
