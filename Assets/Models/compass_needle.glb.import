@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cf6dk4sd2ru4h"
-path="res://.godot/imported/compass_needle.glb-856b95a7125b2a44dc89455a4b0045cb.scn"
+path="res://.godot/imported/compass_needle.glb-c41b1bb606aaadc4ce9981ac51186764.scn"
 
 [deps]
 
-source_file="res://compass_needle.glb"
-dest_files=["res://.godot/imported/compass_needle.glb-856b95a7125b2a44dc89455a4b0045cb.scn"]
+source_file="res://Assets/Models/compass_needle.glb"
+dest_files=["res://.godot/imported/compass_needle.glb-c41b1bb606aaadc4ce9981ac51186764.scn"]
 
 [params]
 
