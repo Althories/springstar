@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c81sj5o1b71pc"]
+[gd_scene load_steps=20 format=3 uid="uid://c81sj5o1b71pc"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_ysn0p"]
 [ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://btw8eoayqb2qv" path="res://Scripts/SpringCharacter/compass.gd" id="4_5sf7f"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
-[ext_resource type="Script" uid="uid://b7m383xg0unvk" path="res://Scenes/Levels/target.gd" id="6_5sf7f"]
+[ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="6_5sf7f"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_o6t2q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
@@ -42,8 +42,6 @@ size = Vector3(1, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_043wf"]
 size = Vector3(5, 5, 50)
-
-[sub_resource type="SphereMesh" id="SphereMesh_5sf7f"]
 
 [node name="Main2" type="Node"]
 
@@ -185,6 +183,7 @@ shape = SubResource("BoxShape3D_043wf")
 
 [node name="Compass" parent="SpringStuff" instance=ExtResource("3_irfg1")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.819, 5, -4.643)
+visible = false
 script = ExtResource("4_5sf7f")
 
 [node name="Cube" parent="SpringStuff/Compass" index="0"]
@@ -197,11 +196,8 @@ stream = ExtResource("2_44v0c")
 volume_db = -30.0
 autoplay = true
 
-[node name="target" type="MeshInstance3D" parent="Misc"]
+[node name="target" parent="Misc" instance=ExtResource("6_5sf7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.4632)
-mesh = SubResource("SphereMesh_5sf7f")
-skeleton = NodePath("../..")
-script = ExtResource("6_5sf7f")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -228,6 +224,5 @@ script = ExtResource("6_o6t2q")
 spring = NodePath("../../SpringStuff/TestSpring")
 
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
-[connection signal="target_pos" from="Misc/target" to="SpringStuff/Compass" method="_on_target_target_pos"]
 
 [editable path="SpringStuff/Compass"]
