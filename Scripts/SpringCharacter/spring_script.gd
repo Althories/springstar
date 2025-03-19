@@ -13,7 +13,6 @@ const CAMERA_INTERPOLATION_WEIGHT = 0.1				# AMONG 1
 const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
 const COIL_SPEED: float = 4							# Speed of coil animation
 
-
 @onready var camPivot: Node3D = $CamPivot
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
 @onready var animationTree: AnimationTree = $"Spring Model"/AnimationTree
@@ -37,6 +36,7 @@ var compass_vector = Vector2()
 #look_at(Vector3(target_position.x, position.y, target_position.z), Vector3.UP)
 
 signal charging
+signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)
 var rotationSpeed: float = 1						# Speed the rings rotate
 
 func _ready():
@@ -58,9 +58,8 @@ func _process(_delta) -> void:
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		# Locks mouse to window
 		
-	spring_pos = Vector2(global_position.x, global_position.z)
-	compass_vector = spring_pos.direction_to(part_pos)
-	print(compass_vector)
+	#emits position for compass to connect its position to the spring (this is me being lazy lol)
+	spring_pos.emit(position.x, position.y, position.z)
 
 func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
