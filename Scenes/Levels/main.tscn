@@ -184,8 +184,11 @@ shape = SubResource("BoxShape3D_043wf")
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
 
 [node name="Compass" parent="SpringStuff" instance=ExtResource("3_irfg1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8188, 0.500001, -4.6428)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.819, 5, -4.643)
 script = ExtResource("4_5sf7f")
+
+[node name="Cube" parent="SpringStuff/Compass" index="0"]
+transform = Transform3D(0.720135, 0.693833, 3.03284e-08, 0, -4.37114e-08, 1, 0.693833, -0.720135, -3.14781e-08, 0, 0, 0)
 
 [node name="Misc" type="Node" parent="."]
 
@@ -224,6 +227,7 @@ texture_progress = ExtResource("5_68uyl")
 script = ExtResource("6_o6t2q")
 spring = NodePath("../../SpringStuff/TestSpring")
 
+[connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="target_pos" from="Misc/target" to="SpringStuff/Compass" method="_on_target_target_pos"]
 
 [editable path="SpringStuff/Compass"]
