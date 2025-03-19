@@ -29,9 +29,6 @@ var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
 var bonk_timer = 0									# bonq :3
 
-var spring_pos = Vector2()
-var part_pos = Vector2(19, 8)
-var compass_vector = Vector2()
 #https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d-method-look-at
 #look_at(Vector3(target_position.x, position.y, target_position.z), Vector3.UP)
 
