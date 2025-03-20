@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://buk8g2qou25lw"]
+[gd_scene load_steps=3 format=3 uid="uid://c50bejtvv072c"]
 
 [ext_resource type="PackedScene" uid="uid://cf6dk4sd2ru4h" path="res://Assets/Models/compass_needle.glb" id="1_71q3x"]
 [ext_resource type="Script" uid="uid://cdomyuxile3ix" path="res://Scripts/SpringCharacter/compass.gd" id="2_c42nc"]
