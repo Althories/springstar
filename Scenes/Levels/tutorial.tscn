@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cr7kraxkxnhxq"]
+[gd_scene load_steps=26 format=3 uid="uid://cr7kraxkxnhxq"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_foaut"]
 [ext_resource type="MeshLibrary" uid="uid://bliv1kum0e6vu" path="res://Assets/Models/test-blocks-final.tres" id="1_xs3g1"]
@@ -7,7 +7,9 @@
 [ext_resource type="MeshLibrary" uid="uid://y2v3vjmpqgil" path="res://Assets/Models/white-blocks-final.tres" id="3_t4m3g"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
+[ext_resource type="PackedScene" uid="uid://buk8g2qou25lw" path="res://Scenes/SpringCharacter/compass.tscn" id="5_iol1o"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
+[ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="9_tospq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -238,12 +240,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_keyqn")
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56763, 0)
 
+[node name="Compass" parent="SpringStuff" instance=ExtResource("5_iol1o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48098, 0)
+
 [node name="Misc" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Misc"]
 stream = ExtResource("2_44v0c")
 volume_db = -30.0
 autoplay = true
+
+[node name="ship_part" parent="Misc" instance=ExtResource("9_tospq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.87, 85.4234, -139.036)
+skeleton = NodePath("../../..")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -270,3 +279,6 @@ texture_under = ExtResource("4_bekv8")
 texture_progress = ExtResource("5_68uyl")
 script = ExtResource("6_45db0")
 spring = NodePath("../../SpringStuff/TestSpring")
+
+[connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
+[connection signal="target_pos" from="Misc/ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
