@@ -6,11 +6,11 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_d8okw"]
 
-[node name="TestCP" type="Area3D"]
+[node name="Checkpoint" type="Area3D"]
 script = ExtResource("1_rq2ec")
 
-[node name="TestCP_COL" type="CollisionShape3D" parent="."]
+[node name="Checkpoint_Col" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_5sf7f")
 
-[node name="TestCP_MESH" type="MeshInstance3D" parent="."]
+[node name="Checkpoint_Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_d8okw")

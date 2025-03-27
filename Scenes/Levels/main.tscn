@@ -178,6 +178,11 @@ mesh = SubResource("BoxMesh_xq0u6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform4"]
 shape = SubResource("BoxShape3D_043wf")
 
+[node name="Checkpoints" type="Node" parent="World"]
+
+[node name="Checkpoint_1" parent="World/Checkpoints" instance=ExtResource("10_d8okw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94339, 1.69183, -4.23631)
+
 [node name="SpringStuff" type="Node" parent="."]
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
@@ -225,9 +230,7 @@ spring = NodePath("../../SpringStuff/TestSpring")
 [node name="ship_part" parent="." instance=ExtResource("6_5sf7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5908, 0, 5.34515)
 
-[node name="TestCP" parent="." instance=ExtResource("10_d8okw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94339, 1.69183, -4.23631)
-
+[connection signal="cp_pos" from="World/Checkpoints/Checkpoint_1" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="target_pos" from="ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
 

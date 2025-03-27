@@ -28,6 +28,7 @@ var lerp_y = 0
 var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
 var bonk_timer = 0									# bonq :3
+var reset_position = Vector3(0, 5, 0)		#Change this to grab something from world _ready later
 
 #https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d-method-look-at
 #look_at(Vector3(target_position.x, position.y, target_position.z), Vector3.UP)
@@ -157,7 +158,7 @@ func move_camera() -> void:
 	
 func reset() -> void:
 	'''Reset player to state on startup'''
-	position = Vector3(0, reset_height, 0) 		#Reset position to center +2 y height to not clip into ground
+	position = reset_position 		#Reset position to center +2 y height to not clip into ground
 	velocity = Vector3(0, 0, 0)			#Reset velocity
 	
 func animate(input: String) -> void:
@@ -209,3 +210,7 @@ func animate(input: String) -> void:
 		if(rotationSpeed > 1):
 			rotationSpeed -= 0.05
 			animationTree["parameters/RingsSpeed/scale"] = rotationSpeed
+
+#signals block -----------
+func _on_cp_pos(cp_position: Variant) -> void:
+	reset_position = cp_position
