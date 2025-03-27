@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://fiq6jrmlkyv4"]
+
+[ext_resource type="Script" uid="uid://ck6stwkt2trs5" path="res://Scripts/Checkpoints/checkpoint.gd" id="1_rq2ec"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5sf7f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8okw"]
+
+[node name="TestCP" type="Area3D"]
+script = ExtResource("1_rq2ec")
+
+[node name="TestCP_COL" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5sf7f")
+
+[node name="TestCP_MESH" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_d8okw")

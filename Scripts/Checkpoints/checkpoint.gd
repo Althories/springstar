@@ -1,5 +1,7 @@
 extends Area3D
 
+#This general use area script can be edited for any area3D node
+
 var spring	#This stores the path of the spring node 
 			#so that the area can check whether the spring overlaps it
 			#my only worry is whether this constant check impacts performance
