@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=4 uid="uid://b3e7lyqxx1bki"]
+[gd_scene load_steps=19 format=4 uid="uid://b3e7lyqxx1bki"]
 
 [ext_resource type="ArrayMesh" uid="uid://df87d5rkhl1ja" path="res://Assets/Models/springCapsule.res" id="1_gl8x3"]
+[ext_resource type="PackedScene" uid="uid://57qxkwcum84j" path="res://Assets/Models/Mweep.blend" id="2_gl8x3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp6hj"]
 resource_name = "Spring"
@@ -4595,3 +4596,5 @@ libraries = {
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.184549, -0.012903, 0.000225222, 0, -0.00322869, -0.184972, 0.0129049, 0.184521, -0.00322082, 0, 0.981, 0)
 mesh = SubResource("TorusMesh_0xuuo")
+
+[node name="Mweep2" parent="." instance=ExtResource("2_gl8x3")]
