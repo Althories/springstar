@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bcoy47v7bctgd"
-path="res://.godot/imported/springEdit.blend-d5765a75ba2f303bb8a327741c50dcd6.scn"
+uid="uid://57qxkwcum84j"
+path="res://.godot/imported/Mweep.blend-6bc222aeec9a53bdc3ab17b88f8c7516.scn"
 
 [deps]
 
-source_file="res://Assets/Models/springEdit.blend"
-dest_files=["res://.godot/imported/springEdit.blend-d5765a75ba2f303bb8a327741c50dcd6.scn"]
+source_file="res://Assets/Models/Mweep.blend"
+dest_files=["res://.godot/imported/Mweep.blend-6bc222aeec9a53bdc3ab17b88f8c7516.scn"]
 
 [params]
 
@@ -32,18 +32,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"meshes": {
-"springEdit_Cylinder": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": true,
-"save_to_file/path": "res://Assets/Models/springCapsule.res"
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
