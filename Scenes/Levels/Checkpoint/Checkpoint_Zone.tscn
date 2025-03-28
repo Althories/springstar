@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://fiq6jrmlkyv4"]
 
-[ext_resource type="Script" uid="uid://ck6stwkt2trs5" path="res://Scripts/Checkpoints/checkpoint.gd" id="1_rq2ec"]
+[ext_resource type="Script" uid="uid://ck6stwkt2trs5" path="res://Scripts/Level/checkpoint.gd" id="1_rq2ec"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rq2ec"]
 resource_local_to_scene = true

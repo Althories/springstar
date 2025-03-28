@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_ysn0p"]
 [ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
+[ext_resource type="PackedScene" uid="uid://cpqxrld3vxv6b" path="res://Scenes/Levels/Death_Zone/DeathZone.tscn" id="2_d8okw"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
 [ext_resource type="PackedScene" uid="uid://cf6dk4sd2ru4h" path="res://Assets/Models/compass_needle.glb" id="3_irfg1"]
 [ext_resource type="Script" uid="uid://cdomyuxile3ix" path="res://Scripts/SpringCharacter/compass.gd" id="4_5sf7f"]
@@ -9,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
 [ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="6_5sf7f"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_o6t2q"]
-[ext_resource type="PackedScene" uid="uid://fiq6jrmlkyv4" path="res://Scenes/Levels/Checkpoint/Checkpoint_Zone.tscn" id="10_d8okw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -180,9 +180,9 @@ shape = SubResource("BoxShape3D_043wf")
 
 [node name="Checkpoints" type="Node" parent="World"]
 
-[node name="Checkpoint_1" parent="World/Checkpoints" instance=ExtResource("10_d8okw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.94339, 1.69183, -4.23631)
-visible = false
+[node name="Death_Zones" type="Node" parent="World"]
+
+[node name="Area3D" parent="World/Death_Zones" instance=ExtResource("2_d8okw")]
 
 [node name="SpringStuff" type="Node" parent="."]
 
@@ -230,7 +230,6 @@ spring = NodePath("../../SpringStuff/TestSpring")
 [node name="ship_part" parent="." instance=ExtResource("6_5sf7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5908, 0, 5.34515)
 
-[connection signal="cp_pos" from="World/Checkpoints/Checkpoint_1" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="target_pos" from="ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
 
