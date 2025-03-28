@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cr7kraxkxnhxq"]
+[gd_scene load_steps=38 format=3 uid="uid://cr7kraxkxnhxq"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_foaut"]
 [ext_resource type="MeshLibrary" uid="uid://bliv1kum0e6vu" path="res://Assets/Models/test-blocks-final.tres" id="1_xs3g1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ck6stwkt2trs5" path="res://Scripts/Level/checkpoint.gd" id="4_jovcd"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
 [ext_resource type="PackedScene" uid="uid://c50bejtvv072c" path="res://Scenes/SpringCharacter/compass.tscn" id="5_iol1o"]
+[ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="5_mnia5"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
 [ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="9_tospq"]
 
@@ -116,6 +117,10 @@ height = 1.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_qvtqq"]
 resource_local_to_scene = true
 size = Vector3(40.7591, 23.4205, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0mdj5"]
+resource_local_to_scene = true
+size = Vector3(4.48743, 1, 3.18079)
 
 [node name="Main" type="Node"]
 
@@ -331,6 +336,16 @@ shape = SubResource("BoxShape3D_qvtqq")
 [node name="Checkpoint_Resapwn_Visual" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint4"]
 mesh = SubResource("CylinderMesh_0mdj5")
 
+[node name="DeathZones" type="Node" parent="World"]
+
+[node name="DeathZone" type="Area3D" parent="World/DeathZones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.51004, 6.53071)
+script = ExtResource("5_mnia5")
+
+[node name="DeathZone_Col" type="CollisionShape3D" parent="World/DeathZones/DeathZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114807, 0, 1.09039)
+shape = SubResource("BoxShape3D_0mdj5")
+
 [node name="SpringStuff" type="Node" parent="."]
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
@@ -381,5 +396,6 @@ spring = NodePath("../../SpringStuff/TestSpring")
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint2" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint3" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint4" to="SpringStuff/TestSpring" method="_on_cp_pos"]
+[connection signal="destroy_spring" from="World/DeathZones/DeathZone" to="SpringStuff/TestSpring" method="_on_destroy_spring"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="target_pos" from="Misc/ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]

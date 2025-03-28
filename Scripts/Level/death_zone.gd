@@ -15,4 +15,4 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if overlaps_body(spring):
-		pass
+		destroy_spring.emit()

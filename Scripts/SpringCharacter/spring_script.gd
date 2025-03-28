@@ -210,3 +210,6 @@ func animate(input: String) -> void:
 #signals block -----------
 func _on_cp_pos(cp_position: Variant) -> void:
 	reset_position = cp_position
+
+func _on_destroy_spring() -> void:
+	reset()
