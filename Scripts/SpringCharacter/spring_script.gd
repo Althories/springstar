@@ -19,7 +19,6 @@ const COIL_SPEED: float = 4							# Speed of coil animation
 @export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
 @export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
 @export var ground_anim_speed = 0.5					# Spring ground stretch/squash anim speed in ground state
-@export var reset_height = 2
 
 var bounce_timer = 0								# Enables spring ground movement after wait time expires
 var charge_velocity = 0								# Var to accumulate velocity in charge jump
@@ -28,14 +27,11 @@ var lerp_y = 0
 var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
 var bonk_timer = 0									# bonq :3
-var reset_position = Vector3(0, 5, 0)		#Change this to grab something from world _ready later
+var reset_position = Vector3()						#Initializes spring reset position
+var rotationSpeed: float = 1						# Speed the rings rotate in the animation
 
-#https://docs.godotengine.org/en/stable/classes/class_node3d.html#class-node3d-method-look-at
-#look_at(Vector3(target_position.x, position.y, target_position.z), Vector3.UP)
-
-signal charging
-signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)
-var rotationSpeed: float = 1						# Speed the rings rotate
+signal charging										#for use in charge UI
+signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)	#for positioning compass above spring
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	# Locks mouse to window and hides
@@ -158,7 +154,7 @@ func move_camera() -> void:
 	
 func reset() -> void:
 	'''Reset player to state on startup'''
-	position = reset_position 		#Reset position to center +2 y height to not clip into ground
+	position = reset_position 		#Reset position based off most recent checkpoint
 	velocity = Vector3(0, 0, 0)			#Reset velocity
 	
 func animate(input: String) -> void:
