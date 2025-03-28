@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr7kraxkxnhxq"]
+[gd_scene load_steps=31 format=3 uid="uid://cr7kraxkxnhxq"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_foaut"]
 [ext_resource type="MeshLibrary" uid="uid://bliv1kum0e6vu" path="res://Assets/Models/test-blocks-final.tres" id="1_xs3g1"]
@@ -90,6 +90,13 @@ resource_local_to_scene = true
 size = Vector3(1, 24.2698, 41.0597)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sghjv"]
+height = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mnia5"]
+resource_local_to_scene = true
+size = Vector3(1, 41.05, 114.8)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rq2ec"]
 height = 1.5
 
 [node name="Main" type="Node"]
@@ -245,17 +252,28 @@ surface_material_override/0 = SubResource("StandardMaterial3D_keyqn")
 
 [node name="Checkpoints" type="Node" parent="World"]
 
-[node name="Checkpoint" type="Area3D" parent="World/Checkpoints"]
+[node name="Checkpoint1" type="Area3D" parent="World/Checkpoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8606, 15.9563, 0)
 script = ExtResource("4_jovcd")
 
-[node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint"]
+[node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1012, 3.18741)
 shape = SubResource("BoxShape3D_jovcd")
 
-[node name="Checkpoint_Respawn_Pos" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint"]
+[node name="Checkpoint_Respawn_Pos" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.01673, 0)
 mesh = SubResource("CylinderMesh_sghjv")
+
+[node name="Checkpoint2" type="Area3D" parent="World/Checkpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.0525, 15.6912, 0)
+script = ExtResource("4_jovcd")
+
+[node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.6554, -4.85461)
+shape = SubResource("BoxShape3D_mnia5")
+
+[node name="Checkpoint_Resapwn_Pos" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint2"]
+mesh = SubResource("CylinderMesh_rq2ec")
 
 [node name="SpringStuff" type="Node" parent="."]
 
@@ -302,6 +320,7 @@ texture_progress = ExtResource("5_68uyl")
 script = ExtResource("6_45db0")
 spring = NodePath("../../SpringStuff/TestSpring")
 
-[connection signal="cp_pos" from="World/Checkpoints/Checkpoint" to="SpringStuff/TestSpring" method="_on_cp_pos"]
+[connection signal="cp_pos" from="World/Checkpoints/Checkpoint1" to="SpringStuff/TestSpring" method="_on_cp_pos"]
+[connection signal="cp_pos" from="World/Checkpoints/Checkpoint2" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="target_pos" from="Misc/ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
