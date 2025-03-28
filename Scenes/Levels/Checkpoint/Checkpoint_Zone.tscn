@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ck6stwkt2trs5" path="res://Scripts/Checkpoints/checkpoint.gd" id="1_rq2ec"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5sf7f"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rq2ec"]
+resource_local_to_scene = true
 
 [node name="Checkpoint" type="Area3D"]
 script = ExtResource("1_rq2ec")
 
 [node name="Checkpoint_Col" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_5sf7f")
+shape = SubResource("BoxShape3D_rq2ec")
