@@ -87,7 +87,7 @@ item/1/preview = SubResource("ImageTexture_x517p")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jovcd"]
 resource_local_to_scene = true
-size = Vector3(1, 24.2698, 41.0597)
+size = Vector3(1, 24.2698, 50.7669)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_sghjv"]
 height = 1.5
@@ -253,26 +253,28 @@ surface_material_override/0 = SubResource("StandardMaterial3D_keyqn")
 [node name="Checkpoints" type="Node" parent="World"]
 
 [node name="Checkpoint1" type="Area3D" parent="World/Checkpoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8606, 15.9563, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8606, 8.99286, 0)
+visible = false
 script = ExtResource("4_jovcd")
 
 [node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1012, 3.18741)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1012, -0.064894)
 shape = SubResource("BoxShape3D_jovcd")
 
-[node name="Checkpoint_Respawn_Pos" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.01673, 0)
+[node name="Checkpoint_Respawn_Visual" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.944234, 0)
 mesh = SubResource("CylinderMesh_sghjv")
 
 [node name="Checkpoint2" type="Area3D" parent="World/Checkpoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.0525, 15.6912, 0)
+visible = false
 script = ExtResource("4_jovcd")
 
 [node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.6554, -4.85461)
 shape = SubResource("BoxShape3D_mnia5")
 
-[node name="Checkpoint_Resapwn_Pos" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint2"]
+[node name="Checkpoint_Resapwn_Visual" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint2"]
 mesh = SubResource("CylinderMesh_rq2ec")
 
 [node name="SpringStuff" type="Node" parent="."]

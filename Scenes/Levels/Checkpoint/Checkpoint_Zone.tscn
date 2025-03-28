@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_rq2ec"]
 resource_local_to_scene = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_rq2ec"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_qvtqq"]
 height = 1.5
 
 [node name="Checkpoint" type="Area3D"]
@@ -14,5 +14,5 @@ script = ExtResource("1_rq2ec")
 [node name="Checkpoint_Col" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rq2ec")
 
-[node name="Checkpoint_Resapwn_Pos" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_rq2ec")
+[node name="Checkpoint_Resapwn_Visual" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_qvtqq")
