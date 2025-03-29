@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce35eslfxwa5w"
-path="res://.godot/imported/sillyguy.png-74917d5b7188ad3cd1ed50067ad9936a.ctex"
+path="res://.godot/imported/sillyguy.png-87038c3679742f99adb54895c301ab85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sillyguy.png"
-dest_files=["res://.godot/imported/sillyguy.png-74917d5b7188ad3cd1ed50067ad9936a.ctex"]
+source_file="res://Assets/UI/sillyguy.png"
+dest_files=["res://.godot/imported/sillyguy.png-87038c3679742f99adb54895c301ab85.ctex"]
 
 [params]
 

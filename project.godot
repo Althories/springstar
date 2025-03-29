@@ -14,7 +14,7 @@ config/name="SpringStar"
 run/main_scene="res://Scenes/Levels/tutorial.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
-config/icon="res://Assets/sillyguy.png"
+config/icon="res://Assets/UI/sillyguy.png"
 
 [file_customization]
 
