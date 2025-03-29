@@ -1,0 +1,14 @@
+Gob: Good morning!
+Gob: Did you hear about the ship part in this area?
+- yeah
+	Gob: Well, you came to the right place! You don't look like you're from around here, so I assume it's yours.
+	Gob: I do believe I saw the part land all the way up in those clouds over there. I thought about taking a look, but I'm #old.
+	Gob: I bet you can grab it in a cinch. Safe travels!
+- neah
+	Gob: Are you sure? You don't look like you're from around here...
+	- yeah
+		Gob: Alright. Sure. Well. Safe travels, friend!
+	- i'm unsure
+		Gob: We all get a little lost every now and then.
+		Gob: In case you were wondering, I spotted a ship part land all the way up in those clouds over there. Might be yours. I thought about taking a look, but I'm #old.
+		Gob: Safe travels!
