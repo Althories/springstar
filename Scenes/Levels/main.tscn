@@ -58,6 +58,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.
 
 [node name="floor" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="GroundMesh" type="MeshInstance3D" parent="World/WorldGeometry/floor"]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
@@ -70,6 +72,8 @@ shape = SubResource("BoxShape3D_km05j")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 12)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D2"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -80,6 +84,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20969, -2.13975, 12)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D3"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -90,6 +96,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20969, -1.84585, 12.8209)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D4"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -100,6 +108,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20969, 6.94222, 6.89427)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D5"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -110,6 +120,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(1, 0, 0, 0, 0.778648, -0.62746, 0, 0.62746, 0.778648, 6.20969, 6.94222, 0.461295)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D6"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -120,6 +132,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="platform1" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(1, 0, 0, 0, 0.7418, 0.670621, 0, -0.670621, 0.7418, -8.49069, -0.519052, 12)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform1"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -130,6 +144,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="platform2" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(0.528631, 0.407366, -0.744716, 0, 0.877322, 0.479902, 0.848852, -0.253691, 0.463779, -12.3803, -0.519052, 2.80235)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform2"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -140,6 +156,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="platform3" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(-0.516504, 0.410933, -0.751238, -3.10555e-09, 0.877322, 0.479902, 0.856285, 0.247871, -0.45314, -12.3803, -0.519052, -1.62867)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform3"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -150,6 +168,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="platform5" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(-0.516504, 0.410933, -0.751238, -3.10555e-09, 0.877322, 0.479902, 0.856285, 0.247871, -0.45314, 5.06594, -0.519052, -1.62867)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform5"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -160,6 +180,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="platform6" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(0.515457, -0.411236, 0.751791, 1.22875e-08, 0.877322, 0.479902, -0.856915, -0.247369, 0.452222, 10.8683, -0.519052, 1.9119)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform6"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -170,6 +192,8 @@ shape = SubResource("BoxShape3D_3e2hr")
 
 [node name="platform4" type="StaticBody3D" parent="World/WorldGeometry"]
 transform = Transform3D(0.164765, -0.616376, 0.770021, -0.00929716, 0.779686, 0.626102, -0.986289, -0.110319, 0.122735, 7.3763, 12.3796, -9.49268)
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform4"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
