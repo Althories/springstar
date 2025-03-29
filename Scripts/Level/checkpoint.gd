@@ -21,5 +21,5 @@ func _ready() -> void:
 	respawn_pos = global_position	#fetches objective position of checkpoint in world
 	
 func _process(_delta: float) -> void:
-	if overlaps_body(spring):
+	if overlaps_body(spring):		#
 		cp_pos.emit(respawn_pos)
