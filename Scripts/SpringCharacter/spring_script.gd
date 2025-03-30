@@ -31,6 +31,7 @@ var aim_vector = Vector3()
 var bonk_timer = 0									# bonq :3
 var reset_position = Vector3()						#Initializes spring reset position
 var rotationSpeed: float = 1						# Speed the rings rotate in the animation
+var dialogue_running = false
 
 signal charging										#for use in charge UI
 signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)	#for positioning compass above spring
@@ -86,7 +87,8 @@ func _physics_process(delta: float) -> void:
 		air_move_spring()
 		
 	animate(input)
-	move_and_slide()										# NECESSARY for this stuff to actually all work
+	if dialogue_running == false:
+		move_and_slide()										# NECESSARY for this stuff to actually all work
 	
 #functions block ----------
 func air_move_spring() -> void:
@@ -224,3 +226,10 @@ func _on_cp_pos(cp_position: Variant) -> void:
 
 func _on_destroy_spring() -> void:
 	reset()									#force spring to return to last reached checkpoint
+
+func _on_dialogue_running(boolean: Variant) -> void:
+	if boolean == true:
+		dialogue_running = true
+	if boolean == false:
+		dialogue_running = false
+		
