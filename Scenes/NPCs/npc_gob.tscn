@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqtfjuiepk7oe"]
+[gd_scene load_steps=7 format=3 uid="uid://cqtfjuiepk7oe"]
 
-[ext_resource type="Script" uid="uid://c1kngts4qwp5x" path="res://Scripts/Dialogic/gob_dialogue.gd" id="1_v0h8j"]
+[ext_resource type="Script" uid="uid://bwgt01gvwk5jl" path="res://Scenes/NPCs/npc_gob.gd" id="1_kq141"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a0r42"]
 
@@ -9,6 +9,17 @@ albedo_color = Color(0.486275, 1, 1, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kq141"]
 
+[sub_resource type="GDScript" id="GDScript_v0h8j"]
+script/source = "extends Area3D
+#USAGE
+
+var dialogue_triggered = false		#lazy imp to keep dialogue from trying to start again
+
+#@onready var spring = get_node(\"../../../SpringStuff/TestSpring\")
+#not working for some reason. i hate. why this doesn't work here but does in other scripts??? who knows
+	
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0r42"]
 resource_local_to_scene = true
 size = Vector3(4, 2, 4)
@@ -16,6 +27,7 @@ size = Vector3(4, 2, 4)
 [node name="Gob" type="StaticBody3D"]
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_kq141")
 
 [node name="Gob_Col" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_a0r42")
@@ -25,7 +37,7 @@ material_override = SubResource("StandardMaterial3D_v0h8j")
 mesh = SubResource("CylinderMesh_kq141")
 
 [node name="Dialogue_Zone" type="Area3D" parent="."]
-script = ExtResource("1_v0h8j")
+script = SubResource("GDScript_v0h8j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dialogue_Zone"]
 shape = SubResource("BoxShape3D_a0r42")
