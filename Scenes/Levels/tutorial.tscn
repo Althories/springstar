@@ -1,7 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://cr7kraxkxnhxq"]
 
 [ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_foaut"]
-[ext_resource type="Script" uid="uid://cxng1i4xbnynt" path="res://Scripts/Dialogic/dialogue.gd" id="1_sghjv"]
 [ext_resource type="MeshLibrary" uid="uid://bliv1kum0e6vu" path="res://Assets/Models/test-blocks-final.tres" id="1_xs3g1"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
 [ext_resource type="MeshLibrary" uid="uid://y2v3vjmpqgil" path="res://Assets/Models/white-blocks-final.tres" id="3_t4m3g"]
@@ -14,6 +13,17 @@
 [ext_resource type="PackedScene" uid="uid://cqtfjuiepk7oe" path="res://Scenes/NPCs/npc_gob.tscn" id="7_qvtqq"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Music/Dream_Meadow_Ena.mp3" id="8_mnia5"]
 [ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="9_tospq"]
+
+[sub_resource type="GDScript" id="GDScript_sghjv"]
+script/source = "extends Node
+
+func _ready():
+	pass
+	#Dialogic.start(\"test_timeline\")
+	
+func _process(_delta):
+	pass
+"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -127,7 +137,7 @@ size = Vector3(393.94, 1, 383.523)
 [node name="Main" type="Node"]
 
 [node name="Dialogue" type="Node" parent="."]
-script = ExtResource("1_sghjv")
+script = SubResource("GDScript_sghjv")
 
 [node name="World" type="Node" parent="."]
 
@@ -380,7 +390,7 @@ shape = SubResource("BoxShape3D_0mdj5")
 [node name="NPC" type="Node" parent="World"]
 
 [node name="Gob" parent="World/NPC" instance=ExtResource("7_qvtqq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.39282, 10.157)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45, 9, 7.5)
 
 [node name="SpringStuff" type="Node" parent="."]
 

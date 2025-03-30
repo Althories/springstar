@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqtfjuiepk7oe"]
+[gd_scene load_steps=11 format=3 uid="uid://cqtfjuiepk7oe"]
 
 [ext_resource type="Script" uid="uid://bwgt01gvwk5jl" path="res://Scenes/NPCs/npc_gob.gd" id="1_kq141"]
 
@@ -9,20 +9,22 @@ albedo_color = Color(0.486275, 1, 1, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kq141"]
 
-[sub_resource type="GDScript" id="GDScript_v0h8j"]
-script/source = "extends Area3D
-#USAGE
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kq141"]
+albedo_color = Color(0, 0.405307, 0.405566, 1)
 
-var dialogue_triggered = false		#lazy imp to keep dialogue from trying to start again
+[sub_resource type="CylinderMesh" id="CylinderMesh_v0h8j"]
 
-#@onready var spring = get_node(\"../../../SpringStuff/TestSpring\")
-#not working for some reason. i hate. why this doesn't work here but does in other scripts??? who knows
-	
-"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhoe0"]
+albedo_color = Color(0, 0.403922, 0.403922, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7oc84"]
+albedo_color = Color(0, 0.403922, 0.403922, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_n2amr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a0r42"]
 resource_local_to_scene = true
-size = Vector3(4, 2, 4)
+size = Vector3(6, 2, 6)
 
 [node name="Gob" type="StaticBody3D"]
 collision_layer = 3
@@ -30,14 +32,32 @@ collision_mask = 3
 script = ExtResource("1_kq141")
 
 [node name="Gob_Col" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000336647, 0, 0)
 shape = SubResource("CylinderShape3D_a0r42")
 
-[node name="Gob_Mesh" type="MeshInstance3D" parent="."]
+[node name="Gob_Mesh" type="Node3D" parent="."]
+
+[node name="Gob_Mesh_Body" type="MeshInstance3D" parent="Gob_Mesh"]
 material_override = SubResource("StandardMaterial3D_v0h8j")
 mesh = SubResource("CylinderMesh_kq141")
+skeleton = NodePath("../..")
+
+[node name="Gob_Mesh_Eye_R" type="MeshInstance3D" parent="Gob_Mesh"]
+transform = Transform3D(0.245746, -0.172073, 7.52155e-09, 0, -1.31134e-08, -0.3, 0.172073, 0.245746, -1.07419e-08, -0.298411, 0.638886, 0.36343)
+material_override = SubResource("StandardMaterial3D_kq141")
+mesh = SubResource("CylinderMesh_v0h8j")
+
+[node name="Gob_Mesh_Eye_L" type="MeshInstance3D" parent="Gob_Mesh"]
+transform = Transform3D(-0.245746, -0.172073, 7.52155e-09, 0, -1.31134e-08, -0.3, 0.172073, -0.245746, 1.07419e-08, 0.27687, 0.638886, 0.36343)
+material_overlay = SubResource("StandardMaterial3D_xhoe0")
+mesh = SubResource("CylinderMesh_v0h8j")
+
+[node name="Gob_Mesh_Mouth" type="MeshInstance3D" parent="Gob_Mesh"]
+transform = Transform3D(-0.25, 5.35263e-08, 0, -3.7749e-08, -0.354489, 0, 0, 0, 0.25, 0, 0.00332341, 0.459072)
+material_overlay = SubResource("StandardMaterial3D_7oc84")
+mesh = SubResource("PrismMesh_n2amr")
 
 [node name="Dialogue_Zone" type="Area3D" parent="."]
-script = SubResource("GDScript_v0h8j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dialogue_Zone"]
 shape = SubResource("BoxShape3D_a0r42")
