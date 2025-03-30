@@ -14,9 +14,11 @@ const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
 const COIL_SPEED: float = 4							# Speed of coil animation
 
 @onready var camPivot: Node3D = $CamPivot
+@onready var camSpring: Node3D = $CamPivot/SpringArm3D
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
 @onready var animationTree: AnimationTree = $"Spring Model"/AnimationTree
 @export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
+@export var joypad_sensitivity := 2.0
 @export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
 @export var ground_anim_speed = 0.5					# Spring ground stretch/squash anim speed in ground state
 
@@ -42,6 +44,7 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		camPivot.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+		
 	if event.is_action_pressed("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			# Mouse made visible, can move outside game window
 	if event.is_action_pressed("reset"):
@@ -137,6 +140,14 @@ func move_camera() -> void:
 	distance from the peak of its height.
 	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
 	I suspect slerp is behind this.'''
+	
+	#Joypad camera control (does not currently function the way I want)
+	var axis_vector = Input.get_vector("cam_left", "cam_right", "cam_up", "cam_down")
+	if axis_vector.length() >= 0.05:
+		camPivot.rotate_y(deg_to_rad(-axis_vector.x * joypad_sensitivity))
+		camSpring.rotate_x(deg_to_rad(-axis_vector.y * joypad_sensitivity))
+		camSpring.rotation.x = clamp(camSpring.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+		
 	# raise camera target if player rises higher than it was
 	if self.global_position.y >= lerp_y:
 		lerp_y = self.global_position.y
@@ -209,7 +220,7 @@ func animate(input: String) -> void:
 
 #signals block -----------
 func _on_cp_pos(cp_position: Variant) -> void:
-	reset_position = cp_position
+	reset_position = cp_position			#sets new reset position based on checkpoint contact
 
 func _on_destroy_spring() -> void:
-	reset()
+	reset()									#force spring to return to last reached checkpoint
