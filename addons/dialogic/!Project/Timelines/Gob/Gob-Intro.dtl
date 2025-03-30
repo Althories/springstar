@@ -10,6 +10,7 @@ Gob: Did you hear about the ship part in this area?
 		Gob: Alright. Sure. Well. Safe travels, friend!
 	- i'm unsure
 		Gob: We all get a little lost every now and then.
-		Gob: In case you were wondering, I spotted a ship part land all the way up in those clouds over there. Might be yours. I thought about taking a look, but I'm #old.
+		Gob: In case you were wondering, I spotted a ship part land all the way up in those clouds over there.
+		Gob: Might be yours. I thought about taking a look, but I'm #old.
 		Gob: Safe travels!
 [signal arg="end_intro"]
