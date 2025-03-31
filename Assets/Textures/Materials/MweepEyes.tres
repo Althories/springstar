@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://brw112taifnuy"]
+
+[ext_resource type="Texture2D" uid="uid://bhmne41he4ex" path="res://Assets/Models/Mweep_Eyes.png" id="1_b0dke"]
+
+[resource]
+resource_name = "Eyes"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_b0dke")
+metallic = 0.15
+roughness = 0.15
+rim_enabled = true
+rim = 0.29
+clearcoat_enabled = true
+clearcoat = 0.61
+anisotropy = -1.0
+subsurf_scatter_strength = 1.0
+refraction_scale = -0.07

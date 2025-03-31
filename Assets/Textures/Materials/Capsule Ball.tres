@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://lbf6fd32baf2"]
+
+[resource]
+resource_name = "CapsuleBall"
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.324935, 0.483872, 0.651341, 1)
+metallic = 0.98
+metallic_specular = 1.0
+roughness = 0.28

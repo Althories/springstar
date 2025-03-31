@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b4apql6j7eqhi"]
+
+[ext_resource type="Texture2D" uid="uid://btd5ba218emcq" path="res://Assets/Textures/TintedGradient.001.png" id="1_yqm5w"]
+
+[resource]
+resource_name = "Tinted Window"
+transparency = 1
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.813258, 0.813258, 0.813258, 1)
+albedo_texture = ExtResource("1_yqm5w")
+roughness = 0.5

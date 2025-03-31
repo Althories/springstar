@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kl1l2o6nrxed"]
+
+[resource]
+resource_name = "Mweep"
+specular_mode = 1
+albedo_color = Color(0.921569, 0.67451, 0.996078, 1)

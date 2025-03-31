@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=4 uid="uid://b3e7lyqxx1bki"]
 
 [ext_resource type="ArrayMesh" uid="uid://df87d5rkhl1ja" path="res://Assets/Models/springCapsule.res" id="1_gl8x3"]
-[ext_resource type="PackedScene" uid="uid://57qxkwcum84j" path="res://Assets/Models/Mweep.blend" id="2_gl8x3"]
+[ext_resource type="PackedScene" uid="uid://beusog6xfcvy8" path="res://Scenes/SpringCharacter/mweep.tscn" id="2_gl8x3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp6hj"]
 resource_name = "Spring"
@@ -3762,7 +3762,6 @@ _data = {
 
 [node name="Spring" type="Node3D" parent="."]
 transform = Transform3D(0.0585085, 0, 0, 0, 0.0585085, 0, 0, 0, 0.0585085, 0, 1, 0)
-visible = false
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Spring"]
 bones/0/name = "Bone"
@@ -4574,7 +4573,6 @@ mesh = ExtResource("1_gl8x3")
 
 [node name="InnerRing" type="MeshInstance3D" parent="Capsule"]
 transform = Transform3D(1.04957, 0, 0, 0, 1.04957, 0, 0, 0, 1.04957, 0, 0, 0)
-visible = false
 mesh = SubResource("ArrayMesh_23bxq")
 skeleton = NodePath("")
 
@@ -4595,6 +4593,25 @@ libraries = {
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.184549, -0.012903, 0.000225222, 0, -0.00322869, -0.184972, 0.0129049, 0.184521, -0.00322082, 0, 0.981, 0)
+visible = false
 mesh = SubResource("TorusMesh_0xuuo")
 
-[node name="Mweep2" parent="." instance=ExtResource("2_gl8x3")]
+[node name="Mweep" parent="." instance=ExtResource("2_gl8x3")]
+transform = Transform3D(-1.83588e-08, 0, -0.42, 0, 0.42, 0, 0.42, 0, -1.83588e-08, -0.0708463, 0.74923, -0.00403365)
+
+[node name="Skeleton3D" parent="Mweep/MweepBones" index="0"]
+bones/0/rotation = Quaternion(-0.310739, 0, 0, 0.950495)
+bones/1/rotation = Quaternion(0.140668, -0.00342698, 0.000103819, 0.990051)
+bones/2/rotation = Quaternion(0.188591, 0.627677, 0.747255, 0.109841)
+bones/3/rotation = Quaternion(-0.139868, 0.0441827, 0.424442, 0.893496)
+bones/4/rotation = Quaternion(-0.139866, 0.620652, 0.763672, -0.1097)
+bones/5/rotation = Quaternion(-0.0132026, 0.226592, -0.500308, 0.835568)
+bones/6/rotation = Quaternion(-0.0409773, 0.80276, 0.594728, -0.0140351)
+bones/7/rotation = Quaternion(-0.346723, -0.614723, 0.36991, 0.604206)
+bones/8/rotation = Quaternion(0.0409773, 0.80276, 0.594728, 0.0140351)
+bones/9/rotation = Quaternion(-0.334822, 0.614959, -0.418867, 0.578162)
+
+[node name="Control Ball" parent="Mweep" index="1"]
+visible = true
+
+[editable path="Mweep"]
