@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=11 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
+[ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Music/Dream_Meadow_Ena.mp3" id="3_3dsna"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="4_354q8"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
@@ -34,6 +35,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.
 
 [node name="Node3D" parent="World/WorldGeometry" instance=ExtResource("1_8cquh")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+
+[node name="NPC" type="Node" parent="World"]
+
+[node name="npc_guario" parent="World/NPC" instance=ExtResource("2_7vggk")]
+transform = Transform3D(-1.73205, 0, 1, 0, 2, 0, -1, 0, -1.73205, 7.52757, 0, -13.9716)
 
 [node name="SpringStuff" type="Node" parent="World"]
 

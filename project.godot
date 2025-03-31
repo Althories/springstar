@@ -24,12 +24,15 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "Gob": "res://addons/dialogic/!Project/Characters/Gob.dch",
+"Guarionex": "res://addons/dialogic/!Project/Characters/Guarionex.dch",
 "Mweep": "res://addons/dialogic/!Project/Characters/Mweep.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
 "Gob-Intro": "res://addons/dialogic/!Project/Timelines/Gob/Gob-Intro.dtl",
-"Gob-Looping": "res://addons/dialogic/!Project/Timelines/Gob/Gob-Looping.dtl"
+"Gob-Looping": "res://addons/dialogic/!Project/Timelines/Gob/Gob-Looping.dtl",
+"Guario-Intro": "res://addons/dialogic/!Project/Timelines/Guario/Guario-Intro.dtl",
+"Guario-Looping": "res://addons/dialogic/!Project/Timelines/Guario/Guario-Looping.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.023
