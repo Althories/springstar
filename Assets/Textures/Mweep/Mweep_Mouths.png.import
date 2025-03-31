@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhmne41he4ex"
-path.s3tc="res://.godot/imported/Mweep_Eyes.png-d7f949b801226a912bbfdfd322217c07.s3tc.ctex"
+uid="uid://dy7yijjebbbv8"
+path.s3tc="res://.godot/imported/Mweep_Mouths.png-3799c53c626718634d22d9f18330da87.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "51c3a3d18dd417d9e2b99b271fe45f12"
+"md5": "9ad4b8bd385255239712724d919dfbc7"
 }
 
 [deps]
 
-source_file="res://Assets/Models/Mweep_Eyes.png"
-dest_files=["res://.godot/imported/Mweep_Eyes.png-d7f949b801226a912bbfdfd322217c07.s3tc.ctex"]
+source_file="res://Assets/Textures/Mweep/Mweep_Mouths.png"
+dest_files=["res://.godot/imported/Mweep_Mouths.png-3799c53c626718634d22d9f18330da87.s3tc.ctex"]
 
 [params]
 

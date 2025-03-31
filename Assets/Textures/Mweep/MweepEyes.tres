@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://brw112taifnuy"]
 
-[ext_resource type="Texture2D" uid="uid://bhmne41he4ex" path="res://Assets/Models/Mweep_Eyes.png" id="1_b0dke"]
+[ext_resource type="Texture2D" uid="uid://bhmne41he4ex" path="res://Assets/Textures/Mweep/Mweep_Eyes.png" id="1_b0dke"]
 
 [resource]
 resource_name = "Eyes"

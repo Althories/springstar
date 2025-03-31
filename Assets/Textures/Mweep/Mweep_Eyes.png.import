@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn5h70a3viej"
-path.s3tc="res://.godot/imported/glass-1.jpg-e76cead8cce908f02859ef77943825bf.s3tc.ctex"
+uid="uid://bhmne41he4ex"
+path.s3tc="res://.godot/imported/Mweep_Eyes.png-3617facade09b06345fa0b7f98fa0321.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "51c3a3d18dd417d9e2b99b271fe45f12"
+}
 
 [deps]
 
-source_file="res://Assets/Textures/glass-1.jpg"
-dest_files=["res://.godot/imported/glass-1.jpg-e76cead8cce908f02859ef77943825bf.s3tc.ctex"]
+source_file="res://Assets/Textures/Mweep/Mweep_Eyes.png"
+dest_files=["res://.godot/imported/Mweep_Eyes.png-3617facade09b06345fa0b7f98fa0321.s3tc.ctex"]
 
 [params]
 

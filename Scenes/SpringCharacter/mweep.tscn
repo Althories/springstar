@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=4 uid="uid://beusog6xfcvy8"]
 
-[ext_resource type="Material" uid="uid://kl1l2o6nrxed" path="res://Assets/Textures/Materials/MweepSkin.tres" id="2_2lf35"]
-[ext_resource type="Material" uid="uid://brw112taifnuy" path="res://Assets/Textures/Materials/MweepEyes.tres" id="3_ibrlb"]
-[ext_resource type="Material" uid="uid://lbf6fd32baf2" path="res://Assets/Textures/Materials/Capsule Ball.tres" id="4_2lf35"]
-[ext_resource type="Material" uid="uid://cf6fk3jhvomak" path="res://Assets/Textures/Materials/MweepMouth.tres" id="4_04yk3"]
+[ext_resource type="Material" uid="uid://kl1l2o6nrxed" path="res://Assets/Textures/Mweep/MweepSkin.tres" id="2_2lf35"]
+[ext_resource type="Material" uid="uid://brw112taifnuy" path="res://Assets/Textures/Mweep/MweepEyes.tres" id="3_ibrlb"]
+[ext_resource type="Material" uid="uid://lbf6fd32baf2" path="res://Assets/Textures/Spring/Capsule Ball.tres" id="4_2lf35"]
+[ext_resource type="Material" uid="uid://cf6fk3jhvomak" path="res://Assets/Textures/Mweep/MweepMouth.tres" id="4_04yk3"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_f70oq"]
 resource_name = "Mweep_Sphere_002"
@@ -127,107 +127,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kl0k4")
-
-[sub_resource type="Animation" id="Animation_2lf35"]
-resource_name = "Idle"
-length = 0.001
-tracks/0/type = "rotation_3d"
-tracks/0/imported = true
-tracks/0/enabled = true
-tracks/0/path = NodePath("MweepBones/Skeleton3D:Body")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("MweepBones/Skeleton3D:Head")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = true
-tracks/2/enabled = true
-tracks/2/path = NodePath("MweepBones/Skeleton3D:UpperArmL")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0.00140292, -0.000315958, 0.97556, 0.219731)
-tracks/3/type = "rotation_3d"
-tracks/3/imported = true
-tracks/3/enabled = true
-tracks/3/path = NodePath("MweepBones/Skeleton3D:LowerArmL")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 4.70684e-06, 0.00143805, 0.00342284, 0.999993)
-tracks/4/type = "rotation_3d"
-tracks/4/imported = true
-tracks/4/enabled = true
-tracks/4/path = NodePath("MweepBones/Skeleton3D:UpperArmR")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, 0.00140287, 0.000315582, -0.97556, 0.21973)
-tracks/5/type = "rotation_3d"
-tracks/5/imported = true
-tracks/5/enabled = true
-tracks/5/path = NodePath("MweepBones/Skeleton3D:LowerArmR")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = PackedFloat32Array(0, 1, 4.74068e-06, -0.00143792, -0.00342272, 0.999993)
-tracks/6/type = "rotation_3d"
-tracks/6/imported = true
-tracks/6/enabled = true
-tracks/6/path = NodePath("MweepBones/Skeleton3D:ThighL")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = PackedFloat32Array(0, 1, 0.000261632, -3.1431e-05, 0.992866, 0.119237)
-tracks/7/type = "rotation_3d"
-tracks/7/imported = true
-tracks/7/enabled = true
-tracks/7/path = NodePath("MweepBones/Skeleton3D:LegL")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = PackedFloat32Array(0, 1, 3.56173e-07, 0.000653132, -0.0028628, 0.999996)
-tracks/8/type = "rotation_3d"
-tracks/8/imported = true
-tracks/8/enabled = true
-tracks/8/path = NodePath("MweepBones/Skeleton3D:ThighR")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = PackedFloat32Array(0, 1, 0.000261621, 3.14094e-05, -0.992866, 0.119237)
-tracks/9/type = "rotation_3d"
-tracks/9/imported = true
-tracks/9/enabled = true
-tracks/9/path = NodePath("MweepBones/Skeleton3D:LegR")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = PackedFloat32Array(0, 1, -8.09165e-07, -0.000263412, 0.00325256, 0.999995)
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Control Ball:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_ibrlb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control Ball:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_niit4"]
 resource_name = "MweepBonesAction_002"
@@ -400,6 +299,107 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2lf35"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("MweepBones/Skeleton3D:Body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("MweepBones/Skeleton3D:Head")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("MweepBones/Skeleton3D:UpperArmL")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.00140292, -0.000315958, 0.97556, 0.219731)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("MweepBones/Skeleton3D:LowerArmL")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 4.70684e-06, 0.00143805, 0.00342284, 0.999993)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("MweepBones/Skeleton3D:UpperArmR")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.00140287, 0.000315582, -0.97556, 0.21973)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("MweepBones/Skeleton3D:LowerArmR")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 4.74068e-06, -0.00143792, -0.00342272, 0.999993)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("MweepBones/Skeleton3D:ThighL")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.000261632, -3.1431e-05, 0.992866, 0.119237)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("MweepBones/Skeleton3D:LegL")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 3.56173e-07, 0.000653132, -0.0028628, 0.999996)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("MweepBones/Skeleton3D:ThighR")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.000261621, 3.14094e-05, -0.992866, 0.119237)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("MweepBones/Skeleton3D:LegR")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -8.09165e-07, -0.000263412, 0.00325256, 0.999995)
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Control Ball:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ibrlb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control Ball:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ibrlb"]

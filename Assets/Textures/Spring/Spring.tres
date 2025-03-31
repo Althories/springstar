@@ -2,8 +2,7 @@
 
 [resource]
 resource_name = "Spring"
-cull_mode = 2
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.337202, 0.517577, 0.500171, 1)
+albedo_color = Color(0.337255, 0.517647, 0.501961, 1)
 roughness = 0.5
