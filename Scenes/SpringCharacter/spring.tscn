@@ -1,10 +1,13 @@
-[gd_scene load_steps=54 format=4 uid="uid://cusuavcx76vmy"]
+[gd_scene load_steps=57 format=4 uid="uid://cusuavcx76vmy"]
 
 [ext_resource type="Script" uid="uid://cg427ow8qy6he" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_en6m1"]
 [ext_resource type="Animation" uid="uid://d1sm5hlk3xvi0" path="res://Assets/Animations/Coil.res" id="3_2q6um"]
 [ext_resource type="Animation" uid="uid://csrwn111sa6ui" path="res://Assets/Animations/RingsRotation.res" id="4_1ah7l"]
+[ext_resource type="Material" uid="uid://b4apql6j7eqhi" path="res://Assets/Textures/Spring/Tinted Window.tres" id="4_7m3e7"]
 [ext_resource type="Material" uid="uid://bu00jmxhn7jbw" path="res://Assets/Textures/Spring/Spring.tres" id="5_ef7f8"]
+[ext_resource type="Material" uid="uid://dfags3k0ciluq" path="res://Assets/Textures/Spring/Window.tres" id="5_re8aa"]
 [ext_resource type="Animation" uid="uid://dnh0myauswa0c" path="res://Assets/Animations/RingsStart.res" id="5_xq36o"]
+[ext_resource type="Material" uid="uid://daaeshmha8r1d" path="res://Assets/Textures/Spring/Opaque Window.tres" id="6_sonc5"]
 [ext_resource type="ArrayMesh" uid="uid://df87d5rkhl1ja" path="res://Assets/Models/springCapsule.res" id="6_yrkbn"]
 [ext_resource type="PackedScene" uid="uid://beusog6xfcvy8" path="res://Scenes/SpringCharacter/mweep.tscn" id="7_7m3e7"]
 [ext_resource type="Material" uid="uid://bs141livjv1yu" path="res://Assets/Textures/Spring/Rings.tres" id="8_re8aa"]
@@ -2641,6 +2644,9 @@ skin = SubResource("Skin_4ci03")
 [node name="Capsule" type="MeshInstance3D" parent="Spring Model"]
 transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.49691e-08, 0, 1, 0)
 mesh = ExtResource("6_yrkbn")
+surface_material_override/0 = ExtResource("4_7m3e7")
+surface_material_override/1 = ExtResource("5_re8aa")
+surface_material_override/2 = ExtResource("6_sonc5")
 
 [node name="Mweep" parent="Spring Model/Capsule" instance=ExtResource("7_7m3e7")]
 transform = Transform3D(-2.29485e-08, 0, -0.525, 0, 0.525, 0, 0.525, 0, -2.29485e-08, -0.0885579, -0.313462, -0.00504206)
