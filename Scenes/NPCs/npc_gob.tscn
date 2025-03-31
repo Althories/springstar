@@ -1,6 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cqtfjuiepk7oe"]
 
-[ext_resource type="Script" uid="uid://bwgt01gvwk5jl" path="res://Scenes/NPCs/npc_gob.gd" id="1_kq141"]
+[ext_resource type="Script" uid="uid://bwgt01gvwk5jl" path="res://Scripts/NPC/npc_gob.gd" id="1_kq141"]
+[ext_resource type="PackedScene" uid="uid://r4lkbvrs1wqu" path="res://Scenes/Levels/Spring_Zones/Dialogue_Zone/npc_dialogue_zone.tscn" id="2_kq141"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a0r42"]
 
@@ -21,10 +22,6 @@ albedo_color = Color(0, 0.403922, 0.403922, 1)
 albedo_color = Color(0, 0.403922, 0.403922, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_n2amr"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_a0r42"]
-resource_local_to_scene = true
-size = Vector3(6, 2, 6)
 
 [node name="Gob" type="StaticBody3D"]
 collision_layer = 3
@@ -57,7 +54,4 @@ transform = Transform3D(-0.25, 5.35263e-08, 0, -3.7749e-08, -0.354489, 0, 0, 0, 
 material_overlay = SubResource("StandardMaterial3D_7oc84")
 mesh = SubResource("PrismMesh_n2amr")
 
-[node name="Dialogue_Zone" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Dialogue_Zone"]
-shape = SubResource("BoxShape3D_a0r42")
+[node name="Dialogue_Zone" parent="." instance=ExtResource("2_kq141")]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhccbiqxdle7g"]
+
+[ext_resource type="PackedScene" uid="uid://diacs2mwuahnl" path="res://Assets/Models/guariogon.glb" id="1_vg0l2"]
+
+[node name="guariogon" instance=ExtResource("1_vg0l2")]

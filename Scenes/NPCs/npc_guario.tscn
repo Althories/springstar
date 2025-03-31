@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck8uexgs30ona"]
+
+[ext_resource type="PackedScene" uid="uid://r4lkbvrs1wqu" path="res://Scenes/Levels/Spring_Zones/Dialogue_Zone/npc_dialogue_zone.tscn" id="1_bomu0"]
+[ext_resource type="PackedScene" uid="uid://diacs2mwuahnl" path="res://Assets/Models/guariogon.glb" id="2_asquf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_poxpw"]
+size = Vector3(2, 2, 2)
+
+[node name="npc_guario" type="StaticBody3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="guario_col" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000366211, 0.00164795, -6.10352e-05)
+shape = SubResource("BoxShape3D_poxpw")
+
+[node name="Dialogue_Zone" parent="." instance=ExtResource("1_bomu0")]
+
+[node name="guariogon" parent="." instance=ExtResource("2_asquf")]
