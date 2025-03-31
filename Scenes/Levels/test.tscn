@@ -4,7 +4,6 @@
 [ext_resource type="MeshLibrary" uid="uid://citycddum1t8f" path="res://Assets/Models/test-blocks-v5.tres" id="2_166el"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_p3m5u"]
 [ext_resource type="MeshLibrary" uid="uid://y2v3vjmpqgil" path="res://Assets/Models/white-blocks-final.tres" id="3_0feco"]
-[ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="3_c6oro"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_3kgal"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_uo1xj"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_vw0mi"]
@@ -21,6 +20,9 @@ sky_material = SubResource("ProceduralSkyMaterial_rrst7")
 [sub_resource type="Environment" id="Environment_w2nig"]
 background_mode = 2
 sky = SubResource("Sky_ubqhr")
+
+[sub_resource type="Resource" id="Resource_xdu2t"]
+metadata/__load_path__ = "res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3"
 
 [sub_resource type="SphereMesh" id="SphereMesh_g018d"]
 
@@ -103,7 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56763, 0)
 [node name="Misc" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Misc"]
-stream = ExtResource("3_c6oro")
+stream = SubResource("Resource_xdu2t")
 volume_db = -30.0
 autoplay = true
 

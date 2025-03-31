@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="4_354q8"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
-[ext_resource type="Script" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
+[ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l6o3x"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
