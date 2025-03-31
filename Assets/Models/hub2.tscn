@@ -26,6 +26,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72941, 0, -0.163067)
 surface_material_override/0 = SubResource("StandardMaterial3D_ln2xh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="hub1/Main" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hub1/Main/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pstpn")
@@ -34,6 +36,8 @@ shape = SubResource("ConcavePolygonShape3D_pstpn")
 surface_material_override/0 = SubResource("StandardMaterial3D_84lww")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="hub1/Plane" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hub1/Plane/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dw8ya")
@@ -42,6 +46,8 @@ shape = SubResource("ConcavePolygonShape3D_dw8ya")
 surface_material_override/0 = SubResource("StandardMaterial3D_ln2xh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="hub1/Float" index="0"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hub1/Float/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xnoyh")
