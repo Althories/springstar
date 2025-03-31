@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=10 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
+[ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Music/Dream_Meadow_Ena.mp3" id="3_3dsna"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="4_354q8"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
@@ -42,8 +43,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -0.920718, 8.40217)
 [node name="Misc" type="Node" parent="World"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/Misc"]
-volume_db = -30.0
+stream = ExtResource("3_3dsna")
+volume_db = -20.0
 autoplay = true
+parameters/looping = true
 
 [node name="UI" type="Control" parent="World"]
 layout_mode = 3

@@ -49,6 +49,8 @@ func _input(event):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			# Mouse made visible, can move outside game window
 	if event.is_action_pressed("reset"):
 		reset()
+	if event.is_action_pressed("switch_scene"):
+		get_tree().change_scene_to_file("res://Scenes/Levels/hub.tscn")
 		
 func _process(_delta) -> void:
 	move_camera()

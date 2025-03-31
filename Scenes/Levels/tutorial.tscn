@@ -404,7 +404,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48098, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Misc"]
 stream = ExtResource("8_mnia5")
-volume_db = -30.0
+volume_db = -20.0
 autoplay = true
 
 [node name="ship_part" parent="Misc" instance=ExtResource("9_tospq")]
