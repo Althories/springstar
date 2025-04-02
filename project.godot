@@ -211,3 +211,8 @@ switch_scene={
 
 3d_physics/layer_1="Spring and World"
 3d_physics/layer_2="Springarm and WorldGeometry"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
