@@ -24,7 +24,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={
 "Gob": "res://addons/dialogic/!Project/Characters/Gob.dch",
-"Guarionex": "res://addons/dialogic/!Project/Characters/Guarionex.dch",
+"Guario": "res://addons/dialogic/!Project/Characters/Guarionex.dch",
 "Mweep": "res://addons/dialogic/!Project/Characters/Mweep.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
