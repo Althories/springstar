@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdcbq8kwhuql0"]
+
+[ext_resource type="PackedScene" uid="uid://qfigre7uenvf" path="res://Assets/Models/tutorial.glb" id="1_rxtki"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="tutorial" parent="." instance=ExtResource("1_rxtki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.660657, 0, 0.180043)
+
+[editable path="tutorial"]
