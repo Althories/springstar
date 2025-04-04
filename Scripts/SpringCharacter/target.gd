@@ -4,7 +4,6 @@ extends Node3D
 
 @onready var ship_area = get_node("Part/Ship_Area")
 @onready var spring = get_node("../../SpringStuff/TestSpring")
-
 signal target_pos(target_position)		#sends target position for compass to point to
 
 func _process(_delta: float) -> void:

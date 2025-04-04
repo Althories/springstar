@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=13 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Music/Dream_Meadow_Ena.mp3" id="3_3dsna"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="4_354q8"]
+[ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="4_ylstq"]
+[ext_resource type="PackedScene" uid="uid://c50bejtvv072c" path="res://Scenes/SpringCharacter/compass.tscn" id="5_a1aht"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
@@ -36,6 +38,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.
 [node name="Node3D" parent="World/WorldGeometry" instance=ExtResource("1_8cquh")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
+[node name="shipPart" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.7928, 36.1757, 32.0978)
+
 [node name="NPC" type="Node" parent="World"]
 
 [node name="npc_guario" parent="World/NPC" instance=ExtResource("2_7vggk")]
@@ -45,6 +50,8 @@ transform = Transform3D(-1.73205, 0, 1, 0, 2, 0, -1, 0, -1.73205, 7.52757, 0, -1
 
 [node name="TestSpring" parent="World/SpringStuff" instance=ExtResource("4_354q8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -0.920718, 8.40217)
+
+[node name="Compass" parent="World/SpringStuff" instance=ExtResource("5_a1aht")]
 
 [node name="Misc" type="Node" parent="World"]
 
@@ -80,3 +87,6 @@ texture_progress = ExtResource("7_le338")
 script = ExtResource("8_gm05c")
 spring = NodePath("../../SpringStuff/TestSpring")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="target_pos" from="World/WorldGeometry/shipPart" to="World/SpringStuff/Compass" method="_on_ship_part_target_pos"]
+[connection signal="spring_pos" from="World/SpringStuff/TestSpring" to="World/SpringStuff/Compass" method="_on_test_spring_spring_pos"]
