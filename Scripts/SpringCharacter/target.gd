@@ -8,6 +8,7 @@ extends Node3D
 signal target_pos(target_position)		#sends target position for compass to point to
 
 func _process(_delta: float) -> void:
+	print("target.gd _process")
 	target_pos.emit(position)			#compass receives this so it can point to ship part
 	
 	if ship_area.overlaps_body(spring):

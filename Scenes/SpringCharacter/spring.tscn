@@ -1,6 +1,6 @@
 [gd_scene load_steps=57 format=4 uid="uid://cusuavcx76vmy"]
 
-[ext_resource type="Script" uid="uid://cg427ow8qy6he" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_en6m1"]
+[ext_resource type="Script" uid="uid://bldxisgj5oibi" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_7m3e7"]
 [ext_resource type="Animation" uid="uid://d1sm5hlk3xvi0" path="res://Assets/Animations/Coil.res" id="3_2q6um"]
 [ext_resource type="Animation" uid="uid://csrwn111sa6ui" path="res://Assets/Animations/RingsRotation.res" id="4_1ah7l"]
 [ext_resource type="Material" uid="uid://b4apql6j7eqhi" path="res://Assets/Textures/Spring/Tinted Window.tres" id="4_7m3e7"]
@@ -1829,7 +1829,7 @@ radius = 0.07
 [sub_resource type="SphereMesh" id="SphereMesh_t2par"]
 
 [node name="Spring" type="CharacterBody3D"]
-script = ExtResource("1_en6m1")
+script = ExtResource("1_7m3e7")
 
 [node name="Spring Model" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
