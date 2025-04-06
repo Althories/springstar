@@ -184,7 +184,7 @@ volume_db = -20.0
 autoplay = true
 
 [node name="ship_part" parent="Misc" instance=ExtResource("12_i0v1t")]
-transform = Transform3D(-0.697844, 0, 0.0548971, 0, 0.7, 0, -0.0548971, 0, -0.697844, 231.202, 52.4671, -39.3542)
+transform = Transform3D(-0.697844, 0, 0.0548971, 0, 0.7, 0, -0.0548971, 0, -0.697844, 231.202, 54.6452, -39.3542)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
