@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=14 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Music/Dream_Meadow_Ena.mp3" id="3_3dsna"]
+[ext_resource type="PackedScene" uid="uid://cgr2sksawkhmn" path="res://Assets/Models/Environment/grass_3_bunch.tscn" id="3_a1aht"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="4_354q8"]
-[ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="4_ylstq"]
+[ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="4_ylstq"]
 [ext_resource type="PackedScene" uid="uid://c50bejtvv072c" path="res://Scenes/SpringCharacter/compass.tscn" id="5_a1aht"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
@@ -41,6 +42,23 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 [node name="shipPart" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.7928, 36.1757, 32.0978)
 
+[node name="Grasses" type="Node3D" parent="World/WorldGeometry"]
+
+[node name="grass" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7024, -1, 24.2085)
+
+[node name="grass2" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
+transform = Transform3D(0.810931, 0, -0.585142, 0, 1, 0, 0.585142, 0, 0.810931, -13.0821, -1, 22.5091)
+
+[node name="grass3" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
+transform = Transform3D(0.810931, 0, -0.585142, 0, 1, 0, 0.585142, 0, 0.810931, -8.67417, -1, 1.37237)
+
+[node name="grass4" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
+transform = Transform3D(-0.073186, 0, -0.997318, 0, 1, 0, 0.997318, 0, -0.073186, -13.1352, -1, -2.55758)
+
+[node name="grass5" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
+transform = Transform3D(-0.47521, 0, -0.879873, 0, 1, 0, 0.879873, 0, -0.47521, -17.8617, -1, -1.76097)
+
 [node name="NPC" type="Node" parent="World"]
 
 [node name="npc_guario" parent="World/NPC" instance=ExtResource("2_7vggk")]
@@ -52,6 +70,7 @@ transform = Transform3D(-1.73205, 0, 1, 0, 2, 0, -1, 0, -1.73205, 7.52757, 0, -1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -0.920718, 8.40217)
 
 [node name="Compass" parent="World/SpringStuff" instance=ExtResource("5_a1aht")]
+visible = false
 
 [node name="Misc" type="Node" parent="World"]
 
