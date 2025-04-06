@@ -66,7 +66,7 @@ height = 1.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qvtqq"]
 resource_local_to_scene = true
-size = Vector3(40.7591, 23.4205, 1)
+size = Vector3(80.2533, 58.1749, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0mdj5"]
 resource_local_to_scene = true
@@ -93,19 +93,19 @@ transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 9.7
 [node name="Checkpoints" type="Node" parent="World"]
 
 [node name="Checkpoint_Spawn" type="Area3D" parent="World/Checkpoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.74872, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.60905, 0.126045)
 visible = false
 script = ExtResource("4_jovcd")
 
 [node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint_Spawn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65873, 4.38101, 3.13245)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65873, 4.38101, 0.424903)
 shape = SubResource("BoxShape3D_i0v1t")
 
 [node name="Checkpoint_Resapwn_Visual" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint_Spawn"]
 mesh = SubResource("CylinderMesh_qvtqq")
 
 [node name="Checkpoint1" type="Area3D" parent="World/Checkpoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8606, 14.5193, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.296, 14.5193, 0)
 visible = false
 script = ExtResource("4_jovcd")
 
@@ -130,24 +130,24 @@ shape = SubResource("BoxShape3D_mnia5")
 mesh = SubResource("CylinderMesh_rq2ec")
 
 [node name="Checkpoint3" type="Area3D" parent="World/Checkpoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.597, 39.9337, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.643, 47.3786, -1.908)
 visible = false
 script = ExtResource("4_jovcd")
 
 [node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9838, 11.8415, -7.28984)
+transform = Transform3D(0.615042, 0, 0.788494, 0, 1, 0, -0.788494, 0, 0.615042, 10.6612, 11.8415, -17.1243)
 shape = SubResource("BoxShape3D_sghjv")
 
 [node name="Checkpoint_Resapwn_Visual" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint3"]
 mesh = SubResource("CylinderMesh_0mdj5")
 
 [node name="Checkpoint4" type="Area3D" parent="World/Checkpoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.572, 73.3496, -71.5419)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 222.377, 56.1013, -32.7656)
 visible = false
 script = ExtResource("4_jovcd")
 
 [node name="Checkpoint_Col" type="CollisionShape3D" parent="World/Checkpoints/Checkpoint4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6912, 6.81551, 0)
+transform = Transform3D(0.576917, 0, 0.816803, 0, 1, 0, -0.816803, 0, 0.576917, -5.81209, 4.93693, -17.2013)
 shape = SubResource("BoxShape3D_qvtqq")
 
 [node name="Checkpoint_Resapwn_Visual" type="MeshInstance3D" parent="World/Checkpoints/Checkpoint4"]

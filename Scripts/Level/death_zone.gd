@@ -7,7 +7,7 @@ extends Area3D
 #warning: Messing with the tree hierarchy above SpringStuff may break this path
 #to fix, recopy spring path by dragging the Spring node into the script path area (remove $)
 #Stores the path of the spring node so that the area can check whether the spring overlaps it
-@onready var spring = get_node("../World/SpringStuff/TestSpring")
+@onready var spring = get_node("../../../SpringStuff/TestSpring")
 
 signal destroy_spring	#signal sent to the spring script to tell the spring to reset
 	
