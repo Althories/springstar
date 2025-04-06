@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=16 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
+[ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="11_7u17g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l6o3x"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -23,6 +24,10 @@ sky_material = SubResource("ProceduralSkyMaterial_l6o3x")
 [sub_resource type="Environment" id="Environment_y8bgm"]
 background_mode = 2
 sky = SubResource("Sky_edd6l")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkxkl"]
+resource_local_to_scene = true
+size = Vector3(700, 1, 700)
 
 [node name="Hub" type="Node3D"]
 
@@ -107,5 +112,14 @@ script = ExtResource("8_gm05c")
 spring = NodePath("../../SpringStuff/TestSpring")
 metadata/_edit_use_anchors_ = true
 
+[node name="DeathZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.36128, 0)
+script = ExtResource("11_7u17g")
+
+[node name="DeathZone_Col" type="CollisionShape3D" parent="DeathZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86999, -41.7173)
+shape = SubResource("BoxShape3D_gkxkl")
+
 [connection signal="target_pos" from="World/WorldGeometry/shipPart" to="World/SpringStuff/Compass" method="_on_ship_part_target_pos"]
 [connection signal="spring_pos" from="World/SpringStuff/TestSpring" to="World/SpringStuff/Compass" method="_on_test_spring_spring_pos"]
+[connection signal="destroy_spring" from="DeathZone" to="World/SpringStuff/TestSpring" method="_on_destroy_spring"]
