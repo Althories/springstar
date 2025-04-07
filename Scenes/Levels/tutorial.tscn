@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://cr7kraxkxnhxq"]
+[gd_scene load_steps=27 format=3 uid="uid://cr7kraxkxnhxq"]
 
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
 [ext_resource type="PackedScene" uid="uid://cdcbq8kwhuql0" path="res://Assets/Models/tutorialmodel.tscn" id="3_sghjv"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
 [ext_resource type="Script" uid="uid://ck6stwkt2trs5" path="res://Scripts/Level/checkpoint.gd" id="4_jovcd"]
+[ext_resource type="PackedScene" uid="uid://cgr2sksawkhmn" path="res://Assets/Models/Environment/grass_3_bunch.tscn" id="4_mnia5"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
 [ext_resource type="PackedScene" uid="uid://c50bejtvv072c" path="res://Scenes/SpringCharacter/compass.tscn" id="5_iol1o"]
 [ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="5_mnia5"]
@@ -98,6 +99,83 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.
 
 [node name="Node3D" parent="World/WorldGeometry" instance=ExtResource("3_sghjv")]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 9.76923, 0)
+
+[node name="GrassCollection" type="Node" parent="World/WorldGeometry"]
+
+[node name="grass" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.1331, -22.7732)
+
+[node name="grass2" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.72818, 0, -0.685386, -0.130038, 0.981836, -0.138157, 0.672937, 0.18973, 0.714953, 5.23219, 10.4378, -25.4983)
+
+[node name="grass3" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.817204, -0.0828256, 0.570365, 0.0679188, 0.996564, 0.0474037, -0.572332, 0, 0.820022, 1.30805, 10.1331, -26.4518)
+
+[node name="grass5" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.80902, -0.163257, 0.564653, 0.133874, 0.986584, 0.0934372, -0.572332, 0, 0.820022, 4.7998, 10.4405, -29.6344)
+
+[node name="grass6" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.942787, 0, 0.333395, 0, 1, 0, -0.333395, 0, 0.942787, 20.5373, 10.6638, -20.3018)
+
+[node name="grass7" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.975431, 0, -0.220306, 0, 1, 0, 0.220306, 0, 0.975431, 16.7859, 10.1331, -19.2038)
+
+[node name="grass8" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.975431, 0, -0.220306, 0, 1, 0, 0.220306, 0, 0.975431, 4.98279, 10.1331, 28.2831)
+
+[node name="grass9" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.960258, 0.175693, -0.216879, -0.171377, 0.984445, 0.0387062, 0.220306, 0, 0.975431, -21.0938, 10.1331, 16.7545)
+
+[node name="grass10" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.00853461, 0, -0.999964, 0.143539, 0.989644, 0.0012251, 0.989608, -0.143544, 0.00844622, -23.5642, 10.1331, 11.0817)
+
+[node name="grass11" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(-0.480237, 0.220697, -0.84892, 0.349471, 0.935837, 0.0455969, 0.804514, -0.274775, -0.526551, -23.6557, 10.647, 14.6501)
+
+[node name="grass12" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(-0.492378, 0, -0.870382, 0, 1, 0, 0.870382, 0, -0.492378, -20.4534, 10.1331, 7.14732)
+
+[node name="grass4" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(-0.468439, 0, 0.883496, -0.452533, 0.858862, -0.239938, -0.758801, -0.512208, -0.402324, -2.65243, 9.62124, -29.0578)
+
+[node name="grass13" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(1, 0, 0, 0, 0.964948, 0.262442, 0, -0.262442, 0.964948, 36.7858, 12.2337, -6.54133)
+
+[node name="grass14" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(1, 0, 0, 0, 0.856861, 0.515547, 0, -0.515547, 0.856861, 34.7976, 11.3428, -7.86538)
+
+[node name="grass15" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(1, 0, 0, 0, 0.999982, -0.00602129, 0, 0.00602129, 0.999982, 73.368, 14.223, -15.1741)
+
+[node name="grass16" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.852556, -0.00555544, -0.522607, 0.00205342, 0.999972, -0.00728004, 0.522633, 0.00513351, 0.852543, 101.476, 15.467, -5.99474)
+
+[node name="grass21" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.623554, 0.00461807, -0.781767, 0.0198269, 0.999567, 0.0217191, 0.781529, -0.029043, 0.623193, 131.231, 49.0416, -30.9331)
+
+[node name="grass23" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.604013, -0.214786, -0.767486, 0.156143, 0.976229, -0.150319, 0.781529, -0.029043, 0.623193, 217.803, 54.2997, -42.1256)
+
+[node name="grass24" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.938849, -0.00126487, -0.344327, -0.131423, 0.922973, -0.36173, 0.318262, 0.384862, 0.866366, 223.144, 54.2997, -26.7644)
+
+[node name="grass25" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.265498, -0.0616517, -0.962138, -0.206342, 0.971196, -0.119171, 0.941772, 0.23017, 0.245129, 222.039, 54.7106, -29.8843)
+
+[node name="grass22" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.0737717, -0.0287597, -0.99686, -0.0728461, 0.996758, -0.0341476, 0.994611, 0.0751365, 0.0714378, 133.706, 49.2496, -28.961)
+
+[node name="grass17" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.852556, -0.00555544, -0.522607, 0.00205342, 0.999972, -0.00728004, 0.522633, 0.00513351, 0.852543, 96.4566, 15.467, 4.71809)
+
+[node name="grass19" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.852556, -0.00555544, -0.522607, 0.0201824, 0.999548, 0.0222992, 0.522247, -0.0295588, 0.852282, 96.4566, 16.7162, 28.1661)
+
+[node name="grass20" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.546046, 0.00766342, -0.83772, 0.222731, 0.962642, 0.153988, 0.807604, -0.270671, 0.52394, 93.1061, 16.6221, 26.9584)
+
+[node name="grass18" parent="World/WorldGeometry/GrassCollection" instance=ExtResource("4_mnia5")]
+transform = Transform3D(0.383832, -0.273874, -0.881854, 0.274722, 0.945629, -0.174106, 0.88159, -0.175437, 0.438202, 93.8504, 15.0253, 2.14297)
 
 [node name="Checkpoints" type="Node" parent="World"]
 
