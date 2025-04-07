@@ -12,7 +12,7 @@ extends Area3D
 #to fix, recopy spring path by dragging the Spring node into the script path area (remove $)
 #Stores the path of the spring node 
 #so that overlaps_body() can check for the spring
-@onready var spring = get_node("../../../SpringStuff/TestSpring")
+@onready var spring = get_node("../../../SpringStuff/TestSpring")	#This path must be consistent across all scenes
 @onready var respawn_pos = global_position
 
 signal cp_pos(cp_position)

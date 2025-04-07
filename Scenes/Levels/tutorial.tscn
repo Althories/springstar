@@ -74,6 +74,15 @@ size = Vector3(393.94, 1, 383.523)
 
 [node name="Main" type="Node"]
 
+[node name="SpringStuff" type="Node" parent="."]
+
+[node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
+unique_name_in_owner = true
+transform = Transform3D(0.999959, 0, -0.00900578, 0, 1, 0, 0.00900578, 0, 0.999959, 0.554433, 6.85961, -0.501079)
+
+[node name="Compass" parent="SpringStuff" instance=ExtResource("5_iol1o")]
+transform = Transform3D(0.999959, 0, -0.00900578, 0, 1, 0, 0.00900578, 0, 0.999959, 0.554433, 6.77291, -0.501079)
+
 [node name="Dialogue" type="Node" parent="."]
 script = SubResource("GDScript_sghjv")
 
@@ -168,14 +177,6 @@ shape = SubResource("BoxShape3D_0mdj5")
 [node name="Gob" parent="World/NPC" instance=ExtResource("7_qvtqq")]
 transform = Transform3D(-0.169264, 0, -0.985571, 0, 1, 0, 0.985571, 0, -0.169264, 37.1751, 13.1072, 4.5374)
 
-[node name="SpringStuff" type="Node" parent="."]
-
-[node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
-transform = Transform3D(0.999959, 0, -0.00900578, 0, 1, 0, 0.00900578, 0, 0.999959, 0.554433, 6.85961, -0.501079)
-
-[node name="Compass" parent="SpringStuff" instance=ExtResource("5_iol1o")]
-transform = Transform3D(0.999959, 0, -0.00900578, 0, 1, 0, 0.00900578, 0, 0.999959, 0.554433, 6.77291, -0.501079)
-
 [node name="Misc" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Misc"]
@@ -212,11 +213,11 @@ texture_progress = ExtResource("5_68uyl")
 script = ExtResource("6_45db0")
 spring = NodePath("../../SpringStuff/TestSpring")
 
+[connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint_Spawn" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint1" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint2" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint3" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint4" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="destroy_spring" from="World/DeathZones/DeathZone" to="SpringStuff/TestSpring" method="_on_destroy_spring"]
-[connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="target_pos" from="Misc/ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]

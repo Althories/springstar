@@ -69,14 +69,6 @@ transform = Transform3D(-0.47521, 0, -0.879873, 0, 1, 0, 0.879873, 0, -0.47521, 
 [node name="npc_guario" parent="World/NPC" instance=ExtResource("2_7vggk")]
 transform = Transform3D(-1.73205, 0, 1, 0, 2, 0, -1, 0, -1.73205, 7.52757, 0, -13.9716)
 
-[node name="SpringStuff" type="Node" parent="World"]
-
-[node name="TestSpring" parent="World/SpringStuff" instance=ExtResource("4_354q8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -0.920718, 8.40217)
-
-[node name="Compass" parent="World/SpringStuff" instance=ExtResource("5_a1aht")]
-visible = false
-
 [node name="Misc" type="Node" parent="World"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World/Misc"]
@@ -109,7 +101,7 @@ fill_mode = 3
 texture_under = ExtResource("6_fvj0q")
 texture_progress = ExtResource("7_le338")
 script = ExtResource("8_gm05c")
-spring = NodePath("../../SpringStuff/TestSpring")
+spring = NodePath("../../../SpringStuff/TestSpring")
 metadata/_edit_use_anchors_ = true
 
 [node name="DeathZone" type="Area3D" parent="."]
@@ -120,6 +112,15 @@ script = ExtResource("11_7u17g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86999, -41.7173)
 shape = SubResource("BoxShape3D_gkxkl")
 
-[connection signal="target_pos" from="World/WorldGeometry/shipPart" to="World/SpringStuff/Compass" method="_on_ship_part_target_pos"]
-[connection signal="spring_pos" from="World/SpringStuff/TestSpring" to="World/SpringStuff/Compass" method="_on_test_spring_spring_pos"]
-[connection signal="destroy_spring" from="DeathZone" to="World/SpringStuff/TestSpring" method="_on_destroy_spring"]
+[node name="SpringStuff" type="Node" parent="."]
+
+[node name="TestSpring" parent="SpringStuff" instance=ExtResource("4_354q8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -0.920718, 8.40217)
+
+[node name="Compass" parent="SpringStuff" instance=ExtResource("5_a1aht")]
+visible = false
+
+[connection signal="target_pos" from="World/WorldGeometry/shipPart" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
+[connection signal="destroy_spring" from="DeathZone" to="SpringStuff/TestSpring" method="_on_destroy_spring"]
+[connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]

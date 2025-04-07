@@ -3,7 +3,7 @@ extends StaticBody3D
 #Connect dialogue_running script to _on_dialogue_running in Spring script
 
 @onready var Dialogue_Zone = get_node("Dialogue_Zone")
-@onready var spring = get_node("../../SpringStuff/TestSpring")
+@onready var spring = get_node("%TestSpring")
 
 var intro_played = false				#lazy imp to track when intro dialogue ends
 

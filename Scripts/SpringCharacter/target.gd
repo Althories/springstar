@@ -3,7 +3,7 @@ extends Node3D
 #2. Connect target_pos signal from target.gd to _on_ship_part_target_pos in compass.gd
 
 @onready var ship_area = get_node("Part/Ship_Area")
-@onready var spring = get_node("../../SpringStuff/TestSpring")
+@onready var spring = get_node("%TestSpring")
 signal target_pos(target_position)		#sends target position for compass to point to
 
 func _process(_delta: float) -> void:
