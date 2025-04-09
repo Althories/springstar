@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SpringStar"
-run/main_scene="res://Scenes/Levels/tutorial.tscn"
+run/main_scene="uid://bgisqgfujkne6"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
 config/icon="res://Assets/UI/sillyguy.png"
@@ -66,6 +66,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://Art/": "pink",
 "res://Assets/": "red",
 "res://Assets/Models/": "purple",
 "res://Assets/Music/": "blue",
