@@ -43,19 +43,19 @@ signal charging										#for use in charge UI
 signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)	#for positioning compass above spring
 
 func _ready():
-	print("spring_script.gd _ready")
+	#print("spring_script.gd _ready")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	# Locks mouse to window and hides
 	animationTree.active = true
 
 func _input(event):
-	print("spring_script.gd _input")
+	#print("spring_script.gd _input")
 	if event is InputEventMouseMotion:
 		rotate_camera(event)
 		rotate_spring(event)
 	handle_button_debug_inputs(event)
 
 func rotate_camera(event) -> void: # Camera control from mouse motion
-	print("spring_script.gd rotate_camera")
+	#print("spring_script.gd rotate_camera")
 	camPivot.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 	camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
 	if camPivot.rotation.x >= deg_to_rad(CAMERA_LOW_BOUND_DEGREES):
@@ -64,11 +64,11 @@ func rotate_camera(event) -> void: # Camera control from mouse motion
 		camera_offset.y = 0
 
 func rotate_spring(event) -> void:
-	print("spring_script.gd rotate_spring")
+	#print("spring_script.gd rotate_spring")
 	rotate_y(deg_to_rad(-event.relative.x * mouse_sens)) # rotates the spring itself
 
 func handle_button_debug_inputs(event) -> void:
-	print("spring_script.gd handle_button_debug_inputs")
+	#print("spring_script.gd handle_button_debug_inputs")
 	if event.is_action_pressed("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			# Mouse made visible, can move outside game window
 	if event.is_action_pressed("reset"):
@@ -77,7 +77,7 @@ func handle_button_debug_inputs(event) -> void:
 		get_tree().change_scene_to_file("res://Scenes/Levels/hub.tscn")
 
 func _process(_delta) -> void:
-	print("spring_script.gd _process")
+	#print("spring_script.gd _process")
 	move_camera()
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		# Locks mouse to window
@@ -85,7 +85,7 @@ func _process(_delta) -> void:
 	spring_pos.emit(position.x, position.y, position.z)
 	
 func move_camera() -> void:
-	print("spring_script.gd move_camera")
+	#print("spring_script.gd move_camera")
 	'''Uses lerp to move the camera. The camera will only fall if the spring falls more than a certain 
 	distance from the peak of its height.
 	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
@@ -115,7 +115,7 @@ func move_camera() -> void:
 	$CamPivot/SpringArm3D.global_position = camera_target #+ camera_offset
 
 func _physics_process(delta: float) -> void:
-	print("spring_script.gd _physics_process")
+	#print("spring_script.gd _physics_process")
 	'''For anything to do with physics in the world'''
 	var input = ""
 	input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -152,23 +152,35 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()										# NECESSARY for this stuff to actually all work
 	
 func ground_rotate_spring() -> void:
-	print("spring_script.gd ground_rotate_spring")
+	#print("spring_script.gd ground_rotate_spring")
 	'''Rotate (tilt) spring in direction of input.'''
 	# TODO: Make accurate to expected velocity
 	var rotation_previous = springModel.rotation # to be used to smooth rotation
 	springModel.rotation = Vector3.ZERO
+	#$SpringCollision.rotation = Vector3.ZERO
 	springModel.global_rotate(Vector3.FORWARD, direction.x)
 	springModel.global_rotate(Vector3.RIGHT, direction.z)
+	springModel.rotation = lerp(rotation_previous, springModel.rotation, 0.5)
+	#$SpringCollision.global_rotate(Vector3.FORWARD, direction.x)
+	#$SpringCollision.global_rotate(Vector3.RIGHT, direction.z)
 
 func air_rotate_spring() -> void:
-	print("spring_script.gd air_rotate_spring")
+	#print("spring_script.gd air_rotate_spring")
 	'''Rotate spring in direction of movement.'''
-	var rotation_previous = springModel.rotation # to be used to smooth rotation
 	springModel.rotation = Vector3.ZERO
+	#$SpringCollision.rotation = Vector3.ZERO
+	#$aimIndicator.top_level = true
+	#$aimIndicator.position = velocity.normalized() + position
+	var airTarget := Vector3.FORWARD.signed_angle_to((velocity * Vector3(1,0,1)).normalized(), Vector3.UP)
+	#print(airTarget)
+	springModel.global_rotate(Vector3.RIGHT, (velocity.normalized().y - 1) * 1.6)
+	#$SpringCollision.global_rotate(Vector3.RIGHT, (velocity.normalized().y - 1) * 1.6)
+	springModel.global_rotate(Vector3.UP, airTarget)
+	#$SpringCollision.global_rotate(Vector3.UP, airTarget)
 
 #functions block ----------
 func air_move_spring() -> void:
-	print("spring_script.gd air_move_spring")
+	#print("spring_script.gd air_move_spring")
 	'''Uses built-in methodology to apply horizontal influence to the spring. Because it is creating
 	this velocity from nowhere, it is additive to midair spring velocity.'''
 	velocity.x += direction.x * AIR_SPEED
@@ -176,13 +188,13 @@ func air_move_spring() -> void:
 
 
 func charge() -> void:
-	print("spring_script.gd charge")
+	#print("spring_script.gd charge")
 	'''Charge function for spring jump. Accumulates charge velocity based on charge rate'''
 	charge_velocity += CHARGE_JUMP_RATE
 	charging.emit() #ui signal
 
 func charge_jump() -> void:
-	print("spring_script.gd charge_jump")
+	#print("spring_script.gd charge_jump")
 	'''Execute a charge jump in the direction the camera is facing. Takes a vector pointing 
 	in the negative z direction with a vertical component dependent on camera rotation and 
 	rotates it around a vector pointing straight up by the rotation of the player model.'''
@@ -205,7 +217,7 @@ func charge_jump() -> void:
 	charge_velocity = 0 						# Reset charge velocity upon jump
 	
 func ground_move_spring() -> void:
-	print("spring_script.gd ground_move_spring")
+	#print("spring_script.gd ground_move_spring")
 	'''Uses built-in methodology for recording and applying horizontal movement during ground bounce'''
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -223,13 +235,13 @@ func ground_move_spring() -> void:
 		
 	
 func reset() -> void:
-	print("spring_script.gd reset")
+	#print("spring_script.gd reset")
 	'''Reset player to state on startup'''
 	position = reset_position 		#Reset position based off most recent checkpoint
 	velocity = Vector3(0, 0, 0)			#Reset velocity
 	
 func animate(input: String) -> void:
-	print("spring_script.gd animate")
+	#print("spring_script.gd animate")
 	if(input == "bounce"): #Bounce
 		animationTree["parameters/CoilSpeed/scale"] = COIL_SPEED
 		animationTree["parameters/Coils/conditions/coil"] = true
@@ -281,10 +293,10 @@ func animate(input: String) -> void:
 
 #signals block -----------
 func _on_cp_pos(cp_position: Variant) -> void:
-	print("spring_script.gd _on_cp_pos")
+	#print("spring_script.gd _on_cp_pos")
 	reset_position = cp_position			#sets new reset position based on checkpoint contact
 
 func _on_destroy_spring() -> void:
-	print("spring_script.gd _on_destroy_spring")
+	#print("spring_script.gd _on_destroy_spring")
 	reset()									#force spring to return to last reached checkpoint
 		

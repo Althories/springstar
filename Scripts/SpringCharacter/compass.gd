@@ -12,7 +12,7 @@ func _ready():
 	visible = false						#hides compass on startup
 
 func _process(_delta: float) -> void:
-	print("compass.gd _process")
+	#print("compass.gd _process")
 	#Determine whether compass is shown to the player from input
 	if Input.is_action_pressed("show_compass"):
 		visible = true
@@ -25,9 +25,9 @@ func _process(_delta: float) -> void:
 	compass.rotation_degrees.y = rad_to_deg(angle_y) - 90		#rotate compass mesh accordingly
 	
 func _on_ship_part_target_pos(target_position: Variant) -> void:
-	print("compass.gd _on_ship_part_target_pos")
+	#print("compass.gd _on_ship_part_target_pos")
 	target = target_position
 
 func _on_test_spring_spring_pos(spring_pos_x: Variant, spring_pos_y: Variant, spring_pos_z: Variant) -> void:
-	print("compass.gd _on_test_spring_spring_pos")
+	#print("compass.gd _on_test_spring_spring_pos")
 	position = Vector3(spring_pos_x, spring_pos_y + 1.5, spring_pos_z)
