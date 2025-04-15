@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
 [ext_resource type="PackedScene" uid="uid://cqtfjuiepk7oe" path="res://Scenes/NPCs/npc_gob.tscn" id="7_qvtqq"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Music/Dream_Meadow_Ena.mp3" id="8_mnia5"]
-[ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="12_i0v1t"]
+[ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="12_i0v1t"]
 
 [sub_resource type="GDScript" id="GDScript_sghjv"]
 script/source = "extends Node
