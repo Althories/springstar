@@ -1,5 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dg6fl5w8jynmo"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dg6fl5w8jynmo"]
 
+[ext_resource type="Texture2D" uid="uid://cdfnxhovw3p1s" path="res://Assets/Textures/Gas Station/gasStation.png" id="1_3f8y2"]
 [ext_resource type="Texture2D" uid="uid://digdugt0g53oe" path="res://Assets/Textures/Gas Station/brickNormal.jpg" id="1_7lemw"]
 
 [resource]
@@ -7,5 +8,6 @@ resource_name = "GasBeamChunck"
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.447057, 0.62353, 0.729412, 1)
+albedo_texture = ExtResource("1_3f8y2")
 normal_enabled = true
 normal_texture = ExtResource("1_7lemw")
