@@ -8,6 +8,9 @@ extends Area3D
 #--To edit the checkpoint collision, right click on the Area3D and select
 #'Make Local', then edit collision bounds
 
+#The cp_label signal will send a signal to the checkpoint text/icon to appear.
+#Connect it to the Checkpoint Labl node in the scene.
+
 #warning: Messing with the tree hierarchy above SpringStuff may break the path
 #to fix, recopy spring path by dragging the Spring node into the script path area (remove $)
 #Stores the path of the spring node 
@@ -16,6 +19,7 @@ extends Area3D
 @onready var respawn_pos = global_position
 
 signal cp_pos(cp_position)
+signal cp_label
 
 #func _ready() -> void:
 #	respawn_pos = global_position	#fetches objective position of checkpoint in world
@@ -23,3 +27,4 @@ signal cp_pos(cp_position)
 func _process(_delta: float) -> void:
 	if overlaps_body(spring):
 		cp_pos.emit(respawn_pos)
+		
