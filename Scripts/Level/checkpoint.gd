@@ -16,16 +16,18 @@ extends Area3D
 #Stores the path of the spring node 
 #so that overlaps_body() can check for the spring
 @onready var spring = get_node("../../../SpringStuff/TestSpring")	#This path must be consistent across all scenes
-@onready var respawn_pos = global_position
+@onready var respawn_pos = global_position		#Global position of the Checkpoint Area3D
 
-signal cp_pos(cp_position)
-signal cp_label
+var most_recent_pos = respawn_pos	#Initializes to be first checkpoint in level
 
-#func _ready() -> void:
-#	respawn_pos = global_position	#fetches objective position of checkpoint in world
+signal cp_pos(cp_position)		#Responsible for setting spring respawn position
+signal cp_label					#Respobsible for displaying UI checkpoint indicator
 	
 func _process(_delta: float) -> void:
 	if overlaps_body(spring):
+		if most_recent_pos != respawn_pos:	#If the checkpoint isn't the last checkpoint reached
+			cp_label.emit()					#Emit text indicator
 		cp_pos.emit(respawn_pos)
-		cp_label.emit()
+		most_recent_pos = respawn_pos	   #Updates after signal check
+		
 		
