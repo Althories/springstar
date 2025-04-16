@@ -80,7 +80,7 @@ size = Vector3(393.94, 1, 383.523)
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
 unique_name_in_owner = true
-transform = Transform3D(0.999959, 0, -0.00900578, 0, 1, 0, 0.00900578, 0, 0.999959, 0.554433, 6.85961, -0.501079)
+transform = Transform3D(-0.00900583, 0, -0.999959, 0, 1, 0, 0.999959, 0, -0.00900583, 0.554433, 6.85961, -0.501079)
 
 [node name="Compass" parent="SpringStuff" instance=ExtResource("5_iol1o")]
 transform = Transform3D(0.999959, 0, -0.00900578, 0, 1, 0, 0.00900578, 0, 0.999959, 0.554433, 6.77291, -0.501079)
