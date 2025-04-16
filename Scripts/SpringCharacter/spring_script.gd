@@ -17,6 +17,7 @@ const COIL_SPEED: float = 4							# Speed of coil animation
 @onready var camSpring: Node3D = $CamPivot/SpringArm3D
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
 @onready var animationTree: AnimationTree = $"Spring Model"/AnimationTree
+@onready var boingSound: AudioStreamPlayer = $BoingEffect
 @export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
 @export var joypad_sensitivity := 2.0
 @export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
@@ -233,3 +234,5 @@ func _on_cp_pos(cp_position: Variant) -> void:
 func _on_destroy_spring() -> void:
 	reset()									#force spring to return to last reached checkpoint
 		
+func playBoing() -> void:
+	boingSound.play()
