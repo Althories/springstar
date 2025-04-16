@@ -300,15 +300,12 @@ offset_bottom = 23.0
 text = "checkpoint reached!"
 script = ExtResource("13_sghjv")
 
+[connection signal="show_cp_label" from="SpringStuff/TestSpring" to="UI/checkpoint_label" method="_on_show_cp_label"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint_Spawn" to="SpringStuff/TestSpring" method="_on_cp_pos"]
-[connection signal="cp_label" from="World/Checkpoints/Checkpoint1" to="UI/checkpoint_label" method="_on_cp_label"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint1" to="SpringStuff/TestSpring" method="_on_cp_pos"]
-[connection signal="cp_label" from="World/Checkpoints/Checkpoint2" to="UI/checkpoint_label" method="_on_cp_label"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint2" to="SpringStuff/TestSpring" method="_on_cp_pos"]
-[connection signal="cp_label" from="World/Checkpoints/Checkpoint3" to="UI/checkpoint_label" method="_on_cp_label"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint3" to="SpringStuff/TestSpring" method="_on_cp_pos"]
-[connection signal="cp_label" from="World/Checkpoints/Checkpoint4" to="UI/checkpoint_label" method="_on_cp_label"]
 [connection signal="cp_pos" from="World/Checkpoints/Checkpoint4" to="SpringStuff/TestSpring" method="_on_cp_pos"]
 [connection signal="destroy_spring" from="World/DeathZones/DeathZone" to="SpringStuff/TestSpring" method="_on_destroy_spring"]
 [connection signal="target_pos" from="Misc/ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]

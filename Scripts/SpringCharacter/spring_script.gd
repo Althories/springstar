@@ -34,6 +34,7 @@ var rotationSpeed: float = 1						# Speed the rings rotate in the animation
 
 signal charging										#for use in charge UI
 signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)	#for positioning compass above spring
+signal show_cp_label
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	# Locks mouse to window and hides
@@ -225,7 +226,9 @@ func animate(input: String) -> void:
 
 #signals block -----------
 func _on_cp_pos(cp_position: Variant) -> void:
-	reset_position = cp_position			#sets new reset position based on checkpoint contact
+	if reset_position != cp_position:	#If reset position isn't current checkpoint:
+		show_cp_label.emit()			#Emit label text
+		reset_position = cp_position	#sets new reset position based on checkpoint contact
 
 func _on_destroy_spring() -> void:
 	reset()									#force spring to return to last reached checkpoint
