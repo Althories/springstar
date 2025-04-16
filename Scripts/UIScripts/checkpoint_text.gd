@@ -1,8 +1,7 @@
 extends Label
-#Shows visual indicator for reaching a checkpoint\
-#Todo: Prevent 'checkpoint reached' message from repeating on the same checkpoint
-#before reaching another checkpoint
-#To use, hook up signal from Spring Script to the function in here
+#Shows visual indicator for reaching a checkpoint
+#The cp_label signal will send a signal to the checkpoint text/icon to appear.
+#Connect Spring Script signal to this node
 
 func _ready():
 	hide()
