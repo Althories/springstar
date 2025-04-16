@@ -27,4 +27,5 @@ signal cp_label
 func _process(_delta: float) -> void:
 	if overlaps_body(spring):
 		cp_pos.emit(respawn_pos)
+		cp_label.emit()
 		
