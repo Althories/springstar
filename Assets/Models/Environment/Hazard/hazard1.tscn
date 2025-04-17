@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=4 uid="uid://dyyrtbobpetjt"]
+
+[ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="1_0bw3h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vl7pf"]
+resource_name = "Hazard_1"
+cull_mode = 2
+albedo_color = Color(0.17721, 0.17721, 0.17721, 1)
+metallic = 1.0
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1duk3"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAAAAAAAAAAAAAAAAQAAAAAAAgABAAAAAgAAAAAAAgADAAEAAQADAAAAAgAEAAMABAACAAAAAwAEAAAABAAAAAAAAwAAAAAA"),
+"name": "Hazard_1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("AAAAAAAAgD8AAACAAACAPwAAgL8AAIC/AACAvwAAgL8AAIC/AACAPwAAgL8AAIA/AACAvwAAgL8AAIA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5gbb5"]
+resource_name = "hazard_Cube"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("AAAgPwAAAD8AAGA/AACAPgAAYD8AAAA/AAAgPwAAgD4AAMA+AACAPgAAID8AAAAAAAAgPwAAgD4AAMA+AAAAAAAAwD4AAIA/AAAgPwAAQD8AACA/AACAPwAAwD4AAEA/AAAAPgAAAD8AAMA+AACAPgAAwD4AAAA/AAAAPgAAgD4AAMA+AAAAPwAAID8AAIA+AAAgPwAAAD8AAMA+AACAPgAAwD4AAEA/AAAgPwAAAD8AACA/AABAPwAAwD4AAAA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_vl7pf"),
+"name": "Hazard_1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAACAPwAAgL8AAIA/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAACAvwAAgL8AAIA/AACAvwAAgL8AAIA/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAPwAAgL8AAIA/AACAPwAAgL8AAIC/AACAvwAAgL8AAIA/AACAPwAAgL8AAIC/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAACAPwAAgL8AAIA/AACAvwAAgL8AAIC/AAAAAAAAgD8AAACAAAAAAAAAgD8AAACAAACAPwAAgL8AAIC//3///////7//f///////v/9///////+//3///////7//f6qq/7//7/9/qqr/v//v/3+qqv///z//f6qq/7//76oqqqr/n//fqiqqqv+f/9+qKqqq////v6oqqqr/n//f/38AAP///7//fwAA////v/9/AAD///+//38AAP///79U1aqq/z//71TVqqr/P//vVNWqqv///79U1aqq/z//71TV////X//fVNX///9f/99U1f//////v1TV////X//f")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1duk3")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0bw3h"]
+resource_local_to_scene = true
+points = PackedVector3Array(0, 1, 0, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1)
+
+[node name="hazard" type="Area3D"]
+disable_mode = 1
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_0bw3h")
+
+[node name="Hazard_Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_5gbb5")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_0bw3h")
