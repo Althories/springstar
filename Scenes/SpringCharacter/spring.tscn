@@ -11,6 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://df87d5rkhl1ja" path="res://Assets/Models/springCapsule.res" id="6_yrkbn"]
 [ext_resource type="PackedScene" uid="uid://beusog6xfcvy8" path="res://Scenes/SpringCharacter/mweep.tscn" id="7_7m3e7"]
 [ext_resource type="Material" uid="uid://bs141livjv1yu" path="res://Assets/Textures/Spring/Rings.tres" id="8_re8aa"]
+[ext_resource type="Script" uid="uid://chvxld3kr0j54" path="res://Scripts/SpringCharacter/spring_camera.gd" id="12_re8aa"]
 [ext_resource type="AudioStream" uid="uid://canx41klmejrr" path="res://Assets/Sounds/boing.mp3" id="12_re8aa"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sonc5"]
@@ -3534,6 +3535,7 @@ margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("12_re8aa")
 
 [node name="aimIndicator" type="MeshInstance3D" parent="."]
 visible = false
