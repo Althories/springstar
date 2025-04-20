@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://cusuavcx76vmy"]
+[gd_scene load_steps=60 format=4 uid="uid://cusuavcx76vmy"]
 
 [ext_resource type="Script" uid="uid://cg427ow8qy6he" path="res://Scripts/SpringCharacter/spring_script.gd" id="1_en6m1"]
 [ext_resource type="Animation" uid="uid://d1sm5hlk3xvi0" path="res://Assets/Animations/Coil.res" id="3_2q6um"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://beusog6xfcvy8" path="res://Scenes/SpringCharacter/mweep.tscn" id="7_7m3e7"]
 [ext_resource type="Material" uid="uid://bs141livjv1yu" path="res://Assets/Textures/Spring/Rings.tres" id="8_re8aa"]
 [ext_resource type="Script" uid="uid://chvxld3kr0j54" path="res://Scripts/SpringCharacter/spring_camera.gd" id="12_re8aa"]
-[ext_resource type="AudioStream" uid="uid://canx41klmejrr" path="res://Assets/Sounds/boing.mp3" id="12_re8aa"]
+[ext_resource type="AudioStream" uid="uid://canx41klmejrr" path="res://Assets/Sounds/boing.mp3" id="13_sonc5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sonc5"]
 resource_name = "springEdit_Circle_004"
@@ -3542,6 +3542,6 @@ visible = false
 mesh = SubResource("SphereMesh_t2par")
 
 [node name="BoingEffect" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_re8aa")
+stream = ExtResource("13_sonc5")
 
 [editable path="Spring Model/Capsule/Mweep"]
