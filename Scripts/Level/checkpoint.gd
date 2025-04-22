@@ -12,13 +12,10 @@ extends Area3D
 #to fix, recopy spring path by dragging the Spring node into the script path area (remove $)
 #Stores the path of the spring node 
 #so that overlaps_body() can check for the spring
-@onready var spring = get_node("../../../SpringStuff/TestSpring")	#This path must be consistent across all scenes
-@onready var respawn_pos = global_position
+@onready var spring = get_node("%TestSpring")	#This path must be consistent across all scenes
+@onready var respawn_pos = global_position		#Global position of the Checkpoint Area3D
 
-signal cp_pos(cp_position)
-
-#func _ready() -> void:
-#	respawn_pos = global_position	#fetches objective position of checkpoint in world
+signal cp_pos(cp_position)		#Responsible for setting spring respawn position
 	
 func _process(_delta: float) -> void:
 	if overlaps_body(spring):

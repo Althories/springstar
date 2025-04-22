@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c16f5eyiwp5jd"]
+
+[ext_resource type="Texture2D" uid="uid://ds4ucc6ifgn8f" path="res://Assets/Textures/Gas Station/GasRoof.png" id="1_qsrvy"]
+
+[resource]
+resource_name = "GasRoof"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_qsrvy")
+metallic = 0.5
+metallic_specular = 0.66
+roughness = 0.4

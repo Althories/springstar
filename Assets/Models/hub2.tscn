@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4cs58ba7obbl"]
+[gd_scene load_steps=8 format=3 uid="uid://c4cs58ba7obbl"]
 
 [ext_resource type="PackedScene" uid="uid://fv4fqu6f2sc1" path="res://Assets/Models/hub1.glb" id="1_3yb7t"]
+[ext_resource type="PackedScene" uid="uid://dv8h4hbagx6gl" path="res://Scenes/Scene Props/gas_station.tscn" id="2_48xwx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ln2xh"]
 albedo_color = Color(0.93, 0.3348, 0.3844, 1)
@@ -51,5 +52,8 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hub1/Float/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xnoyh")
+
+[node name="gas station" parent="." instance=ExtResource("2_48xwx")]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -8.51021, -0.0743846, 7.11451)
 
 [editable path="hub1"]

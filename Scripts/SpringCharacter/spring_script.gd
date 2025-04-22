@@ -17,6 +17,7 @@ const COIL_SPEED: float = 4							# Speed of coil animation
 @onready var camSpring: Node3D = $CamPivot/SpringArm3D
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
 @onready var animationTree: AnimationTree = $"Spring Model"/AnimationTree
+@onready var boingSound: AudioStreamPlayer = $BoingEffect
 @export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
 @export var joypad_sensitivity := 2.0
 @export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
@@ -34,6 +35,7 @@ var rotationSpeed: float = 1						# Speed the rings rotate in the animation
 
 signal charging										#for use in charge UI
 signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)	#for positioning compass above spring
+signal show_cp_label
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	# Locks mouse to window and hides
@@ -227,8 +229,12 @@ func animate(input: String) -> void:
 
 #signals block -----------
 func _on_cp_pos(cp_position: Variant) -> void:
-	reset_position = cp_position			#sets new reset position based on checkpoint contact
+	if reset_position != cp_position:	#If reset position isn't current checkpoint:
+		show_cp_label.emit()			#Emit label text
+		reset_position = cp_position	#sets new reset position based on checkpoint contact
 
 func _on_destroy_spring() -> void:
 	reset()									#force spring to return to last reached checkpoint
 		
+func playBoing() -> void:
+	boingSound.play()
