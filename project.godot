@@ -54,10 +54,14 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
-layout/style_list=["res://addons/dialogic/!Project/Styles/default_style.tres"]
+layout/style_list=["res://addons/dialogic/!Project/Styles/default_style.tres", "res://Assets/UI/dialogueUI.tres"]
 layout/default_style="res://addons/dialogic/!Project/Styles/default_style.tres"
 variables={}
 glossary/default_case_sensitive=true
+
+[display]
+
+window/size/mode=3
 
 [editor_plugins]
 
@@ -210,6 +214,11 @@ scene_tutorial={
 scene_hub={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
+]
+}
+scene_title={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":74,"key_label":0,"unicode":106,"location":0,"echo":false,"script":null)
 ]
 }
 

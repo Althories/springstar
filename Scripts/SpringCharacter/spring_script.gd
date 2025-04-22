@@ -53,6 +53,8 @@ func _input(event):
 		get_tree().change_scene_to_file("res://Scenes/Levels/hub.tscn")
 	if event.is_action_pressed("scene_tutorial"):
 		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial.tscn")
+	if event.is_action_pressed("scene_title"):
+		get_tree().change_scene_to_file("res://Scenes/UI/titlescreen.tscn")
 		
 func _process(_delta) -> void:
 	move_camera()
