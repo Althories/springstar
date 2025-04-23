@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cr7kraxkxnhxq"]
+[gd_scene load_steps=32 format=3 uid="uid://cr7kraxkxnhxq"]
 
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
 [ext_resource type="PackedScene" uid="uid://cdcbq8kwhuql0" path="res://Assets/Models/tutorialmodel.tscn" id="3_sghjv"]
@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Sounds/Dream_Meadow_Ena.mp3" id="8_mnia5"]
 [ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="12_i0v1t"]
 [ext_resource type="Script" uid="uid://c34vn632s41b6" path="res://Scripts/UIScripts/checkpoint_text.gd" id="13_sghjv"]
+[ext_resource type="Script" uid="uid://darp8oyxg6yl6" path="res://Scripts/UIScripts/map.gd" id="16_35mx6"]
+[ext_resource type="Texture2D" uid="uid://c8lkgepahfi15" path="res://Assets/UI/Minimaps/tutorial.png" id="17_ku8a2"]
+[ext_resource type="Texture2D" uid="uid://bh2hy5eeywgfw" path="res://Assets/UI/Minimaps/character.png" id="18_ku8a2"]
 
 [sub_resource type="GDScript" id="GDScript_sghjv"]
 script/source = "extends Node
@@ -306,6 +309,25 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "checkpoint reached!"
 script = ExtResource("13_sghjv")
+
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("16_35mx6")
+character = NodePath("../SpringStuff/TestSpring")
+
+[node name="background" type="ColorRect" parent="Map"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.713726, 0.6, 0.811765, 0.196078)
+
+[node name="map" type="Sprite2D" parent="Map/background"]
+position = Vector2(362, 396)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("17_ku8a2")
+offset = Vector2(322, -95)
+
+[node name="character" type="Sprite2D" parent="Map/background/map"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("18_ku8a2")
 
 [connection signal="show_cp_label" from="SpringStuff/TestSpring" to="UI/checkpoint_label" method="_on_show_cp_label"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]

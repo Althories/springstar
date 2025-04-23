@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=19 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
+[ext_resource type="ArrayMesh" uid="uid://dxmolapqv02pc" path="res://Assets/Models/starParticle.obj" id="10_gkxkl"]
 [ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="11_7u17g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l6o3x"]
@@ -28,6 +29,15 @@ sky = SubResource("Sky_edd6l")
 [sub_resource type="BoxShape3D" id="BoxShape3D_gkxkl"]
 resource_local_to_scene = true
 size = Vector3(700, 1, 700)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mdj5"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0.639216, 1)
+billboard_keep_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35mx6"]
+shading_mode = 0
+albedo_color = Color(0.599439, 0.497711, 0.00407744, 1)
 
 [node name="Hub" type="Node3D"]
 
@@ -112,6 +122,24 @@ script = ExtResource("11_7u17g")
 [node name="DeathZone_Col" type="CollisionShape3D" parent="DeathZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86999, -41.7173)
 shape = SubResource("BoxShape3D_gkxkl")
+
+[node name="MapSCer" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="MapSCer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 500, -40)
+projection = 1
+size = 662.024
+
+[node name="Star" type="MeshInstance3D" parent="MapSCer"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 231.202, 55.049, -39.3542)
+mesh = ExtResource("10_gkxkl")
+skeleton = NodePath("../../Misc")
+surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
+
+[node name="StarOutline" type="MeshInstance3D" parent="MapSCer/Star"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -0.001, 0)
+mesh = ExtResource("10_gkxkl")
+surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
 
 [node name="SpringStuff" type="Node" parent="."]
 
