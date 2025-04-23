@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=22 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
 [ext_resource type="ArrayMesh" uid="uid://dxmolapqv02pc" path="res://Assets/Models/starParticle.obj" id="10_gkxkl"]
 [ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="11_7u17g"]
+[ext_resource type="Script" uid="uid://darp8oyxg6yl6" path="res://Scripts/UIScripts/map.gd" id="13_2r7h2"]
+[ext_resource type="Texture2D" uid="uid://8tl4fjjiap8n" path="res://Assets/UI/Minimaps/hub.png" id="14_baf7d"]
+[ext_resource type="Texture2D" uid="uid://bh2hy5eeywgfw" path="res://Assets/UI/Minimaps/character.png" id="15_me45b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l6o3x"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -123,24 +126,6 @@ script = ExtResource("11_7u17g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86999, -41.7173)
 shape = SubResource("BoxShape3D_gkxkl")
 
-[node name="MapSCer" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="MapSCer"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 500, -40)
-projection = 1
-size = 662.024
-
-[node name="Star" type="MeshInstance3D" parent="MapSCer"]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 231.202, 55.049, -39.3542)
-mesh = ExtResource("10_gkxkl")
-skeleton = NodePath("../../Misc")
-surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
-
-[node name="StarOutline" type="MeshInstance3D" parent="MapSCer/Star"]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, -0.001, 0)
-mesh = ExtResource("10_gkxkl")
-surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
-
 [node name="SpringStuff" type="Node" parent="."]
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("4_354q8")]
@@ -149,6 +134,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -0.920718, 8.40217)
 
 [node name="Compass" parent="SpringStuff" instance=ExtResource("5_a1aht")]
 visible = false
+
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("character")]
+script = ExtResource("13_2r7h2")
+character = NodePath("../SpringStuff/TestSpring")
+POS_SCALE = 1.0
+
+[node name="background" type="ColorRect" parent="Map"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.713726, 0.6, 0.811765, 0.196078)
+
+[node name="map" type="Sprite2D" parent="Map/background"]
+position = Vector2(564.697, 367.931)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("14_baf7d")
+offset = Vector2(-1.697, -39.931)
+
+[node name="character" type="Sprite2D" parent="Map/background/map"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_me45b")
+
+[node name="MapSCer" type="Node3D" parent="."]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="MapSCer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 500, -40)
+visible = false
+projection = 1
+size = 662.024
+
+[node name="Star" type="MeshInstance3D" parent="MapSCer"]
+transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, -97.5566, 33.6117, 32.3623)
+visible = false
+mesh = ExtResource("10_gkxkl")
+skeleton = NodePath("../../Misc")
+surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
+
+[node name="StarOutline" type="MeshInstance3D" parent="MapSCer/Star"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, -0.001, 0)
+visible = false
+mesh = ExtResource("10_gkxkl")
+surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
 
 [connection signal="target_pos" from="World/WorldGeometry/shipPart" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
 [connection signal="destroy_spring" from="DeathZone" to="SpringStuff/TestSpring" method="_on_destroy_spring"]

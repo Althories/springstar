@@ -5,8 +5,7 @@ extends Node2D
 @onready var charCursor: Sprite2D = $background/map/character
 
 @export var character: CharacterBody3D
-
-const POS_SCALE = 3.2
+@export var POS_SCALE = 3.2
 
 func _ready() -> void:
 	mapBG.visible = false
