@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm2vengclarua"]
+
+[ext_resource type="Script" uid="uid://xar024q0rnk8" path="res://Scripts/UIScripts/controlScreen.gd" id="1_0pffg"]
+[ext_resource type="LabelSettings" uid="uid://cw1ggg1mn87ra" path="res://Assets/UI/controlLabelSettings.tres" id="2_181pv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gjlgb"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0pffg")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.705882, 0.67451, 0.886275, 0.819608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Controls!"
+label_settings = SubResource("LabelSettings_gjlgb")
+horizontal_alignment = 1
+
+[node name="spacing1" type="Control" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Action" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move
+Charge Jump
+Compass
+Interact
+Map
+FOV Up
+FOV Down"
+label_settings = ExtResource("2_181pv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="spacing" type="Control" parent="Background/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Control" type="Label" parent="Background/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W / A / S / D
+Space
+Right Click / Tab
+Left Click / E
+Shift / M
+1
+2"
+label_settings = ExtResource("2_181pv")
+vertical_alignment = 1
+
+[node name="spacing2" type="Control" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Graphic" type="TextureRect" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
