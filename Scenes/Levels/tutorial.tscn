@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
 [ext_resource type="PackedScene" uid="uid://cqtfjuiepk7oe" path="res://Scenes/NPCs/npc_gob.tscn" id="7_qvtqq"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Sounds/Dream_Meadow_Ena.mp3" id="8_mnia5"]
-[ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="12_i0v1t"]
+[ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="12_i0v1t"]
 [ext_resource type="Script" uid="uid://c34vn632s41b6" path="res://Scripts/UIScripts/checkpoint_text.gd" id="13_sghjv"]
 [ext_resource type="Script" uid="uid://darp8oyxg6yl6" path="res://Scripts/UIScripts/map.gd" id="16_35mx6"]
 [ext_resource type="Texture2D" uid="uid://c8lkgepahfi15" path="res://Assets/UI/Minimaps/tutorial.png" id="17_ku8a2"]
