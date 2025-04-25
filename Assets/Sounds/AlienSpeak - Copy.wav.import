@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bd6nuxhhnal4y"
+path="res://.godot/imported/AlienSpeak - Copy.wav-fc27a6dd67e5cd98ee0ac2ffe682fe51.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/AlienSpeak - Copy.wav"
+dest_files=["res://.godot/imported/AlienSpeak - Copy.wav-fc27a6dd67e5cd98ee0ac2ffe682fe51.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -44,7 +44,9 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_ebnta"]
 script = ExtResource("1_rourv")
 scene = ExtResource("6_nel0o")
-overrides = {}
+overrides = {
+"sounds_volume": "5.0"
+}
 
 [sub_resource type="Resource" id="Resource_lfle8"]
 script = ExtResource("1_rourv")
@@ -72,4 +74,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("1_rourv")]([])
-metadata/_latest_layer = "12"
+metadata/_latest_layer = "14"
