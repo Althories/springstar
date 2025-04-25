@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=17 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Sounds/Dream_Meadow_Ena.mp3" id="3_3dsna"]
 [ext_resource type="PackedScene" uid="uid://cgr2sksawkhmn" path="res://Assets/Models/Environment/grass_3_bunch.tscn" id="3_a1aht"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="4_354q8"]
+[ext_resource type="PackedScene" uid="uid://m156s4k3gw8f" path="res://Assets/Models/moving_platform.tscn" id="4_gkxkl"]
 [ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="4_ylstq"]
 [ext_resource type="PackedScene" uid="uid://c50bejtvv072c" path="res://Scenes/SpringCharacter/compass.tscn" id="5_a1aht"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
@@ -64,6 +65,12 @@ transform = Transform3D(-0.073186, 0, -0.997318, 0, 1, 0, 0.997318, 0, -0.073186
 
 [node name="grass5" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
 transform = Transform3D(-0.47521, 0, -0.879873, 0, 1, 0, 0.879873, 0, -0.47521, -17.8617, -1, -1.76097)
+
+[node name="plat1" parent="World/WorldGeometry" instance=ExtResource("4_gkxkl")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78.9156, 1.41684, -56.081)
+
+[node name="movingPlatform" parent="World/WorldGeometry" instance=ExtResource("4_gkxkl")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 100.879, 22.1071, -83.0444)
 
 [node name="NPC" type="Node" parent="World"]
 
