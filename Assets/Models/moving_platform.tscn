@@ -54,10 +54,12 @@ _data = {
 [node name="movingPlatform" type="Node3D"]
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1.49006e-08, 0.999986, -0.00246897, 0.015547, -0.0024687, -0.999852, -0.999843, -3.83701e-05, -0.0155471, -0.0065968, 0, -0.0383063)
+transform = Transform3D(1.49006e-08, 0.999986, -0.00246896, 0.015547, -0.0024687, -0.999852, -0.999843, -3.83701e-05, -0.0155471, -0.0065968, 0, -0.0383063)
+collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
 transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0)
+layers = 3
 mesh = SubResource("BoxMesh_bx3am")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
@@ -68,7 +70,7 @@ shape = SubResource("BoxShape3D_i0jxb")
 curve = SubResource("Curve3D_2dfb0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1.49006e-08, 0.999986, -0.00246897, 0.015547, -0.0024687, -0.999852, -0.999843, -3.83701e-05, -0.0155471, -0.0065968, 0, -0.0383063)
+transform = Transform3D(1.49006e-08, 0.999986, -0.00246896, 0.015547, -0.0024687, -0.999852, -0.999843, -3.83701e-05, -0.0155471, -0.0065968, 0, -0.0383063)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
 remote_path = NodePath("../../../AnimatableBody3D")
