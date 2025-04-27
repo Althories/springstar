@@ -10,7 +10,7 @@ extends Node2D
 func _ready() -> void:
 	mapBG.visible = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_float) -> void:
 	charCursor.position = Vector2(character.position.x*POS_SCALE, character.position.z*POS_SCALE)
 	charCursor.rotation = -character.rotation.y
 	if Input.is_action_pressed("map"):
