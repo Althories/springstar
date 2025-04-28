@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dijxpskyhsvd7"]
+
+[ext_resource type="PackedScene" uid="uid://cko3xquuorlo0" path="res://Assets/Models/platform.glb" id="1_4vqve"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vqve"]
+albedo_color = Color(0.929412, 0.333333, 0.384314, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ktvb8"]
+data = PackedVector3Array(3.1519, -7.2682, -1.5037, -1.2214, -7.2682, 2.8695, -1.2214, -7.2682, -1.5037, 3.1519, -7.2682, -1.5037, 3.1519, -7.2682, 2.8695, -1.2214, -7.2682, 2.8695, 1.6898, -8.7173, 1.4074, -1.2214, -7.2682, 2.8695, 3.1519, -7.2682, 2.8695, 1.6898, -8.7173, 1.4074, 0.2407, -8.7173, 1.4074, -1.2214, -7.2682, 2.8695, 0.2407, -8.7173, -0.0417, 1.6898, -8.7173, 1.4074, 1.6898, -8.7173, -0.0417, 0.2407, -8.7173, -0.0417, 0.2407, -8.7173, 1.4074, 1.6898, -8.7173, 1.4074, 1.6898, -8.7173, -0.0417, 3.1519, -7.2682, 2.8695, 3.1519, -7.2682, -1.5037, 1.6898, -8.7173, -0.0417, 1.6898, -8.7173, 1.4074, 3.1519, -7.2682, 2.8695, 0.2407, -8.7173, -0.0417, 3.1519, -7.2682, -1.5037, -1.2214, -7.2682, -1.5037, 0.2407, -8.7173, -0.0417, 1.6898, -8.7173, -0.0417, 3.1519, -7.2682, -1.5037, 0.2407, -8.7173, 1.4074, -1.2214, -7.2682, -1.5037, -1.2214, -7.2682, 2.8695, 0.2407, -8.7173, 1.4074, 0.2407, -8.7173, -0.0417, -1.2214, -7.2682, -1.5037)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="platform" parent="." instance=ExtResource("1_4vqve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0305775, 0, -0.21422)
+
+[node name="Float" parent="platform" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_4vqve")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platform/Float" index="0"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform/Float/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ktvb8")
+
+[editable path="platform"]

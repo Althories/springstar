@@ -19,12 +19,22 @@
 },
 "style": "dialogueUI"
 },
-&"default_portrait": "",
+&"default_portrait": "guario",
 &"description": "",
 &"display_name": "Guario",
 &"mirror": false,
 &"nicknames": [""],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"guario": {
+"export_overrides": {
+"image": "\"res://Art/Screenshot 2025-04-28 102851.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+}
+},
 &"scale": 1.0
 }

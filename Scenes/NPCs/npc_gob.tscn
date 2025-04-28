@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwgt01gvwk5jl" path="res://Scripts/NPC/npc_gob.gd" id="1_kq141"]
 [ext_resource type="PackedScene" uid="uid://r4lkbvrs1wqu" path="res://Scenes/Levels/Spring_Zones/Dialogue_Zone/npc_dialogue_zone.tscn" id="2_kq141"]
-[ext_resource type="Texture2D" uid="uid://t4iyh0t8ftck" path="res://Assets/UI/placeholder_e.png" id="3_xhoe0"]
+[ext_resource type="Texture2D" uid="uid://c7rcr1pxoq8hg" path="res://Art/E.png" id="3_xhoe0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a0r42"]
 
