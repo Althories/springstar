@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv31o100pvi7h"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ba8vt"]
+top_radius = 1.8
+bottom_radius = 1.8
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vqpv7"]
+height = 0.2
+radius = 1.8
+
+[sub_resource type="Curve3D" id="Curve3D_2dfb0"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0065968, 0, -0.0383063, 0, 0, 0, 0, 0, 0, 0.913979, 0, -0.0639212, 0, 0, 0, 0, 0, 0, 1.91143, 0, -0.970698, 0, 0, 0, 0, 0, 0, 2.93911, 0, -1.99838, 0, 0, 0, 0, 0, 0, 2.96934, 0, -3.02606, 0, 0, 0, 0, 0, 0, 2.93911, 0, -3.99329, 0, 0, 0, 0, 0, 0, 1.97188, 0, -5.02097, 0, 0, 0, 0, 0, 0, 0.944206, 0, -5.9882, 0, 0, 0, 0, 0, 0, -0.0532492, 0, -5.9882, 0, 0, 0, 0, 0, 0, -1.02048, 0, -5.9882, 0, 0, 0, 0, 0, 0, -1.98771, 0, -5.02097, 0, 0, 0, 0, 0, 0, -3.01539, 0, -3.99329, 0, 0, 0, 0, 0, 0, -3.01539, 0, -3.14696, 0, 0, 0, 0, 0, 0, -3.01539, 0, -2.08906, 0, 0, 0, 0, 0, 0, -2.13884, 0, -1.00092, 0, 0, 0, 0, 0, 0, -0.990253, 0, -0.0639212),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
+
+[sub_resource type="Animation" id="Animation_do1su"]
+length = 16.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8, 16),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3xhmd"]
+resource_name = "move"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpm8m"]
+_data = {
+&"RESET": SubResource("Animation_do1su"),
+&"move": SubResource("Animation_3xhmd")
+}
+
+[node name="movingPlatform" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(0.999426, 0, 0.0312319, 0, 0.999989, 0, -0.0312319, 0, 0.999426, 2.95901, 0, -3.35645)
+collision_layer = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(0.3, 1.31134e-08, -2.62269e-08, -1.31134e-08, 0.3, 1.31134e-08, 2.62269e-08, -1.31134e-08, 0.3, 0, 0, 0)
+layers = 3
+mesh = SubResource("CylinderMesh_ba8vt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("CylinderShape3D_vqpv7")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_2dfb0")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.999426, 0, 0.0312319, 0, 0.999989, 0, -0.0312319, 0, 0.999426, 2.95901, 0, -3.35645)
+progress = 5.08219
+tilt_enabled = false
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
+remote_path = NodePath("../../../AnimatableBody3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tpm8m")
+}
+autoplay = "RESET"

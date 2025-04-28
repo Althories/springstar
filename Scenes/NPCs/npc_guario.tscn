@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://r4lkbvrs1wqu" path="res://Scenes/Levels/Spring_Zones/Dialogue_Zone/npc_dialogue_zone.tscn" id="1_bomu0"]
 [ext_resource type="Script" uid="uid://bhi86asy20wc" path="res://Scripts/NPC/npc_guario.gd" id="1_poxpw"]
 [ext_resource type="PackedScene" uid="uid://diacs2mwuahnl" path="res://Assets/Models/guariogon.glb" id="2_asquf"]
-[ext_resource type="Texture2D" uid="uid://t4iyh0t8ftck" path="res://Assets/UI/placeholder_e.png" id="4_usuir"]
+[ext_resource type="Texture2D" uid="uid://c7rcr1pxoq8hg" path="res://Art/E.png" id="4_usuir"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_poxpw"]
 size = Vector3(2, 2, 2)

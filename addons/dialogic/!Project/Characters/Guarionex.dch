@@ -17,11 +17,11 @@
 &"portraits": {
 "guario": {
 "export_overrides": {
-"image": "\"res://Assets/Models/guariogon_treesbw.webp\""
+"image": "\"res://Art/Screenshot 2025-04-28 102851.png\""
 },
 "mirror": false,
-"offset": Vector2(-160, 850),
-"scale": 3.0,
+"offset": Vector2(0, 0),
+"scale": 1.0,
 "scene": ""
 }
 },

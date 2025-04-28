@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=19 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://m156s4k3gw8f" path="res://Assets/Models/moving_platform.tscn" id="4_gkxkl"]
 [ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="4_ylstq"]
 [ext_resource type="PackedScene" uid="uid://c50bejtvv072c" path="res://Scenes/SpringCharacter/compass.tscn" id="5_a1aht"]
+[ext_resource type="PackedScene" uid="uid://cxpclef7036tg" path="res://Assets/Models/movehorizontal.tscn" id="6_a76ud"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
@@ -44,14 +45,17 @@ shadow_enabled = true
 
 [node name="WorldGeometry" type="Node" parent="World"]
 
-[node name="Node3D2" parent="World/WorldGeometry" instance=ExtResource("13_jkm8p")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 97.1922, 11.0189, -62.5648)
-
-[node name="Node3D" parent="World/WorldGeometry" instance=ExtResource("1_8cquh")]
+[node name="HUB" parent="World/WorldGeometry" instance=ExtResource("1_8cquh")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="shipPart" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.7928, 36.1757, 32.0978)
+
+[node name="shipPart2" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.117, 110.939, -116.425)
+
+[node name="shipPart3" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9698, 11.9214, 29.1161)
 
 [node name="Grasses" type="Node3D" parent="World/WorldGeometry"]
 
@@ -70,20 +74,48 @@ transform = Transform3D(-0.073186, 0, -0.997318, 0, 1, 0, 0.997318, 0, -0.073186
 [node name="grass5" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
 transform = Transform3D(-0.47521, 0, -0.879873, 0, 1, 0, 0.879873, 0, -0.47521, -17.8617, -1, -1.76097)
 
-[node name="plat1" parent="World/WorldGeometry" instance=ExtResource("4_gkxkl")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78.9156, 1.41684, -56.081)
+[node name="movingPlats" type="Node3D" parent="World/WorldGeometry"]
 
-[node name="movingPlatform" parent="World/WorldGeometry" instance=ExtResource("4_gkxkl")]
+[node name="movingPlatform2" parent="World/WorldGeometry/movingPlats" instance=ExtResource("6_a76ud")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -106.951, 11.1139, -51.749)
+
+[node name="movingPlatform3" parent="World/WorldGeometry/movingPlats" instance=ExtResource("6_a76ud")]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -114.554, 13, -93.395)
+
+[node name="movingPlatform5" parent="World/WorldGeometry/movingPlats" instance=ExtResource("4_gkxkl")]
+transform = Transform3D(-4, 3.49691e-07, 0, -3.49691e-07, -4, 0, 0, 0, 4, -79.5622, 53.959, -72.2236)
+
+[node name="movingPlatform6" parent="World/WorldGeometry/movingPlats" instance=ExtResource("6_a76ud")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -7.47198, 96.4488, -100.396)
+
+[node name="movingPlatform7" parent="World/WorldGeometry/movingPlats" instance=ExtResource("6_a76ud")]
+transform = Transform3D(2.1913, 0, -3.34637, 0, 4, 0, 3.34637, 0, 2.1913, -102.908, 8.02679, 75.4042)
+
+[node name="movingPlatform" parent="World/WorldGeometry/movingPlats" instance=ExtResource("4_gkxkl")]
 transform = Transform3D(4, 0, 0, 0, -4, 3.49691e-07, 0, -3.49691e-07, -4, 100.569, 31.6029, -83.0444)
 
-[node name="plat2" parent="World/WorldGeometry" instance=ExtResource("13_jkm8p")]
+[node name="movingPlatform4" parent="World/WorldGeometry/movingPlats" instance=ExtResource("4_gkxkl")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -84.6901, 29.9704, -87.9161)
+
+[node name="staticPlats" type="Node3D" parent="World/WorldGeometry"]
+
+[node name="plat1" parent="World/WorldGeometry/staticPlats" instance=ExtResource("4_gkxkl")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78.9156, 1.41684, -56.081)
+
+[node name="plat2" parent="World/WorldGeometry/staticPlats" instance=ExtResource("13_jkm8p")]
 transform = Transform3D(2.50131, 0, -1.65633, 0, 3, 0, 1.65633, 0, 2.50131, 91.9894, 33.6237, -98.668)
 
-[node name="rockp1" parent="World/WorldGeometry" instance=ExtResource("13_jkm8p")]
+[node name="plat3" parent="World/WorldGeometry/staticPlats" instance=ExtResource("13_jkm8p")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 69.3981, 66.5639, -73.7752)
 
-[node name="rockp2" parent="World/WorldGeometry" instance=ExtResource("13_jkm8p")]
+[node name="plat4" parent="World/WorldGeometry/staticPlats" instance=ExtResource("13_jkm8p")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 72.5388, 55.5118, -88.023)
+
+[node name="plat6" parent="World/WorldGeometry/staticPlats" instance=ExtResource("13_jkm8p")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -73.9614, 60.7203, -87.9427)
+
+[node name="plat5" parent="World/WorldGeometry/staticPlats" instance=ExtResource("13_jkm8p")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 97.1922, 11.0189, -62.5648)
 
 [node name="NPC" type="Node" parent="World"]
 
@@ -137,11 +169,14 @@ shape = SubResource("BoxShape3D_gkxkl")
 
 [node name="TestSpring" parent="SpringStuff" instance=ExtResource("4_354q8")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -0.920718, 8.40217)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90122, 2.119, 15.5467)
 
 [node name="Compass" parent="SpringStuff" instance=ExtResource("5_a1aht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1284, 3.03972, 7.14456)
 visible = false
 
 [connection signal="target_pos" from="World/WorldGeometry/shipPart" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
+[connection signal="target_pos" from="World/WorldGeometry/shipPart2" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
+[connection signal="target_pos" from="World/WorldGeometry/shipPart3" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
 [connection signal="destroy_spring" from="DeathZone" to="SpringStuff/TestSpring" method="_on_destroy_spring"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
