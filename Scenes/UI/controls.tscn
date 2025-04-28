@@ -10,6 +10,7 @@ font_color = Color(0, 0, 0, 1)
 outline_size = 10
 
 [node name="Controls" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +23,7 @@ script = ExtResource("1_0pffg")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.705882, 0.67451, 0.886275, 0.819608)
+color = Color(0.705882, 0.67451, 0.886275, 0.901961)
 
 [node name="Master Container" type="VBoxContainer" parent="Background"]
 layout_mode = 1
@@ -40,7 +41,7 @@ label_settings = SubResource("LabelSettings_gjlgb")
 horizontal_alignment = 1
 
 [node name="spacing1" type="Control" parent="Background/Master Container"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 size_flags_stretch_ratio = 0.2
 
@@ -57,13 +58,14 @@ Compass
 Interact
 Map
 FOV Up
-FOV Down"
+FOV Down
+Control Menu"
 label_settings = ExtResource("2_181pv")
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="spacing" type="Control" parent="Background/Master Container/Controls Container"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
@@ -77,12 +79,13 @@ Right Click / Tab
 Left Click / E
 Shift / M
 1
-2"
+2
+I"
 label_settings = ExtResource("2_181pv")
 vertical_alignment = 1
 
 [node name="spacing2" type="Control" parent="Background/Master Container"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 size_flags_stretch_ratio = 0.2
 
@@ -108,7 +111,7 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="spacing2" type="Control" parent="Background/Master Container/Image Container"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(228, 0)
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2

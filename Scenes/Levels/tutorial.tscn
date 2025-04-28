@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cr7kraxkxnhxq"]
+[gd_scene load_steps=36 format=3 uid="uid://cr7kraxkxnhxq"]
 
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
 [ext_resource type="PackedScene" uid="uid://cdcbq8kwhuql0" path="res://Assets/Models/tutorialmodel.tscn" id="3_sghjv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="5_mnia5"]
 [ext_resource type="PackedScene" uid="uid://dyyrtbobpetjt" path="res://Assets/Models/Environment/Hazard/hazard1.tscn" id="5_qvtqq"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
+[ext_resource type="Texture2D" uid="uid://djfivtpm2ml2r" path="res://Assets/Textures/controlHelpText.png" id="6_mj38t"]
 [ext_resource type="PackedScene" uid="uid://cqtfjuiepk7oe" path="res://Scenes/NPCs/npc_gob.tscn" id="7_qvtqq"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Sounds/Dream_Meadow_Ena.mp3" id="8_mnia5"]
 [ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="12_i0v1t"]
@@ -42,6 +43,17 @@ sky_material = SubResource("ProceduralSkyMaterial_xhx3e")
 [sub_resource type="Environment" id="Environment_rvfmk"]
 background_mode = 2
 sky = SubResource("Sky_pujq4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n3fx"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.156863)
+albedo_texture = ExtResource("6_mj38t")
+albedo_texture_force_srgb = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wdaxu"]
+material = SubResource("StandardMaterial3D_8n3fx")
+orientation = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0v1t"]
 resource_local_to_scene = true
@@ -188,6 +200,18 @@ transform = Transform3D(0.383832, -0.273874, -0.881854, 0.274722, 0.945629, -0.1
 
 [node name="hazard" parent="World/WorldGeometry/Hazards" instance=ExtResource("5_qvtqq")]
 transform = Transform3D(0.968159, -0.191853, -0.160813, 0.190321, 0.981403, -0.0250254, 0.162623, -0.00637748, 0.986668, 31.4883, 12.1456, -5.71613)
+
+[node name="ControlHelp" type="Node" parent="World/WorldGeometry"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/ControlHelp"]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 7.24358, 9.76923, -0.389595)
+mesh = SubResource("PlaneMesh_wdaxu")
+skeleton = NodePath("../../Node3D")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/WorldGeometry/ControlHelp"]
+transform = Transform3D(3, 0, 5.24536e-07, 0, 3, 0, -5.24536e-07, 0, 3, -6.00376, 9.76923, -0.389595)
+mesh = SubResource("PlaneMesh_wdaxu")
+skeleton = NodePath("../../Node3D")
 
 [node name="Checkpoints" type="Node" parent="World"]
 
