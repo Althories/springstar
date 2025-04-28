@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxdr78mjw2o6n" path="res://Scripts/UIScripts/titlescreen.gd" id="1_fw0v5"]
 [ext_resource type="Texture2D" uid="uid://bn8j2raren7bj" path="res://Art/covernotext.png" id="2_36ei7"]
 [ext_resource type="Texture2D" uid="uid://dbpdxvj844ts3" path="res://Art/textonly.png" id="3_7xarr"]
-[ext_resource type="VideoStream" uid="uid://bsbl8l16crugi" path="res://Art/intro.ogv" id="4_36ei7"]
+[ext_resource type="VideoStream" uid="uid://c7sh0sa8tyfc6" path="res://Art/spring-intro-movie.ogv" id="4_36ei7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1ggwj"]
 
