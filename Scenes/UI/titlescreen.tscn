@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgisqgfujkne6"]
+[gd_scene load_steps=13 format=3 uid="uid://bgisqgfujkne6"]
 
-[ext_resource type="Script" uid="uid://cfeya4vvn8215" path="res://Scripts/UIScripts/titlescreen.gd" id="1_fw0v5"]
+[ext_resource type="Script" uid="uid://bxdr78mjw2o6n" path="res://Scripts/UIScripts/titlescreen.gd" id="1_fw0v5"]
 [ext_resource type="Texture2D" uid="uid://bn8j2raren7bj" path="res://Art/covernotext.png" id="2_36ei7"]
 [ext_resource type="Texture2D" uid="uid://dbpdxvj844ts3" path="res://Art/textonly.png" id="3_7xarr"]
+[ext_resource type="VideoStream" uid="uid://c7sh0sa8tyfc6" path="res://Art/spring-intro-movie.ogv" id="4_36ei7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1ggwj"]
 
@@ -124,4 +125,14 @@ offset_right = -0.112061
 offset_bottom = -0.119995
 theme_override_styles/panel = SubResource("StyleBoxTexture_m7o6r")
 
+[node name="Intro_Video_Player" type="VideoStreamPlayer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("4_36ei7")
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="Intro_Video_Player" to="." method="_on_intro_finished"]

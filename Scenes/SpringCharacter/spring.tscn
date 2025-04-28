@@ -3543,5 +3543,6 @@ mesh = SubResource("SphereMesh_t2par")
 
 [node name="BoingEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_sonc5")
+volume_db = -10.0
 
 [editable path="Spring Model/Capsule/Mweep"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=23 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
+[ext_resource type="PackedScene" uid="uid://bm2vengclarua" path="res://Scenes/UI/controls.tscn" id="9_baf7d"]
 [ext_resource type="ArrayMesh" uid="uid://dxmolapqv02pc" path="res://Assets/Models/starParticle.obj" id="10_gkxkl"]
 [ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="11_7u17g"]
 [ext_resource type="Script" uid="uid://darp8oyxg6yl6" path="res://Scripts/UIScripts/map.gd" id="13_2r7h2"]
@@ -117,6 +118,9 @@ texture_progress = ExtResource("7_le338")
 script = ExtResource("8_gm05c")
 spring = NodePath("../../../SpringStuff/TestSpring")
 metadata/_edit_use_anchors_ = true
+
+[node name="Controls" parent="World/UI" instance=ExtResource("9_baf7d")]
+layout_mode = 1
 
 [node name="DeathZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.36128, 0)
