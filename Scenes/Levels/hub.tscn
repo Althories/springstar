@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=27 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="7_le338"]
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="8_gm05c"]
 [ext_resource type="PackedScene" uid="uid://bm2vengclarua" path="res://Scenes/UI/controls.tscn" id="9_baf7d"]
-[ext_resource type="ArrayMesh" uid="uid://dxmolapqv02pc" path="res://Assets/Models/starParticle.obj" id="10_gkxkl"]
 [ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="11_7u17g"]
 [ext_resource type="Script" uid="uid://darp8oyxg6yl6" path="res://Scripts/UIScripts/map.gd" id="13_2r7h2"]
 [ext_resource type="Script" uid="uid://c34vn632s41b6" path="res://Scripts/UIScripts/checkpoint_text.gd" id="13_11n81"]
@@ -44,15 +43,6 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gkxkl"]
 resource_local_to_scene = true
 size = Vector3(700, 1, 700)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mdj5"]
-shading_mode = 0
-albedo_color = Color(1, 1, 0.639216, 1)
-billboard_keep_scale = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35mx6"]
-shading_mode = 0
-albedo_color = Color(0.599439, 0.497711, 0.00407744, 1)
 
 [node name="Hub" type="Node3D"]
 
@@ -256,50 +246,6 @@ texture = ExtResource("19_6e5rp")
 position = Vector2(11.6667, -113.333)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("19_6e5rp")
-
-[node name="MapSCer" type="Node3D" parent="."]
-visible = false
-
-[node name="Camera3D" type="Camera3D" parent="MapSCer"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 500, -40)
-projection = 1
-size = 662.024
-
-[node name="Star" type="MeshInstance3D" parent="MapSCer"]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 86.6941, 33.6117, 29.6472)
-visible = false
-mesh = ExtResource("10_gkxkl")
-skeleton = NodePath("../../Misc")
-surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
-
-[node name="StarOutline" type="MeshInstance3D" parent="MapSCer/Star"]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, -0.001, 0)
-mesh = ExtResource("10_gkxkl")
-surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
-
-[node name="Star2" type="MeshInstance3D" parent="MapSCer"]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 11.3354, 112.84, -116.696)
-visible = false
-mesh = ExtResource("10_gkxkl")
-skeleton = NodePath("../../Misc")
-surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
-
-[node name="StarOutline" type="MeshInstance3D" parent="MapSCer/Star2"]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, -0.001, 0)
-mesh = ExtResource("10_gkxkl")
-surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
-
-[node name="Star3" type="MeshInstance3D" parent="MapSCer"]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, -97.5566, 34.9797, 32.3623)
-visible = false
-mesh = ExtResource("10_gkxkl")
-skeleton = NodePath("../../Misc")
-surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
-
-[node name="StarOutline" type="MeshInstance3D" parent="MapSCer/Star3"]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, -0.001, 0)
-mesh = ExtResource("10_gkxkl")
-surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
 
 [connection signal="part_collected" from="World/WorldGeometry/shipPart" to="Map/background/map" method="_on_ship_part_collected"]
 [connection signal="target_pos" from="World/WorldGeometry/shipPart" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
