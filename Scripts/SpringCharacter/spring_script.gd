@@ -13,14 +13,15 @@ const CAMERA_INTERPOLATION_WEIGHT = 0.1				# AMONG 1
 const CAMERA_VERTICAL_MOVEMENT_DEADZONE = 1.4
 const COIL_SPEED: float = 4							# Speed of coil animation
 
-
 @onready var camPivot: Node3D = $CamPivot
+@onready var camSpring: Node3D = $CamPivot/SpringArm3D
 @onready var camera: Node3D = $CamPivot/SpringArm3D/Camera3D
 @onready var animationTree: AnimationTree = $"Spring Model"/AnimationTree
+@onready var boingSound: AudioStreamPlayer = $BoingEffect
 @export var mouse_sens = 0.15						# Adjustable mouse sensitivity for camera
+@export var joypad_sensitivity := 2.0
 @export var ground_bounce_wait_time = 20			# Time spring holds on ground in ground bounce
 @export var ground_anim_speed = 0.5					# Spring ground stretch/squash anim speed in ground state
-@export var reset_height = 2
 
 var bounce_timer = 0								# Enables spring ground movement after wait time expires
 var charge_velocity = 0								# Var to accumulate velocity in charge jump
@@ -29,9 +30,12 @@ var lerp_y = 0
 var most_recent_groundpoint = Vector3()
 var aim_vector = Vector3()
 var bonk_timer = 0									# bonq :3
+var reset_position = Vector3()						#Initializes spring reset position
+var rotationSpeed: float = 1						# Speed the rings rotate in the animation
 
-signal charging
-var rotationSpeed: float = 1						# Speed the rings rotate
+signal charging										#for use in charge UI
+signal spring_pos(spring_pos_x, spring_pos_y, spring_pos_z)	#for positioning compass above spring
+signal show_cp_label
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED	# Locks mouse to window and hides
@@ -42,15 +46,25 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		camPivot.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+		
 	if event.is_action_pressed("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			# Mouse made visible, can move outside game window
 	if event.is_action_pressed("reset"):
 		reset()
+	if event.is_action_pressed("scene_hub"):
+		get_tree().change_scene_to_file("res://Scenes/Levels/hub.tscn")
+	if event.is_action_pressed("scene_tutorial"):
+		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial.tscn")
+	if event.is_action_pressed("scene_title"):
+		get_tree().change_scene_to_file("res://Scenes/UI/titlescreen.tscn")
 		
-func _process(_delta: float) -> void:
+func _process(_delta) -> void:
 	move_camera()
 	if Input.is_action_pressed("left_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED		# Locks mouse to window
+		
+	#emits position for compass to connect its position to the spring (this is me being lazy lol)
+	spring_pos.emit(position.x, position.y, position.z)
 
 func _physics_process(delta: float) -> void:
 	'''For anything to do with physics in the world'''
@@ -80,7 +94,8 @@ func _physics_process(delta: float) -> void:
 		air_move_spring()
 		
 	animate(input)
-	move_and_slide()										# NECESSARY for this stuff to actually all work
+	if Dialogic.current_timeline == null:		#If there is no dialogue currently running
+		move_and_slide()										# NECESSARY for this stuff to actually all work
 	
 #functions block ----------
 func air_move_spring() -> void:
@@ -134,6 +149,14 @@ func move_camera() -> void:
 	distance from the peak of its height.
 	!! If Spring is on Collision Layer 1, the SpringArm3D gets confused and starts clipping the spring.
 	I suspect slerp is behind this.'''
+	
+	#Joypad camera control (does not currently function the way I want)
+	var axis_vector = Input.get_vector("cam_left", "cam_right", "cam_up", "cam_down")
+	if axis_vector.length() >= 0.05:
+		camPivot.rotate_y(deg_to_rad(-axis_vector.x * joypad_sensitivity))
+		camSpring.rotate_x(deg_to_rad(-axis_vector.y * joypad_sensitivity))
+		camSpring.rotation.x = clamp(camSpring.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+		
 	# raise camera target if player rises higher than it was
 	if self.global_position.y >= lerp_y:
 		lerp_y = self.global_position.y
@@ -151,7 +174,7 @@ func move_camera() -> void:
 	
 func reset() -> void:
 	'''Reset player to state on startup'''
-	position = Vector3(0, reset_height, 0) 		#Reset position to center +2 y height to not clip into ground
+	position = reset_position 		#Reset position based off most recent checkpoint
 	velocity = Vector3(0, 0, 0)			#Reset velocity
 	
 func animate(input: String) -> void:
@@ -203,3 +226,15 @@ func animate(input: String) -> void:
 		if(rotationSpeed > 1):
 			rotationSpeed -= 0.05
 			animationTree["parameters/RingsSpeed/scale"] = rotationSpeed
+
+#signals block -----------
+func _on_cp_pos(cp_position: Variant) -> void:
+	if reset_position != cp_position:	#If reset position isn't current checkpoint:
+		show_cp_label.emit()			#Emit label text
+		reset_position = cp_position	#sets new reset position based on checkpoint contact
+
+func _on_destroy_spring() -> void:
+	reset()									#force spring to return to last reached checkpoint
+		
+func playBoing() -> void:
+	boingSound.play()

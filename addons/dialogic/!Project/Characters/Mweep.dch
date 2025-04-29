@@ -1,0 +1,49 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"sound_mood_default": "Mood 1",
+"sound_moods": {
+"Mood 1": {
+"mode": 0,
+"name": "Mood 1",
+"pitch_base": 1.0,
+"pitch_variance": 0.1,
+"skip_characters": 0.0,
+"sound_path": "res://Assets/Sounds/AlienSpeak.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
+"style": ""
+},
+&"default_portrait": "Default Portrait",
+&"description": "",
+&"display_name": "Mweep",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"Default Portrait": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Mweep_Default": {
+"export_overrides": {
+"image": "\"res://addons/dialogic/!Project/Characters/Character_Portraits/sillyguy2.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+&"scale": 1.0
+}

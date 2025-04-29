@@ -1,0 +1,229 @@
+[gd_scene load_steps=20 format=3 uid="uid://c81sj5o1b71pc"]
+
+[ext_resource type="Texture2D" uid="uid://dfu8d2gkxdtxv" path="res://Assets/Textures/floortile.tga" id="1_ysn0p"]
+[ext_resource type="AudioStream" uid="uid://b4sejsx6abtuo" path="res://Music/De Blob OST _ Blissful [Extended]-tB_DbeXmTfk.mp3" id="2_44v0c"]
+[ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="2_hmkfj"]
+[ext_resource type="PackedScene" uid="uid://cf6dk4sd2ru4h" path="res://Assets/Models/compass_needle.glb" id="3_irfg1"]
+[ext_resource type="Script" path="res://Scripts/SpringCharacter/compass.gd" id="4_5sf7f"]
+[ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="4_bekv8"]
+[ext_resource type="Texture2D" uid="uid://huw72g3og64t" path="res://Assets/UI/gaugeover.png" id="5_68uyl"]
+[ext_resource type="PackedScene" uid="uid://dcyn5cm8j2dgf" path="res://Scenes/Interactables/ship_part.tscn" id="6_5sf7f"]
+[ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_o6t2q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xhx3e"]
+sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
+sky_horizon_color = Color(0.760784, 0.713726, 0.756863, 1)
+ground_bottom_color = Color(0.271208, 0.600924, 0.878637, 1)
+ground_horizon_color = Color(0.52549, 0.560784, 0.819608, 1)
+
+[sub_resource type="Sky" id="Sky_ubqhr"]
+sky_material = SubResource("ProceduralSkyMaterial_xhx3e")
+
+[sub_resource type="Environment" id="Environment_rvfmk"]
+background_mode = 2
+sky = SubResource("Sky_ubqhr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1m2s"]
+albedo_texture = ExtResource("1_ysn0p")
+uv1_scale = Vector3(50, 40, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6feu6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_km05j"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_amomj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e2hr"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xq0u6"]
+size = Vector3(1, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_043wf"]
+size = Vector3(5, 5, 50)
+
+[node name="Main2" type="Node"]
+
+[node name="World" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_rvfmk")
+
+[node name="WorldLight" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.5871, 0)
+
+[node name="WorldGeometry" type="Node" parent="World"]
+
+[node name="floor" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="GroundMesh" type="MeshInstance3D" parent="World/WorldGeometry/floor"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_p1m2s")
+mesh = SubResource("BoxMesh_6feu6")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/floor"]
+shape = SubResource("BoxShape3D_km05j")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D2"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D2"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20969, -2.13975, 12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D3"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D3"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20969, -1.84585, 12.8209)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D4"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D4"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20969, 6.94222, 6.89427)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D5"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D5"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 0.778648, -0.62746, 0, 0.62746, 0.778648, 6.20969, 6.94222, 0.461295)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/StaticBody3D6"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/StaticBody3D6"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform1" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(1, 0, 0, 0, 0.7418, 0.670621, 0, -0.670621, 0.7418, -8.49069, -0.519052, 12)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform1"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform1"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform2" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(0.528631, 0.407366, -0.744716, 0, 0.877322, 0.479902, 0.848852, -0.253691, 0.463779, -12.3803, -0.519052, 2.80235)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform2"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform2"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform3" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(-0.516504, 0.410933, -0.751238, -3.10555e-09, 0.877322, 0.479902, 0.856285, 0.247871, -0.45314, -12.3803, -0.519052, -1.62867)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform3"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform3"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform5" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(-0.516504, 0.410933, -0.751238, -3.10555e-09, 0.877322, 0.479902, 0.856285, 0.247871, -0.45314, 5.06594, -0.519052, -1.62867)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform5"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform5"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform6" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(0.515457, -0.411236, 0.751791, 1.22875e-08, 0.877322, 0.479902, -0.856915, -0.247369, 0.452222, 10.8683, -0.519052, 1.9119)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform6"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_amomj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform6"]
+shape = SubResource("BoxShape3D_3e2hr")
+
+[node name="platform4" type="StaticBody3D" parent="World/WorldGeometry"]
+transform = Transform3D(0.164765, -0.616376, 0.770021, -0.00929716, 0.779686, 0.626102, -0.986289, -0.110319, 0.122735, 7.3763, 12.3796, -9.49268)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/WorldGeometry/platform4"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("BoxMesh_xq0u6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/WorldGeometry/platform4"]
+shape = SubResource("BoxShape3D_043wf")
+
+[node name="SpringStuff" type="Node" parent="."]
+
+[node name="TestSpring" parent="SpringStuff" instance=ExtResource("2_hmkfj")]
+
+[node name="Compass" parent="SpringStuff" instance=ExtResource("3_irfg1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.819, 5, -4.643)
+visible = false
+script = ExtResource("4_5sf7f")
+
+[node name="Cube" parent="SpringStuff/Compass" index="0"]
+transform = Transform3D(0.720135, 0.693833, 3.03284e-08, 0, -4.37114e-08, 1, 0.693833, -0.720135, -3.14781e-08, 0, 0, 0)
+
+[node name="Misc" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Misc"]
+stream = ExtResource("2_44v0c")
+volume_db = -30.0
+autoplay = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="chargemeter" type="TextureProgressBar" parent="UI" node_paths=PackedStringArray("spring")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 9.85
+anchor_top = 8.825
+anchor_right = 13.1
+anchor_bottom = 13.45
+offset_top = -3.05176e-05
+offset_right = 130.0
+offset_bottom = 185.0
+scale = Vector2(0.5, 0.5)
+fill_mode = 3
+texture_under = ExtResource("4_bekv8")
+texture_progress = ExtResource("5_68uyl")
+script = ExtResource("6_o6t2q")
+spring = NodePath("../../SpringStuff/TestSpring")
+
+[node name="ship_part" parent="." instance=ExtResource("6_5sf7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5908, 0, 5.34515)
+
+[connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
+[connection signal="target_pos" from="ship_part" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
+
+[editable path="SpringStuff/Compass"]

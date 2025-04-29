@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck8uexgs30ona"]
+
+[ext_resource type="PackedScene" uid="uid://r4lkbvrs1wqu" path="res://Scenes/Levels/Spring_Zones/Dialogue_Zone/npc_dialogue_zone.tscn" id="1_bomu0"]
+[ext_resource type="Script" uid="uid://bhi86asy20wc" path="res://Scripts/NPC/npc_guario.gd" id="1_poxpw"]
+[ext_resource type="PackedScene" uid="uid://diacs2mwuahnl" path="res://Assets/Models/guariogon.glb" id="2_asquf"]
+[ext_resource type="Texture2D" uid="uid://c7rcr1pxoq8hg" path="res://Art/E.png" id="4_usuir"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_poxpw"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kanv7"]
+albedo_texture = ExtResource("4_usuir")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8a8ia"]
+
+[node name="npc_guario" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_poxpw")
+
+[node name="guario_col" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000366211, 0.00164795, -6.10352e-05)
+shape = SubResource("BoxShape3D_poxpw")
+
+[node name="Dialogue_Zone" parent="." instance=ExtResource("1_bomu0")]
+
+[node name="guariogon" parent="." instance=ExtResource("2_asquf")]
+
+[node name="Dialogue_Prompt" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.75, 0, -6.55671e-08, 6.55671e-08, -3.27835e-08, -0.75, -2.86603e-15, -0.75, 3.27835e-08, 0, 2, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_kanv7")
+mesh = SubResource("PlaneMesh_8a8ia")

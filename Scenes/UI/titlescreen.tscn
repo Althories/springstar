@@ -1,0 +1,138 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgisqgfujkne6"]
+
+[ext_resource type="Script" uid="uid://bxdr78mjw2o6n" path="res://Scripts/UIScripts/titlescreen.gd" id="1_fw0v5"]
+[ext_resource type="Texture2D" uid="uid://bn8j2raren7bj" path="res://Art/covernotext.png" id="2_36ei7"]
+[ext_resource type="Texture2D" uid="uid://dbpdxvj844ts3" path="res://Art/textonly.png" id="3_7xarr"]
+[ext_resource type="VideoStream" uid="uid://c7sh0sa8tyfc6" path="res://Art/spring-intro-movie.ogv" id="4_36ei7"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1ggwj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nau0"]
+texture = SubResource("CanvasTexture_1ggwj")
+modulate_color = Color(0.779903, 0.616604, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fw0v5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fw0v5"]
+bg_color = Color(0.635606, 0.114609, 0.359061, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.535228, 0.840546, 0.938969, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0.613916, 0.149444, 0.878792, 0.6)
+shadow_size = 19
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36ei7"]
+bg_color = Color(0.635606, 0.114609, 0.359061, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.535228, 0.840546, 0.938969, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0.613916, 0.149444, 0.878792, 0.6)
+shadow_size = 19
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7xarr"]
+bg_color = Color(0.95409, 0.437312, 0.633876, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.535228, 0.840546, 0.938969, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(0.613916, 0.149444, 0.878792, 0.6)
+shadow_size = 19
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_67sga"]
+texture = ExtResource("2_36ei7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m7o6r"]
+texture = ExtResource("3_7xarr")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fw0v5")
+
+[node name="side" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.497
+anchor_bottom = 1.0
+offset_right = 0.455994
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0nau0")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148
+anchor_top = 0.657
+anchor_right = 0.352
+anchor_bottom = 0.813
+offset_left = 0.503998
+offset_top = 0.264008
+offset_right = 0.495972
+offset_bottom = 0.175964
+theme_override_colors/font_hover_pressed_color = Color(0.439049, 0.439049, 0.439049, 1)
+theme_override_colors/font_hover_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_colors/font_pressed_color = Color(0.439216, 0.439216, 0.439216, 1)
+theme_override_font_sizes/font_size = 51
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fw0v5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fw0v5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_36ei7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7xarr")
+text = "START
+"
+
+[node name="mweep" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.151978
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_67sga")
+
+[node name="text" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.057
+anchor_right = 0.481
+anchor_bottom = 0.565
+offset_left = -0.128
+offset_top = 0.0639992
+offset_right = -0.112061
+offset_bottom = -0.119995
+theme_override_styles/panel = SubResource("StyleBoxTexture_m7o6r")
+
+[node name="Intro_Video_Player" type="VideoStreamPlayer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(0.6, 0.6)
+stream = ExtResource("4_36ei7")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="Intro_Video_Player" to="." method="_on_intro_finished"]

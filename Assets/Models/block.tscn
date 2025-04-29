@@ -36,6 +36,8 @@ metadata/_edit_group_ = true
 
 [node name="block" type="StaticBody3D" parent="block"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00876295, 0.0121608, 7.94729e-08)
+collision_layer = 3
+collision_mask = 3
 
 [node name="collision" type="CollisionShape3D" parent="block/block"]
 shape = SubResource("BoxShape3D_p7kp5")
@@ -49,6 +51,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7c01g")
 metadata/_edit_group_ = true
 
 [node name="slope" type="StaticBody3D" parent="slope"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="collision" type="CollisionShape3D" parent="slope/slope"]
 shape = SubResource("ConvexPolygonShape3D_herkq")
@@ -62,6 +66,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7c01g")
 metadata/_edit_group_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tri1"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tri1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xxfff")

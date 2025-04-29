@@ -1,0 +1,40 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"sound_mood_default": "Mood 1",
+"sound_moods": {
+"Mood 1": {
+"mode": 2,
+"name": "Mood 1",
+"pitch_base": 1.0,
+"pitch_variance": 0.2,
+"skip_characters": 0.0,
+"sound_path": "res://Assets/Sounds/AlienSpeak.wav",
+"volume_base": -1.0,
+"volume_variance": 0.0
+}
+},
+"style": "dialogueUI"
+},
+&"default_portrait": "guario",
+&"description": "",
+&"display_name": "Guario",
+&"mirror": false,
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"guario": {
+"export_overrides": {
+"image": "\"res://Art/Screenshot 2025-04-28 102851.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+}
+},
+&"scale": 1.0
+}

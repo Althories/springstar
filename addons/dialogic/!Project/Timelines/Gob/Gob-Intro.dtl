@@ -1,0 +1,17 @@
+Gob: Good morning!
+Gob: Did you hear about the crash in this area?
+- yeah
+	Gob: Well, you came to the right place! I assume it's yours.
+	Gob: I do believe I saw the part land all the way up in those crags behind me. I thought about taking a look, but I'm #old.
+	Gob: I bet you can grab it in a cinch. Safe travels!
+- neah
+	Gob: Are you sure? You seem like you're on a mission...
+	- yeah
+		Gob: Alright. Sure. Well. Safe travels, friend!
+	- i'm unsure
+		Gob: We all get a little lost every now and then.
+		Gob: In case you were wondering, I spotted a ship part land all the way up in those crags behind me.
+		Gob: Might be yours. I thought about taking a look, but I'm #old.
+		Gob: Safe travels!
+[wait time="0.5"]
+[signal arg="end_intro"]
