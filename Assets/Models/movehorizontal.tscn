@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxpclef7036tg"]
+[gd_scene load_steps=8 format=3 uid="uid://cxpclef7036tg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bx3am"]
 size = Vector3(3, 0.2, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j22or"]
+albedo_color = Color(0.4, 0.7, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0jxb"]
 size = Vector3(3, 0.2, 3)
@@ -14,7 +17,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="Animation" id="Animation_do1su"]
-length = 12.0
+length = 16.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -23,10 +26,10 @@ tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 6, 12),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(3, 8, 11, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 0.0]
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_3xhmd"]
@@ -55,12 +58,13 @@ _data = {
 [node name="movingPlatform" type="Node3D"]
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-transform = Transform3D(0.999963, 0, -0.000828547, 0, 0.999989, 0, 0.000828537, 0, 0.999975, -0.00129704, 0, -6.4346)
+transform = Transform3D(0.999963, 0, -0.000828547, 0, 0.999989, 0, 0.000828537, 0, 0.999975, -0.00296182, 0, -4.42538)
 collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
 layers = 3
 mesh = SubResource("BoxMesh_bx3am")
+surface_material_override/0 = SubResource("StandardMaterial3D_j22or")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 shape = SubResource("BoxShape3D_i0jxb")

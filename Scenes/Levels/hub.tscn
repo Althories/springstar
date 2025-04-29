@@ -91,10 +91,10 @@ transform = Transform3D(-0.47521, 0, -0.879873, 0, 1, 0, 0.879873, 0, -0.47521, 
 [node name="movingPlats" type="Node3D" parent="World/WorldGeometry"]
 
 [node name="movingPlatform2" parent="World/WorldGeometry/movingPlats" instance=ExtResource("6_a76ud")]
-transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -106.951, 11.1139, -51.749)
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -106.951, 7.60181, -51.749)
 
 [node name="movingPlatform3" parent="World/WorldGeometry/movingPlats" instance=ExtResource("6_a76ud")]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -114.554, 13, -93.395)
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -114.554, 8.96257, -93.395)
 
 [node name="movingPlatform5" parent="World/WorldGeometry/movingPlats" instance=ExtResource("4_gkxkl")]
 transform = Transform3D(-4, 3.49691e-07, 0, -3.49691e-07, -4, 0, 0, 0, 4, -79.5622, 53.959, -72.2236)
@@ -109,7 +109,7 @@ transform = Transform3D(2.1913, 0, -3.34637, 0, 4, 0, 3.34637, 0, 2.1913, -102.9
 transform = Transform3D(4, 0, 0, 0, -4, 3.49691e-07, 0, -3.49691e-07, -4, 100.569, 31.6029, -83.0444)
 
 [node name="movingPlatform4" parent="World/WorldGeometry/movingPlats" instance=ExtResource("4_gkxkl")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -84.6901, 29.9704, -87.9161)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -84.6901, 32.6146, -87.9161)
 
 [node name="staticPlats" type="Node3D" parent="World/WorldGeometry"]
 

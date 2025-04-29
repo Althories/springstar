@@ -1,20 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://m156s4k3gw8f"]
+[gd_scene load_steps=8 format=3 uid="uid://m156s4k3gw8f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bx3am"]
 size = Vector3(3, 0.2, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx3am"]
+albedo_color = Color(0.4, 0.701961, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0jxb"]
 size = Vector3(3, 0.2, 3)
 
 [sub_resource type="Curve3D" id="Curve3D_2dfb0"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0065968, 0, -0.0383063, 0, 0, 0, 0, 0, 0, 0.000583649, 2.90768, 0.00691048),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.0065968, 0, -0.0383063, 0, 0, 0, 0, 0, 0, -0.016715, 3.24667, -0.0383301),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
 [sub_resource type="Animation" id="Animation_do1su"]
-length = 0.001
+length = 16.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,10 +26,10 @@ tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(3, 8, 11, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0]
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_3xhmd"]
@@ -54,13 +58,14 @@ _data = {
 [node name="movingPlatform" type="Node3D"]
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1.49006e-08, 0.999986, -0.00246897, 0.015547, -0.0024687, -0.999852, -0.999843, -3.83701e-05, -0.0155471, -0.0065968, 0, -0.0383063)
+transform = Transform3D(-6.19297e-08, 0.999992, 0.00308803, -7.23514e-06, 0.00308817, -0.999946, -0.999948, -8.42844e-08, 7.23494e-06, -0.0113055, 1.51088, -0.0383174)
 collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
 transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0)
 layers = 3
 mesh = SubResource("BoxMesh_bx3am")
+surface_material_override/0 = SubResource("StandardMaterial3D_bx3am")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
 transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0)
@@ -70,7 +75,7 @@ shape = SubResource("BoxShape3D_i0jxb")
 curve = SubResource("Curve3D_2dfb0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(1.49006e-08, 0.999986, -0.00246897, 0.015547, -0.0024687, -0.999852, -0.999843, -3.83701e-05, -0.0155471, -0.0065968, 0, -0.0383063)
+transform = Transform3D(-6.19297e-08, 0.999992, 0.00308803, -7.23514e-06, 0.00308817, -0.999946, -0.999948, -8.42844e-08, 7.23494e-06, -0.0065968, 0, -0.0383063)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
 remote_path = NodePath("../../../AnimatableBody3D")
@@ -79,4 +84,4 @@ remote_path = NodePath("../../../AnimatableBody3D")
 libraries = {
 &"": SubResource("AnimationLibrary_tpm8m")
 }
-autoplay = "move"
+autoplay = "RESET"
