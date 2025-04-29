@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://che44bq5jwr7t"]
+[gd_scene load_steps=30 format=3 uid="uid://che44bq5jwr7t"]
 
 [ext_resource type="PackedScene" uid="uid://c4cs58ba7obbl" path="res://Assets/Models/hub2.tscn" id="1_8cquh"]
 [ext_resource type="PackedScene" uid="uid://ck8uexgs30ona" path="res://Scenes/NPCs/npc_guario.tscn" id="2_7vggk"]
+[ext_resource type="PackedScene" uid="uid://idn34uewrc5t" path="res://Scenes/Interactables/ship_part_plural.tscn" id="2_11n81"]
 [ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Sounds/Dream_Meadow_Ena.mp3" id="3_3dsna"]
 [ext_resource type="PackedScene" uid="uid://cgr2sksawkhmn" path="res://Assets/Models/Environment/grass_3_bunch.tscn" id="3_a1aht"]
 [ext_resource type="PackedScene" uid="uid://cusuavcx76vmy" path="res://Scenes/SpringCharacter/spring.tscn" id="4_354q8"]
 [ext_resource type="PackedScene" uid="uid://m156s4k3gw8f" path="res://Assets/Models/moving_platform.tscn" id="4_gkxkl"]
-[ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="4_ylstq"]
 [ext_resource type="PackedScene" uid="uid://c50bejtvv072c" path="res://Scenes/SpringCharacter/compass.tscn" id="5_a1aht"]
 [ext_resource type="PackedScene" uid="uid://cxpclef7036tg" path="res://Assets/Models/movehorizontal.tscn" id="6_a76ud"]
 [ext_resource type="Texture2D" uid="uid://c4j3h3bw63tre" path="res://Assets/UI/gaugeunder.png" id="6_fvj0q"]
@@ -16,9 +16,12 @@
 [ext_resource type="ArrayMesh" uid="uid://dxmolapqv02pc" path="res://Assets/Models/starParticle.obj" id="10_gkxkl"]
 [ext_resource type="Script" uid="uid://nsjb61ymht8x" path="res://Scripts/Level/death_zone.gd" id="11_7u17g"]
 [ext_resource type="Script" uid="uid://darp8oyxg6yl6" path="res://Scripts/UIScripts/map.gd" id="13_2r7h2"]
+[ext_resource type="Script" uid="uid://c34vn632s41b6" path="res://Scripts/UIScripts/checkpoint_text.gd" id="13_11n81"]
 [ext_resource type="PackedScene" uid="uid://dijxpskyhsvd7" path="res://Scenes/Scene Props/platform.tscn" id="13_jkm8p"]
 [ext_resource type="Texture2D" uid="uid://8tl4fjjiap8n" path="res://Assets/UI/Minimaps/hub.png" id="14_baf7d"]
 [ext_resource type="Texture2D" uid="uid://bh2hy5eeywgfw" path="res://Assets/UI/Minimaps/character.png" id="15_me45b"]
+[ext_resource type="Script" uid="uid://h0clngy3rqlh" path="res://Scenes/Levels/multipleParts.gd" id="18_1ft6y"]
+[ext_resource type="Texture2D" uid="uid://d3peroqqsmmnc" path="res://Assets/UI/Minimaps/star.png" id="19_6e5rp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l6o3x"]
 sky_top_color = Color(0.824498, 0.567902, 0.745864, 1)
@@ -32,6 +35,11 @@ sky_material = SubResource("ProceduralSkyMaterial_l6o3x")
 [sub_resource type="Environment" id="Environment_y8bgm"]
 background_mode = 2
 sky = SubResource("Sky_edd6l")
+
+[sub_resource type="LabelSettings" id="LabelSettings_11n81"]
+font_size = 40
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gkxkl"]
 resource_local_to_scene = true
@@ -62,14 +70,16 @@ shadow_enabled = true
 [node name="HUB" parent="World/WorldGeometry" instance=ExtResource("1_8cquh")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
-[node name="shipPart" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
+[node name="shipPart" parent="World/WorldGeometry" instance=ExtResource("2_11n81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.7928, 36.1757, 32.0978)
 
-[node name="shipPart2" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.117, 110.939, -116.425)
-
-[node name="shipPart3" parent="World/WorldGeometry" instance=ExtResource("4_ylstq")]
+[node name="shipPart2" parent="World/WorldGeometry" instance=ExtResource("2_11n81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.9698, 11.9214, 29.1161)
+partNum = 2
+
+[node name="shipPart3" parent="World/WorldGeometry" instance=ExtResource("2_11n81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.117, 110.939, -116.425)
+partNum = 3
 
 [node name="Grasses" type="Node3D" parent="World/WorldGeometry"]
 
@@ -175,6 +185,22 @@ metadata/_edit_use_anchors_ = true
 visible = false
 layout_mode = 1
 
+[node name="part_collect_label" type="Label" parent="World/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.277
+offset_left = -109.0
+offset_right = 109.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Only 0 more parts to collect!"
+label_settings = SubResource("LabelSettings_11n81")
+horizontal_alignment = 1
+script = ExtResource("13_11n81")
+
 [node name="DeathZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.36128, 0)
 script = ExtResource("11_7u17g")
@@ -203,16 +229,33 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.713726, 0.6, 0.811765, 0.196078)
 
-[node name="map" type="Sprite2D" parent="Map/background"]
+[node name="map" type="Sprite2D" parent="Map/background" node_paths=PackedStringArray("partLabel")]
 position = Vector2(576, 363)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("14_baf7d")
 offset = Vector2(0, -39)
+script = ExtResource("18_1ft6y")
+partLabel = NodePath("../../../World/UI/part_collect_label")
 
 [node name="character" type="Sprite2D" parent="Map/background/map"]
 position = Vector2(-2.901, 14.379)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_me45b")
+
+[node name="star" type="Sprite2D" parent="Map/background/map"]
+position = Vector2(-95, 31.6666)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("19_6e5rp")
+
+[node name="star2" type="Sprite2D" parent="Map/background/map"]
+position = Vector2(85, 30)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("19_6e5rp")
+
+[node name="star3" type="Sprite2D" parent="Map/background/map"]
+position = Vector2(11.6667, -113.333)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("19_6e5rp")
 
 [node name="MapSCer" type="Node3D" parent="."]
 visible = false
@@ -224,6 +267,7 @@ size = 662.024
 
 [node name="Star" type="MeshInstance3D" parent="MapSCer"]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 86.6941, 33.6117, 29.6472)
+visible = false
 mesh = ExtResource("10_gkxkl")
 skeleton = NodePath("../../Misc")
 surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
@@ -235,6 +279,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
 
 [node name="Star2" type="MeshInstance3D" parent="MapSCer"]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 11.3354, 112.84, -116.696)
+visible = false
 mesh = ExtResource("10_gkxkl")
 skeleton = NodePath("../../Misc")
 surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
@@ -246,6 +291,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
 
 [node name="Star3" type="MeshInstance3D" parent="MapSCer"]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, -97.5566, 34.9797, 32.3623)
+visible = false
 mesh = ExtResource("10_gkxkl")
 skeleton = NodePath("../../Misc")
 surface_material_override/0 = SubResource("StandardMaterial3D_0mdj5")
@@ -255,8 +301,11 @@ transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, -0.001, 0)
 mesh = ExtResource("10_gkxkl")
 surface_material_override/0 = SubResource("StandardMaterial3D_35mx6")
 
+[connection signal="part_collected" from="World/WorldGeometry/shipPart" to="Map/background/map" method="_on_ship_part_collected"]
 [connection signal="target_pos" from="World/WorldGeometry/shipPart" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
+[connection signal="part_collected" from="World/WorldGeometry/shipPart2" to="Map/background/map" method="_on_ship_part_collected"]
 [connection signal="target_pos" from="World/WorldGeometry/shipPart2" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
+[connection signal="part_collected" from="World/WorldGeometry/shipPart3" to="Map/background/map" method="_on_ship_part_collected"]
 [connection signal="target_pos" from="World/WorldGeometry/shipPart3" to="SpringStuff/Compass" method="_on_ship_part_target_pos"]
 [connection signal="destroy_spring" from="DeathZone" to="SpringStuff/TestSpring" method="_on_destroy_spring"]
 [connection signal="spring_pos" from="SpringStuff/TestSpring" to="SpringStuff/Compass" method="_on_test_spring_spring_pos"]
