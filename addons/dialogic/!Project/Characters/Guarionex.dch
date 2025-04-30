@@ -12,8 +12,8 @@
 "pitch_base": 1.0,
 "pitch_variance": 0.2,
 "skip_characters": 0.0,
-"sound_path": "res://Assets/Sounds/AlienSpeak.wav",
-"volume_base": -1.0,
+"sound_path": "AlienSpeak.wav",
+"volume_base": -22.0,
 "volume_variance": 0.0
 }
 },
