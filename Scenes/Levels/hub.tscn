@@ -135,7 +135,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 97.1922, 11.0189, -62.5648)
 
 [node name="npc_guario" parent="World/NPC" instance=ExtResource("2_7vggk")]
 transform = Transform3D(-1.73205, 0, 1, 0, 2, 0, -1, 0, -1.73205, 7.52757, 0, -13.9716)
-visible = false
 
 [node name="Misc" type="Node" parent="World"]
 
