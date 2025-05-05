@@ -253,3 +253,7 @@ skip={
 
 3d_physics/layer_1="Spring and World"
 3d_physics/layer_2="Springarm and WorldGeometry"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
