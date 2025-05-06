@@ -76,16 +76,16 @@ partNum = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7024, -1, 24.2085)
 
 [node name="grass2" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
-transform = Transform3D(0.810931, 0, -0.585142, 0, 1, 0, 0.585142, 0, 0.810931, -13.0821, -1, 22.5091)
+transform = Transform3D(0.810931, 0, -0.585142, 0, 1, 0, 0.585142, 0, 0.810931, -13.0821, -1, 26.7091)
 
 [node name="grass3" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
-transform = Transform3D(0.810931, 0, -0.585142, 0, 1, 0, 0.585142, 0, 0.810931, -8.67417, -1, 1.37237)
+transform = Transform3D(0.810931, 0, -0.585142, 0, 1, 0, 0.585142, 0, 0.810931, -8.67417, -1, -0.784419)
 
 [node name="grass4" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
 transform = Transform3D(-0.073186, 0, -0.997318, 0, 1, 0, 0.997318, 0, -0.073186, -13.1352, -1, -2.55758)
 
 [node name="grass5" parent="World/WorldGeometry/Grasses" instance=ExtResource("3_a1aht")]
-transform = Transform3D(-0.47521, 0, -0.879873, 0, 1, 0, 0.879873, 0, -0.47521, -17.8617, -1, -1.76097)
+transform = Transform3D(-0.47521, 0, -0.879873, 0, 1, 0, 0.879873, 0, -0.47521, -17.8617, -1, 2.49893)
 
 [node name="movingPlats" type="Node3D" parent="World/WorldGeometry"]
 
