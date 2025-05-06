@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfu8d2gkxdtxv"
 path.s3tc="res://.godot/imported/floortile.tga-ff67f57cb8edcf0aeded347c7daaa7cd.s3tc.ctex"
+path.etc2="res://.godot/imported/floortile.tga-ff67f57cb8edcf0aeded347c7daaa7cd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/floortile.tga"
-dest_files=["res://.godot/imported/floortile.tga-ff67f57cb8edcf0aeded347c7daaa7cd.s3tc.ctex"]
+dest_files=["res://.godot/imported/floortile.tga-ff67f57cb8edcf0aeded347c7daaa7cd.s3tc.ctex", "res://.godot/imported/floortile.tga-ff67f57cb8edcf0aeded347c7daaa7cd.etc2.ctex"]
 
 [params]
 

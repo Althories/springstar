@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ds4ucc6ifgn8f"
 path.s3tc="res://.godot/imported/GasRoof.png-7c63c7db9131f0473ba563423d06a1fd.s3tc.ctex"
+path.etc2="res://.godot/imported/GasRoof.png-7c63c7db9131f0473ba563423d06a1fd.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Gas Station/GasRoof.png"
-dest_files=["res://.godot/imported/GasRoof.png-7c63c7db9131f0473ba563423d06a1fd.s3tc.ctex"]
+dest_files=["res://.godot/imported/GasRoof.png-7c63c7db9131f0473ba563423d06a1fd.s3tc.ctex", "res://.godot/imported/GasRoof.png-7c63c7db9131f0473ba563423d06a1fd.etc2.ctex"]
 
 [params]
 

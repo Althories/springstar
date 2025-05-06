@@ -1,8 +1,10 @@
 extends Control
 
 @onready var intro_video = get_node("%Intro_Video_Player")
+@onready var credits = get_node("credits")
 
 func _on_button_pressed():
+	credits.hide()
 	intro_video.show()
 	intro_video.play()
 	

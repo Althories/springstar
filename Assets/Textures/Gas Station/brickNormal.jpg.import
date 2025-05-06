@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://digdugt0g53oe"
 path.s3tc="res://.godot/imported/brickNormal.jpg-f4b6495a1c8a73e522fdfed27d867461.s3tc.ctex"
+path.etc2="res://.godot/imported/brickNormal.jpg-f4b6495a1c8a73e522fdfed27d867461.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Gas Station/brickNormal.jpg"
-dest_files=["res://.godot/imported/brickNormal.jpg-f4b6495a1c8a73e522fdfed27d867461.s3tc.ctex"]
+dest_files=["res://.godot/imported/brickNormal.jpg-f4b6495a1c8a73e522fdfed27d867461.s3tc.ctex", "res://.godot/imported/brickNormal.jpg-f4b6495a1c8a73e522fdfed27d867461.etc2.ctex"]
 
 [params]
 

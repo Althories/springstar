@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://btd5ba218emcq"
 path.s3tc="res://.godot/imported/TintedGradient.001.png-477fba3d1a627c388d1d84c7aea2a034.s3tc.ctex"
+path.etc2="res://.godot/imported/TintedGradient.001.png-477fba3d1a627c388d1d84c7aea2a034.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Textures/Spring/TintedGradient.001.png"
-dest_files=["res://.godot/imported/TintedGradient.001.png-477fba3d1a627c388d1d84c7aea2a034.s3tc.ctex"]
+dest_files=["res://.godot/imported/TintedGradient.001.png-477fba3d1a627c388d1d84c7aea2a034.s3tc.ctex", "res://.godot/imported/TintedGradient.001.png-477fba3d1a627c388d1d84c7aea2a034.etc2.ctex"]
 
 [params]
 

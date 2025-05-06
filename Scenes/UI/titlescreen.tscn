@@ -134,5 +134,18 @@ offset_bottom = 1080.0
 scale = Vector2(0.6, 0.6)
 stream = ExtResource("4_36ei7")
 
+[node name="credits" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 488.0
+offset_right = 1139.0
+offset_bottom = 639.0
+text = "2025. Developed by:
+- Lex Jahnsen (Level Design + UI Lead)
+- Nikolas Kopek (Soampbar, Team Lead)
+- Reedspun (Mechanics Lead)
+- Taylor Kothenbeutel (Assets Lead)
+"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="finished" from="Intro_Video_Player" to="." method="_on_intro_finished"]

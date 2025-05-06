@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://baf0uyk8a2wl4" path="res://Scripts/UIScripts/chargemeter.gd" id="6_45db0"]
 [ext_resource type="Texture2D" uid="uid://djfivtpm2ml2r" path="res://Assets/Textures/controlHelpText.png" id="6_mj38t"]
 [ext_resource type="PackedScene" uid="uid://cqtfjuiepk7oe" path="res://Scenes/NPCs/npc_gob.tscn" id="7_qvtqq"]
-[ext_resource type="AudioStream" uid="uid://dwq2qwcgt8by1" path="res://Assets/Sounds/Dream_Meadow_Ena.mp3" id="8_mnia5"]
+[ext_resource type="AudioStream" uid="uid://cwn1dcpc6q0sx" path="res://Assets/Sounds/SpringStarTut.mp3" id="10_mj38t"]
 [ext_resource type="PackedScene" uid="uid://d1ybawusua3ru" path="res://Scenes/Interactables/ship_part.tscn" id="12_i0v1t"]
 [ext_resource type="Script" uid="uid://c34vn632s41b6" path="res://Scripts/UIScripts/checkpoint_text.gd" id="13_sghjv"]
 [ext_resource type="PackedScene" uid="uid://bm2vengclarua" path="res://Scenes/UI/controls.tscn" id="15_ku8a2"]
@@ -294,8 +294,8 @@ transform = Transform3D(-0.169264, 0, -0.985571, 0, 1, 0, 0.985571, 0, -0.169264
 [node name="Misc" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Misc"]
-stream = ExtResource("8_mnia5")
-volume_db = -20.0
+stream = ExtResource("10_mj38t")
+volume_db = -8.0
 autoplay = true
 
 [node name="ship_part" parent="Misc" instance=ExtResource("12_i0v1t")]
