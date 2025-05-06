@@ -47,6 +47,8 @@ func _input(event):
 		camPivot.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		camPivot.rotation.x = clamp(camPivot.rotation.x, deg_to_rad(-75), deg_to_rad(75))
 		
+	if event.is_action_pressed("quit"):
+		get_tree().quit()
 	if event.is_action_pressed("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE			# Mouse made visible, can move outside game window
 	if event.is_action_pressed("reset"):

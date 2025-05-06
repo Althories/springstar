@@ -9,6 +9,8 @@ func _on_button_pressed():
 	intro_video.play()
 	
 func _process(_float) -> void:
+	if Input.is_action_pressed("quit"):
+		get_tree().quit()
 	if Input.is_action_pressed("skip"):
 		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial.tscn")
 		
