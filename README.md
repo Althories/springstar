@@ -1,4 +1,6 @@
-BOIOIOIOIOING
+# BOIOIOIOIOING
+
+### Download and play the game [here](soampbar.itch.io/spring-star)!
 
 This is the directory for the game demo of SPRING STAR. MCS-394.
 
